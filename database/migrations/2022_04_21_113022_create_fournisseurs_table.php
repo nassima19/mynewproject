@@ -16,6 +16,7 @@ class CreateFournisseursTable extends Migration
         Schema::create('fournisseurs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('categorie_id')->unsigned();
             $table->string('nom',100); 
             $table->string('domaine_activite'); 
             $table->string('genre',50);
@@ -29,6 +30,8 @@ class CreateFournisseursTable extends Migration
             $table->string('site_internet')->nullable();
             $table->string('note')->nulable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
+
             $table->timestamps();
 
         });

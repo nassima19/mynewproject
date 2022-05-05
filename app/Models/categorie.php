@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\produit;
+use App\Models\fournisseur;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class categorie extends Model
 {
@@ -16,5 +18,14 @@ class categorie extends Model
    protected $fillable = [
     'libele',
     'description',
+    "user_id",
     ];
+    public function produits()
+    {
+        return $this->hasMany(produit::class);
+    }
+    public function fournisseur()
+   {
+    return $this->hasMany(fournisseur::class); 
+   }
 }

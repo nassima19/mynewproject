@@ -15,7 +15,10 @@ class produit extends Model
     use HasFactory;
     protected $fillable = [
         'libele',
+        'code_barre',
         'description',
         'methode_paiement',
+        'user_id',
+        'categorie_id'
         ];
 }

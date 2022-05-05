@@ -19,4 +19,10 @@ class piece extends Model
         'note',
         'bank_account',
         ];
+      
+            public function charge()
+            {
+                return $this->belongsTo(charge::class);
+            }
+        
 }

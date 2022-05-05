@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\categorie;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class fournisseur extends Model
 {
@@ -26,5 +27,16 @@ class fournisseur extends Model
         'telephone',
         'site_internet',
         'note' ,
+        'user_id',
+        'categorie_id',
      ];
+
+     public function services()
+     {
+         return $this->hasMany(Service::class);
+     }
+     public function categorie()
+    {
+        return $this->belongsTo(categorie::class);
+    }
 }

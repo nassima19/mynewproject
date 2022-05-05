@@ -22,4 +22,8 @@ class charge extends Model
         'remarque',
         'prix',
         ];
+        public function piece()
+        {
+            return $this->hasOne(Piece::class)->withDefault();
+        }
 }
