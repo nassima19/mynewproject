@@ -1,6 +1,7 @@
 <?php
-use ulluminate\Http\Request;
 namespace App\Http\Controllers;
+
+use ulluminate\Http\Request;
 use App\Models\categorie;
 use App\Models\fournisseur;
 use App\Http\Requests\StorefournisseurRequest;
@@ -44,22 +45,24 @@ class FournisseurController extends Controller
      */
     public function store(StorefournisseurRequest $request)
     {
-        //
-      /* $this->validate($request,[
+      //
+      $this->validate($request,[
             "nom"=> "required|min:3",
-            "titre"=>"required|min:2",
             "genre"=> "required|min:5",
+            "titre"=>"required|min:2",
             "domaine_activite"=> "required|min:3",
             "adresse"=> "required|min:2",
             "ville"=> "min:3",
             "pays"=> "min:3",
-            "code_postal"=> "required|numeric",
-            "curriel"=> "string",
-            "telephone"=> "required|min:10",
-            "site_internet"=> "string",
-            "note"=> "string",
-            "categorie"=>"required|min:2"
-        ]); */
+            "code_postal"=> "required",
+            "curriel"=> "min:3",
+            "telephone"=> "required",
+            "site_internet"=> "min:3",
+            "categorie_id"=> "required",
+            "note"=> "min:3",
+            
+        ]);  
+        dd
         //store data
         $nom = $request->nom;
         $titre = $request->titre;
@@ -87,8 +90,8 @@ class FournisseurController extends Controller
             "telephone"=>  $telephone,
             "site_internet"=>  $site_internet,
             "note"=> $note ,
+            "categorie_id" => $request->categorie_id,
             "user_id"=> auth()->user()->id,
-            "categorie_id"=> $request->categorie ,
 
         ]); 
         return redirect()->route("fournisseur.index")->with([
@@ -107,7 +110,8 @@ class FournisseurController extends Controller
     public function show(fournisseur $fournisseur)
     {
         //
-        return view('fournisseur.show')->with([
+        $categorie = categorie::all();
+        return view('fournisseur.show',compact('categorie'))->with([
             'fournisseur'=> $fournisseur
         ]);
     }
@@ -121,9 +125,10 @@ class FournisseurController extends Controller
     public function edit(fournisseur $fournisseur)
     {
         //
-        $categorie=categorie::all();
-        return view("fournisseur.edit",compact('categorie'))->with([
-            "fournisseur"=> $fournisseur
+
+        return view("fournisseur.edit")->with([
+            "fournisseur" =>$fournisseur,
+            "categorie" => categorie::all()
         ]);
        
     }
@@ -138,23 +143,24 @@ class FournisseurController extends Controller
     public function update(UpdatefournisseurRequest $request, fournisseur $fournisseur)
     {
         //
+     
         $this->validate($request,[
             "nom"=> "required|min:3",
             "titre"=>"required|min:2",
             "genre"=> "required|min:5",
             "domaine_activite"=> "required|min:3",
-            "adresse"=> "required|min:2",
-            "ville"=> "min:3",
-            "pays"=> "min:3",
-            "code_postal"=> "required|numeric",
-            "curriel"=> "string",
-            "telephone"=> "required|min:10",
-            "site_internet"=> "string",
-            "note"=> "string",
-            "categorie"=>"required|min:2"
-
-        ]); 
+           "adresse"=> "required|min:2",
+             "ville"=> "min:3", 
+             "pays"=> "min:3", 
+              "code_postal"=> "required",
+            "telephone"=> "required", 
+            "curriel"=> "min:3",
+            "site_internet"=> "min:3",
+            "note"=>"min:3",
+            "categorie_id"=> "required",  
+        ]);   
         //store data
+        dd($request);
         $nom = $request->nom;
         $titre = $request->titre;
         $genre = $request->genre; 
@@ -164,14 +170,13 @@ class FournisseurController extends Controller
         $pays = $request->pays;
         $code_postal= $request->code_postal;
         $curriel = $request->curriel;
-        $telephone = $request->telephone ;
+    /*     $telephone = $request->telephone ; */
         $site_internet = $request->site_internet;
         $note = $request->note;
-       $categorie = $request->categorie;
 
-        Fournisseur::update([
+        $fournisseur->update([
             "nom"=>   $nom ,
-            "titre"=>$titre ,
+            "titre"=> $titre ,
             "genre"=>  $genre,
             "domaine_activite"=>  $domaine_activite,
             "adresse"=> $adresse,
@@ -179,16 +184,15 @@ class FournisseurController extends Controller
             "pays"=> $pays,
             "code_postal"=>  $code_postal,
             "curriel"=>  $curriel ,
-            "telephone"=>  $telephone,
+            /* "telephone"=>  $telephone, */
             "site_internet"=>  $site_internet,
             "note"=>  $note ,
-            "user_id"=> auth()->user()->id,
-            "categorie_id"=> $request->categorie ,
+            "categorie_id"=> $request->categorie_id ,
 
         ]);
             
         return redirect()->route("fournisseur.index")->with([
-            "success"=> "Fournisseur modifier avec succes"
+            'success','Fournisseur modifier avec succes'
         ]);
     }
 
