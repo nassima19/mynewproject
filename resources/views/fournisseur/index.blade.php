@@ -10,6 +10,13 @@
       <link rel="stylesheet" href="/css/style.css">
 @endsection
 @section('content')
+@if ($errors->any())
+@foreach ($errors as $error)
+<div class="alert alert-danger">
+            {{$error}}
+        </div>
+        @endforeach
+@endif
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-14">
@@ -24,10 +31,10 @@
                                 <div class="col-md-12">
                                     <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
                                         <h3 class="text-secondary">
-                                            <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list" style="font-size:28px;color:#FFA97A"></i> Liste des fournisseur</button>
+                                            <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list" style="font-size:28px;color:#a0627d"></i> Liste des fournisseurs</button>
                                         </h3>
                                         <a href="{{route("fournisseur.create")}}">
-                                            <i class="fas fa-plus" style="font-size:33px;color:#FFA97A"></i>
+                                            <button type="button" class="ajouter"><i class="fas fa-plus" style="font-size:23px;color:#182c42"></i> Ajouter</button>
                                         </a>
                                     </div>
                                     <table  class="table collapse" id="ex2">
@@ -55,7 +62,7 @@
                                                                  <td>
                                                                     {{$vendor->categorie->libele}}
                                                                 </td> 
-                                                    <td class="d-flex flex-row justify-content-center align-items-center ">
+                                                    <td class="d-flex flex-row justify-content-center align-items-center pull-left ">
                                                         <a href="{{route("fournisseur.edit",$vendor->id)}}" class="btn1 btn-sm mr-2">
                                                             <i class="fas fa-edit" style="color:#5d3277"></i></a>
                                                                 <form action="{{route("fournisseur.destroy",$vendor->id)}}" method="post">

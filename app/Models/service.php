@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\fournisseur;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class service extends Model
 {
@@ -17,5 +18,12 @@ class service extends Model
         'nom',
         'description',
         'methode_paiement',
+        'user_id',
+        'fournisseur_id'
         ];
+        public function fournisseur()
+        {
+          return $this->belongsTo(fournisseur::class);
+            
+        }
 }

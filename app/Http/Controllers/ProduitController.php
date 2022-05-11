@@ -21,9 +21,10 @@ class ProduitController extends Controller
     }
     public function index()
     {
-        //
+        //  
+        $categorie = categorie::all();
         return view("produit.index")->with([
-            "produit"=> Produit::paginate(5)
+            "produit"=> produit::paginate(5)
         ]);
     }
 
@@ -35,7 +36,7 @@ class ProduitController extends Controller
     public function create()
     {
         $categorie = categorie::all();
-        return view('produit.create',compact('categorie'));
+        return view('produit.create', compact('categorie'));
     }
     
 
@@ -47,26 +48,28 @@ class ProduitController extends Controller
      */
     public function store(StoreproduitRequest $request)
     {
-        //
-        $this->validate($request,[
+       //
+       $this->validate($request,[
             "libele"=> "required|min:3",
-            "code_barre"=> "required|numeric",
-            "description"=> "required|min:5",
-            "methode_paiement"=> "required|min:2"
-        ]); 
+            "code_barre"=> "numeric",
+            "methode_paiement"=> "required|min:2",
+            "description"=> "min:5",
+            "categorie_id"=> "required|numeric",
+        ]);   
         //store data
         $libele = $request->libele;
         $code_barre=$request->code_barre;
-        $description = $request->description;
         $methode_paiement = $request->methode_paiement;
-        Categorie::create([
+        $description = $request->description;
+       
+        Produit::create([
             "libele"=> $libele,
             "code_barre"=> $code_barre,
-            "description"=> $description,
             "methode_paiement"=>$methode_paiement,
+            "description"=> $description,
             "user_id"=> auth()->user()->id,
-            "categorie_id"=> auth()->categorie()->id,
-        ]);
+            "categorie_id" => $request->categorie_id,
+     ]);
         //redirect user
         
         return redirect()->route("produit.index")->with([
@@ -83,8 +86,10 @@ class ProduitController extends Controller
     public function show(produit $produit)
     {
         //
+        $categorie = categorie::all();
         return view('produit.show')->with([
-            'produit'=> $produit
+            'produit'=> $produit,
+            'categorie'=> $categorie
         ]);
     }
 
@@ -97,8 +102,10 @@ class ProduitController extends Controller
     public function edit(produit $produit)
     {
         //
+        $categorie = categorie::all();
         return view("produit.edit")->with([
-            "produit"=> $produit
+            "produit"=> $produit,
+            "categorie" =>$categorie
         ]);
     }
 
@@ -112,28 +119,33 @@ class ProduitController extends Controller
     public function update(UpdateproduitRequest $request, produit $produit)
     {
         //
-        //
+      
           //validation
           $this->validate($request,[
             "libele"=> "required|min:3",
-            "code_barre"=> "numeric",
-            "description"=> "required|min:5",
-            "methode_paiement"=> "required|min:2"
+            "code_barre"=> "min:2",
+            "description"=> "min:5",
+            "methode_paiement"=> "required|min:2",
+            "categorie_id"=> "required",
         ]); 
+     
         //store data
         $libele = $request->libele;
         $code_barre=$request->code_barre;
         $description = $request->description;
         $methode_paiement = $request->methode_paiement;
+
         $produit->update([
             "libele"=> $libele,
             "code_barre"=> $code_barre,
             "description"=> $description,
-            "methode_paiement"=>$methode_paiement
+            "methode_paiement"=>$methode_paiement,
+            "categorie_id"=> $request->categorie_id ,
+
         ]);
         //redirect user
-        return redirect()->route("categorie.index")->with([
-            "success"=> "Categorie modifier avec succes"
+        return redirect()->route("produit.index")->with([
+            "success"=> "Produit modifier avec succes"
         ]);
     }
     

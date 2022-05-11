@@ -33,12 +33,12 @@
                             <div class="col-md-12">
                                 <div class="d-flex flex-row justify-content-between align-items-center  pb-2">
                                     <h3 class="text-secondary border-bottom mb-3 p-2" style="color: #6D8B74"> 
-                                        <i class="fas fa-edit" style="color:rgb(224, 204, 24)"></i>  Modifier la service {{$service->nom}}
+                                        <i class="fas fa-eye" style="font-size:30px;color:rgb(224, 204, 24) "></i> Détail la service {{$service->nom}}
                                       </h3>
-                                      <a type="button" class="close btn-close "  href="{{route("service.index")}}"></a>
+                                      <a type="button" class="close btn-close " style="background-color:rgb(224, 204, 24)  " href="{{route("service.index")}}"></a>
 
                                 </div>
-                                    <form action="{{route("service.update",$service->id)}}" method="post"> 
+                                    <form action="{{route("service.show",$service->id)}}" method="post"> 
                                     @csrf
                                     @method('put')
                                     <div class="row ">
@@ -49,7 +49,7 @@
                                                   >Nom du service :</label>
                                                <input   name="nom"
                                                 type="text" 
-                                                style="padding: 8px; font-size:19px;background-color:black ;color:white"
+                                                style="padding: 8px; font-size:20px;background-color:#6D8B74 ;color:white"
                                                 class="form-control" id="nom"
                                                   placeholder=""
                                                   value="{{$service->nom}}"
@@ -61,10 +61,10 @@
                                                                 <label for="fournisseur_id"
                                                                 class="col-form-label "
                                                                 style="font-size:20px;color:white"
-                                                                >Fournisseur : </label><button style="font-size:19px;color:#77ad84; "  class="col-form-label pull-right"><a href="{{route("fournisseur.create")}}" style="text-decoration: none;color:#17a3b3"><i class="fa fa-plus-circle" aria-hidden="true"></i>Ajouter</a></button><br>
+                                                                >Fournisseur : </label><br>
                                                                         <select  name="fournisseur_id" 
                                                                         class="form-control col-form-label"
-                                                                        style="background-color:black/* #6D8B74  */;color:white;padding: 8px; font-size:19px;">
+                                                                        style="background-color:#6D8B74 ;color:white;padding: 8px; font-size:20px;">
                                                                             <option value="" >Choisir un fournisseur</option>
                                                                                 @foreach($fournisseur as $vendor)
                                                                                 <option value="{{ $vendor->id}}" {{old('fournisseur_id') == $vendor->id|| $service->fournisseur->id== $vendor->id? "selected" : ""}}>{{ $vendor->nom }}</option>
@@ -82,12 +82,12 @@
                                                                    </label> 
                                                                             <select  name="methode_paiement"
                                                                              class="form-control col-form-label" 
-                                                                              style="background-color:black ;color:white;padding: 8px; font-size:19px;">
+                                                                              style="background-color:#6D8B74 ;color:white;padding: 8px; font-size:20px;">
                                                                                     <option value=""  selected="select" >Choisir une méthode</option>
-                                                                                    <option value="Espèce">Espèce</option>
-                                                                                    <option value="Chèque">Chèque</option>
-                                                                                    <option value="Carte bancaire">Carte bancaire</option>
-                                                                                    <option value="autre méthode">autre méthode</option>
+                                                                                    <option value="1">Espèce</option>
+                                                                                    <option value="2">Chèque</option>
+                                                                                    <option value="3">Carte bancaire</option>
+                                                                                    <option value="4">autre méthode</option>
                                                                             </select>
                                                             </div>
                                                       </div><br>
@@ -101,16 +101,13 @@
                                                                             <textarea   
                                                                                     name="description" 
                                                                                     id="description" 
-                                                                                    style="background-color:black ;color:white;padding:0px;font-size:19px;"
+                                                                                    style="background-color:#6D8B74 ;color:white;padding:0px;font-size:20px;"
                                                                                     class="form-control "
                                                                                     cols="40" rows="8"  
                                                                                     placeholder="">
                                                                            {{$service->description}} </textarea>
                                                                       </div>
                                                                 </div> <br><br>
-                                                                    <div class="form-group pull-right" >
-                                                                                <button type="submit "  class="btn2 fw-bold "  > Modifier</button>
-                                                                    </div>
                                                  </form>
                                            </div>
                                      </div>

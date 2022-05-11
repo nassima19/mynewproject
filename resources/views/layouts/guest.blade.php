@@ -19,6 +19,7 @@
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
+            kkk
         </div>
     </body>
 </html>

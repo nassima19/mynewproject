@@ -23,10 +23,10 @@
                                 <div class="col-md-14">
                                     <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
                                         <h3 class="text-secondary">
-                                            <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list" style="font-size:28px;color:#a765a3"></i> Liste des categories</button>
+                                            <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list" style="font-size:28px;color:#a0627d"></i> Liste des categories</button>
                                          </h3>
                                         <a href="{{route("categorie.create")}}">
-                                            <i class="fas fa-plus" style="font-size:33px;color:#a765a3"></i>
+                                            <button type="button" class="ajouter"><i class="fas fa-plus" style="font-size:22px;color:#182c42"></i> Ajouter</button>
                                         </a>
                                     </div>
                                     <table  class="table collapse" id="ex2">
@@ -50,7 +50,7 @@
                                                 <td>
                                                     {{Str::limit($category->description, 25)}}
                                                 </td>
-                                                <td class="d-flex flex-row justify-content-center align-items-center ">
+                                                <td class="d-flex flex-row justify-content-center align-items-center  pull-left">
                                                     <a href="{{route("categorie.edit",$category->id)}}" class="btn1 btn-sm mr-2">
                                                         <i class="fas fa-edit" style="color:#5d3277"></i></a>
                                                             <form action="{{route("categorie.destroy",$category->id)}}" method="post">

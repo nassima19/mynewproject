@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\categorie;
+use App\Models\fournisseur;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class produit extends Model
 {
@@ -21,4 +23,14 @@ class produit extends Model
         'user_id',
         'categorie_id'
         ];
+        public function categorie()
+        {
+          return $this->belongsTo(categorie::class);
+            
+        }
+        public function fournisseur()
+        {
+           return $this->belongsToMany(fournisseur::class, 'fournisseur_produit_table', 'produit_id', 'fournisseur_id');
+        }
+        
 }

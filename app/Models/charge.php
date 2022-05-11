@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\piece;
+use App\Models\produit;
+use App\Models\fournisseur;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class charge extends Model
 {
@@ -21,9 +24,27 @@ class charge extends Model
         'description',
         'remarque',
         'prix',
+        'produit_id',
+        'user_id',
+        'fournisseur_id',
+        'piece_id',
+
         ];
         public function piece()
         {
-            return $this->hasOne(Piece::class)->withDefault();
+            return $this->hasOne(piece::class)->withDefault();
+        }
+        public function produit()
+        {
+            return $this->belongsTo(produit::class);
+        }
+        /**
+         * Get the order that owns the OrderLines
+         *
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+         */
+        public function fournisseur()
+        {
+            return $this->belongsTo(fournisseur::class);
         }
 }

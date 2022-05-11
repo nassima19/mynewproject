@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCategorieCollumnToFournisseursTable extends Migration
+class AddTotalCollumnToChargesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddCategorieCollumnToFournisseursTable extends Migration
      */
     public function up()
     {
-        Schema::table('fournisseurs', function (Blueprint $table) {
+        Schema::table('charges', function (Blueprint $table) {
             //
-            $table->string('categorie');
+            $table->bigInteger('total')->default(0);
         });
     }
 
@@ -26,7 +26,7 @@ class AddCategorieCollumnToFournisseursTable extends Migration
      */
     public function down()
     {
-        Schema::table('fournisseurs', function (Blueprint $table) {
+        Schema::table('charges', function (Blueprint $table) {
             //
         });
     }

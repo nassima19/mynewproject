@@ -36,6 +36,8 @@
                 </div>
             @endif
         </div>
+{{--         <img src="https://www.inputkit.io/wp-content/uploads/pexels-cottonbro-4787607-scaled.jpg" alt="imag">
+ --}}
     </body>
 </html>
  

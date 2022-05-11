@@ -1,27 +1,30 @@
  /* Style the navigation bar */
  .navbar {
     width: 100%;
-    background-color: #5f445f;
+    background-color: #1e2329;
     padding: 0;
     display: flex;
     justify-content: center;
+    
   }
  /* Navbar links */
   .navbar a {
     text-align: center;
     padding: 1.5rem 10px;
-    color: rgb(224, 204, 24);
+    color: #ffda7e;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 23px;
+   font-family:  " open sans",sans-serif;
   }
   /* Navbar links on mouse-over */
   .navbar a:hover {
-    background-color:#b8a08c;
+    background-color:#BBAAB8;
     height: 50%;
     overflow: auto;
     border-right-style: dashed;
     transition: 0.3s;
-    color:#fffefd;
+    color:#725981;
+    
   }
   /* Current/active navbar link */
   .active {
@@ -53,9 +56,7 @@
     background-color:#a765a3  ;/*#4c635f;*/
     color: white;
   }
-  body{
-      cursor:scroll;
-  }
+
  /*  .container{
     background-color: #c00ec0; 
   } */
@@ -64,35 +65,51 @@
       text-decoration: none;
   }
   .cellule{
-    background-color:#330233;
-    color:#f3d215;
-    font-family:'Courier New', Courier, monospace;
-    font-size: 18px;
+    background-color:#2a2a35;
+    color:#c5ac9b ;
+    font-family:" open sans",sans-serif;  
+    font-size: 17px;
+    
   }
   .cellulef{
     background-color:#2B4C59;
     color:#FFA97A;
-    font-family:'Courier New', Courier, monospace;
-    font-size: 18px;
+    font-family:" open sans",sans-serif; 
+    font-size: 17px;
   }
   .tab{
-    font-family:'Courier New', Courier, monospace;
     color:#330233 ;
-    font-size: 18px;
+    font-family:"cursive"; 
+    font-size: 19px;
   }
   .btn1{
     font-size: 15px;
     background-color:#f9edc2;/* #b195a5 */
   }
   .close{
-    background-color:#330233 ;
-    color:#f5d10d; 
+    font-size: 21px;
+    background-color:#948391 ;
+   
   }
   .close:hover{
-    background-color:#a765a3 ;
-    color:#fdfdf7; 
+    background-color:#948391 ;
+ 
   }
   .btn1:hover{
   background-color: #c9abc3;
   color: #decbc3;
+  }
+  .ajouter{
+ background-color:#c5ac9b;
+ color: #182c42;
+ padding: 10px 10px;
+ font-size: 23px; 
+ border-radius:7px;
+ transition: 0.3S; 
+ font-family:Arial;
+ text-decoration: none;
+  }
+  .ajouter:hover{
+    background-color:#f0cfb5;
+    transition: .03 time;
   }

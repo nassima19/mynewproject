@@ -72,6 +72,7 @@
 
 
   --}} 
+  
  <x-app-layout>
     @section('title')
          <title>Produit  </title>
@@ -81,58 +82,79 @@
            <link rel="stylesheet" href="/css/style.css">
     @endsection
 @section('content')
-      <div class="container p-2">
-          <div class="row justify-content-center">
+@if ($errors->any())
+@foreach ($errors as $error)
+<div class="alert alert-danger">
+            {{$error}}
+        </div>
+        @endforeach
+        @endif
+    <div class="container p-2 ">
+          <div class="row justify-content-center ">
               <div class="col-md-10">
                   <div class="card">
-                      <div class="card-body">
+                      <div class="card-body ">
                           <div class="row">
                               <div class="col-md-12">
                                   <div class="d-flex flex-row justify-content-between align-items-center  pb-2">
-                                      <h3 class="text-secondary border-bottom mb-3 p-1"> 
-                                        <i class="fa fa-plus" style="font-size:30px;color:rgb(224, 204, 24) "></i>Ajouter produit
+                                      <h3 class="text-secondary border-bottom mb-3 p-1">  
+                                        <i class="fa fa-plus" style="font-size:30px;color:rgb(224, 204, 24) "></i> Ajouter nouveau produit
                                         </h3>
                                   </div>
                                   <form action="{{route("produit.store")}}" method="post"> 
                                     @csrf
-                                    <div class="row">
-                                          <div class="col ">
-                                              <label for="name"  class="form-label">Libelle :</label><br>
-                                              <input name="libele" type="text" class="form-control col-md-2 form-label " id="name"  placeholder="libelle produit"><br>
+                                    <div class="row ">
+                                      <div class=" form-group  col-sm-5"  style="padding-left: 70px" > 
+                                            <label for="libele"  class="col-form-label" style=" font-size:19px">Libelle :</label>
+                                            <input style="padding: 8px; font-size:20px;"
+                                            name="libele"
+                                            type="text" 
+                                            class="form-control  " 
+                                            id="lible" placeholder="libelle produit">
                                           </div>
-                                          <div class="col">
-                                              <label for="code_barre"  class="form-label">Code :</label><br>
-                                              <input name="code_barre" type="text" class="form-control col-md-2 form-label" id="code_barre"  placeholder="code produit"><br>
-                                          </div><br>
-                                    </div> 
-                                    <div class="row">
-                                    <div class="col ">
-                                      <label for="categorie"  class="form-label">Categorie :</label> <button style="font-size:19px;color:rgb(111, 88, 153)" class=" pull-right"><a href="{{route("categorie.create")}}" style="text-decoration: none;color:rgb(111, 88, 153)"><i class="fa fa-plus-circle" aria-hidden="true"></i>Ajouter</a></button><br>
-                                      <select  name="categorie"   class="form-control form-label" style="color:#6f4826 ;background-color:#c5b998">
-                                        <option value=""  selected="select" >choisir une categorie</option>
+                                          <div class=" form-group  col- col-sm-5"  style="padding-left: 100px" >
+                                            <label for="code_barre"  class="col-form-label" style=" font-size:19px">Code :</label>
+                                            <input name="code_barre" type="text"
+                                                  class="form-control " 
+                                                  id="code_barre"
+                                                  style="padding: 8px; font-size:20px;"  placeholder="code produit">
+                                          </div>
+                                        </div> <br><br>
+                                        <div class="row ">
+                                            <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" >
+                                                <label for="categorie_id"  class="col-form-label" style=" font-size:19px">Categorie : </label><button style="font-size:19px;color:rgb(111, 88, 153)" class=" pull-right"><a href="{{route("categorie.create")}}" style="text-decoration: none;color:rgb(111, 88, 153)"><i class="fa fa-plus-circle" aria-hidden="true"></i>Ajouter</a></button><br>
+                                                <select name="categorie_id"  class="form-control" style="color:#6f4826 ;background-color:#c5b998;padding: 8px; font-size:20px;" >
+                                          <option value=""  selected="select" >choisir une categorie</option>
                                          @foreach($categorie as $category)
                                          <option value="{{$category->id}}">{{$category->libele}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> 
                                      </div>
-                                    <div class="col ">
-                                      <label for="methode_paiement"  class="form-label">Method paiement :</label>  <br>
-                                      <select  name="methode_paiement"   class="form-control form-label" style="color:#6f4826 ;background-color:#c5b998">
-                                        <option value=""  selected="select" >choisir une @method()</option>
-                                         <option value="1">Espéce</option>
-                                         <option value="2">Chéque</option>
-                                         <option value="3">Carte banquaire</option>
-                                         <option value="4">autre methode</option>
+                                     <div class=" form-group  col- col-sm-5"  style="padding-left: 100px" >
+                                      <label for="methode_paiement"  class="col-form-label" style=" font-size:19px">Method paiement :</label>  <br>
+                                      <select  name="methode_paiement"   class="form-control " style="color:#6f4826 ;background-color:#c5b998;padding: 8px; font-size:20px;">
+                                          <option value=""  selected="select" >choisir une methode</option>
+                                         <option value="Espéce">Espéce</option>
+                                         <option value="Chéque">Chéque</option>
+                                         <option value="Carte banquaire">Carte banquaire</option>
+                                         <option value="autre methode">autre methode</option>
                                     </select>
                                     </div>
                                   </div>
-                                    <div class="row">
-                                      <div class="col mb-3  ">
-                                            <label for="description" class="form-label">Description : </label><br>
-                                            <textarea name="description" id="description" class="form-control col-md-2 form-label" cols="40" rows="8"  placeholder="description"></textarea>
-                                          </div><br>
+                                  <br><br>
+                                  <div class="row ">
+                                    <div class=" form-group  col- col-sm-8"  style="padding-left: 70px" >
+                                            <label for="description" class="col-form-label" style=" font-size:19px">Description : </label><br>
+                                            <textarea  name="description"
+                                            id="description"
+                                             class="form-control col-md-2"
+                                              cols="40"
+                                               rows="8"
+                                               style="padding: 13px; font-size:20px;" placeholder="description"></textarea>
+                                          </div>
                                         </div>
-                                        <div class="form-group" >
+                                        <br><br>
+                                        <div class="form-group pull-right" >
                                           <button type="submit "  class="btn2 " ><i class="fa fa-save"></i> Enregistrer</button>
                                            <button class="btn2 "><a type="button" style="text-decoration: none;  color:white"  href="{{route("produit.index")}}" ><i class="fa fa-times"></i>Annuler</a></button>
                                           </div>
@@ -143,11 +165,7 @@
                   </div>
                </div>
           </div>
-     </div>      
- 
-
-
-       
+     </div>         
 @endsection
   </x-app-layout>
  

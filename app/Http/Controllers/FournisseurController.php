@@ -47,22 +47,23 @@ class FournisseurController extends Controller
     {
       //
       $this->validate($request,[
-            "nom"=> "required|min:3",
-            "genre"=> "required|min:5",
-            "titre"=>"required|min:2",
-            "domaine_activite"=> "required|min:3",
-            "adresse"=> "required|min:2",
-            "ville"=> "min:3",
-            "pays"=> "min:3",
-            "code_postal"=> "required",
-            "curriel"=> "min:3",
-            "telephone"=> "required",
-            "site_internet"=> "min:3",
-            "categorie_id"=> "required",
-            "note"=> "min:3",
-            
+          "nom"=> "required|min:3",
+           "titre"=>"required|min:2",
+           "domaine_activite"=> "required|min:3",
+           "adresse"=> "required|min:2",
+           "ville"=> "required", 
+           "pays"=> "required", 
+           "telephone"=> "required", 
+             "code_postal"=> "required",
+             "curriel"=> "min:3",
+             "site_internet"=> "min:3",
+             "note"=>"required",
+             "categorie_id"=> "required",
+             "genre"=> "required", 
         ]);  
-        dd
+    
+    
+           
         //store data
         $nom = $request->nom;
         $titre = $request->titre;
@@ -90,8 +91,8 @@ class FournisseurController extends Controller
             "telephone"=>  $telephone,
             "site_internet"=>  $site_internet,
             "note"=> $note ,
-            "categorie_id" => $request->categorie_id,
             "user_id"=> auth()->user()->id,
+            "categorie_id" => $request->categorie_id,
 
         ]); 
         return redirect()->route("fournisseur.index")->with([
@@ -125,10 +126,10 @@ class FournisseurController extends Controller
     public function edit(fournisseur $fournisseur)
     {
         //
-
+         $categorie = categorie::all();
         return view("fournisseur.edit")->with([
             "fournisseur" =>$fournisseur,
-            "categorie" => categorie::all()
+            "categorie" => $categorie,
         ]);
        
     }
@@ -149,18 +150,19 @@ class FournisseurController extends Controller
             "titre"=>"required|min:2",
             "genre"=> "required|min:5",
             "domaine_activite"=> "required|min:3",
-           "adresse"=> "required|min:2",
-             "ville"=> "min:3", 
-             "pays"=> "min:3", 
-              "code_postal"=> "required",
-            "telephone"=> "required", 
-            "curriel"=> "min:3",
-            "site_internet"=> "min:3",
-            "note"=>"min:3",
-            "categorie_id"=> "required",  
-        ]);   
+             "adresse"=> "required|min:2",
+                 "ville"=> "required", 
+                  "pays"=> "min:3", 
+                  "code_postal"=> "required",
+                   "telephone"=> "required", 
+                   "curriel"=> "min:3",
+                   "site_internet"=> "min:3",
+                  "note"=>"min:3",
+                  "categorie_id"=> "required",
+                ]);  
+              
         //store data
-        dd($request);
+       
         $nom = $request->nom;
         $titre = $request->titre;
         $genre = $request->genre; 
@@ -170,7 +172,7 @@ class FournisseurController extends Controller
         $pays = $request->pays;
         $code_postal= $request->code_postal;
         $curriel = $request->curriel;
-    /*     $telephone = $request->telephone ; */
+      $telephone = $request->telephone ; 
         $site_internet = $request->site_internet;
         $note = $request->note;
 
@@ -184,7 +186,7 @@ class FournisseurController extends Controller
             "pays"=> $pays,
             "code_postal"=>  $code_postal,
             "curriel"=>  $curriel ,
-            /* "telephone"=>  $telephone, */
+             "telephone"=>  $telephone, 
             "site_internet"=>  $site_internet,
             "note"=>  $note ,
             "categorie_id"=> $request->categorie_id ,

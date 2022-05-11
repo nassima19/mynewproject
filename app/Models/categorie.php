@@ -20,7 +20,7 @@ class categorie extends Model
     'description',
     "user_id",
     ];
-    public function produits()
+    public function produit()
     {
         return $this->hasMany(produit::class);
     }

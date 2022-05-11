@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\charge;
+use App\Models\produit;
+use App\Models\fournisseur;
 use App\Http\Requests\StorechargeRequest;
 use App\Http\Requests\UpdatechargeRequest;
 
@@ -16,6 +18,10 @@ class ChargeController extends Controller
     public function index()
     {
         //
+        $chargerge=charge::with('fournisseur')->get();
+        return view("charge.index")->with([
+         "charge"=> charge::paginate(5)
+     ]);
     }
 
     /**
@@ -26,6 +32,11 @@ class ChargeController extends Controller
     public function create()
     {
         //
+        
+      /*   $fournisseur = fournisseur::all(); */
+        $produit = produit::all();
+        $fournisseur = fournisseur::all();
+        return view('charge.create',compact('produit','fournisseur'));
     }
 
     /**
