@@ -54,14 +54,15 @@ class ProduitController extends Controller
             "code_barre"=> "numeric",
             "methode_paiement"=> "required|min:2",
             "description"=> "min:5",
-            "categorie_id"=> "required|numeric",
+             "categorie_id"=> "required|numeric",
+ 
         ]);   
         //store data
         $libele = $request->libele;
         $code_barre=$request->code_barre;
         $methode_paiement = $request->methode_paiement;
         $description = $request->description;
-       
+ 
         Produit::create([
             "libele"=> $libele,
             "code_barre"=> $code_barre,
@@ -166,4 +167,11 @@ class ProduitController extends Controller
             "success"=> "Produit supprimée avec succes"
         ]);
     }
+    public function search_produit()
+    {
+        $search_text=$_GET['q'];
+        $produit=Produit::where('libele','like','%'.$search_text.'%')->get();
+        return view('produit.search',compact('produit'));
+    }
 }
+

@@ -14,15 +14,17 @@ class piece extends Model
      */
     use HasFactory;
     protected $fillable = [
+        'type_piece',
         'paiement_date',
         'numero',
         'note',
         'bank_account',
+        'user_id',
         ];
       
-            public function charge()
+            public function charges()
             {
-                return $this->belongsTo(charge::class);
+                return $this->hasMany(charge::class);
             }
         
 }

@@ -7,7 +7,7 @@
              <link rel="stylesheet" href="/css/style.css">
       @endsection
       <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight" style="color: rgb(233, 157, 122)">
+        <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:#a45e5f;font-size:28px">
             {{ __('CATEGORIE') }}
         </h2>
 </x-slot>
@@ -15,13 +15,13 @@
         <div class="container  p-3">
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <div class="card">
-                        <div class="card-body">
+                    <div class="card shadow p-3 mb-5 bg-body rounded">
+                        <div class="card-body ">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12 ">
                                     <div class="d-flex flex-row justify-content-between align-items-center  pb-2">
                                         <h3 class="text-secondary border-bottom mb-3 p-2"> 
-                                          <i class="fa fa-plus" style="font-size:30px;color:rgb(224, 204, 24) "></i> Ajouter nouveau categorie
+                                          <i class="fa fa-plus" style="font-size:30px;color:#a45e5f"></i> Ajouter nouveau categorie
                                           </h3>
                                     </div>
                                     <form action="{{route("categorie.store")}}" method="post"> 

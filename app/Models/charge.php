@@ -26,13 +26,14 @@ class charge extends Model
         'prix',
         'produit_id',
         'user_id',
+        'total',
         'fournisseur_id',
         'piece_id',
 
         ];
         public function piece()
         {
-            return $this->hasOne(piece::class)->withDefault();
+            return $this->belongsTo(piece::class);
         }
         public function produit()
         {

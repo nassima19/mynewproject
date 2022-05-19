@@ -143,4 +143,11 @@ class CategorieController extends Controller
         ]);
 
     }
+
+    public function search_categorie()
+    {
+        $search_text=$_GET['q'];
+        $categorie=Categorie::where('libele','like','%'.$search_text.'%')->get();
+        return view('management.categorie.search',compact('categorie'));
+    }
 }

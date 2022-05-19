@@ -7,21 +7,21 @@
            <link rel="stylesheet" href="/css/style.css">
     @endsection
     <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:rgb(233, 157, 122);font-size:28px">
+        <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:#a45e5f;font-size:28px">
             {{ __('CATEGORIE') }}
         </h2>
 </x-slot>
 @section('content')
-      <div class="container P-2">
-          <div class="row justify-content-center ">
+<div class="container  p-3">
+    <div class="row justify-content-center ">
               <div class="col-md-10 ">
-                  <div class="card">
+                  <div class="card shadow p-3 mb-5 bg-body rounded">
                       <div class="card-body ">
                           <div class="row">
                               <div class="col-md-12 ">
                                   <div class="d-flex flex-row justify-content-between align-items-center pb-2">
                                       <h3 class="text-secondary border-bottom mb-3 p-1"> 
-                                        <i class="fas fa-edit" style="color:rgb(224, 204, 24)"></i> Modifier la categorie {{$categorie->libele}}
+                                        <i class="fas fa-edit" style="color:#a45e5f"></i> Modifier la categorie {{$categorie->libele}}
                                        </h3>
                                         <a type="button" class="close btn-close " href="{{route("categorie.index")}}"></a>
                                   </div>

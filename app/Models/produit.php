@@ -21,7 +21,8 @@ class produit extends Model
         'description',
         'methode_paiement',
         'user_id',
-        'categorie_id'
+        'categorie_id',
+        'image'
         ];
         public function categorie()
         {

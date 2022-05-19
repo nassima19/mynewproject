@@ -1,19 +1,20 @@
  /* Style the navigation bar */
  .navbar {
     width: 100%;
-    background-color: #1e2329;
+    background-color: #01555f;
     padding: 0;
     display: flex;
     justify-content: center;
+    scroll-behavior: smooth;
     
   }
  /* Navbar links */
   .navbar a {
     text-align: center;
     padding: 1.5rem 10px;
-    color: #ffda7e;
+    color: #ebe5d9  ;
     text-decoration: none;
-    font-size: 23px;
+    font-size: 24px;
    font-family:  " open sans",sans-serif;
   }
   /* Navbar links on mouse-over */
@@ -40,7 +41,7 @@
   } 
   /* ///////////////////////////////////////////////////////// */
   .btn2 {
-    background-color:rgb(224, 204, 24);
+    background-color:#a45e5f;
     border: none;
     color: white;
     padding: 12px 16px;
@@ -65,15 +66,15 @@
       text-decoration: none;
   }
   .cellule{
-    background-color:#2a2a35;
-    color:#c5ac9b ;
+    background-color:#f69000;
+    color:#fff;
     font-family:" open sans",sans-serif;  
     font-size: 17px;
     
   }
   .cellulef{
-    background-color:#2B4C59;
-    color:#FFA97A;
+    background-color:#f69000;
+    color:#fff;
     font-family:" open sans",sans-serif; 
     font-size: 17px;
   }
@@ -88,7 +89,7 @@
   }
   .close{
     font-size: 21px;
-    background-color:#948391 ;
+    background-color:#a45e5f ;
    
   }
   .close:hover{
@@ -100,8 +101,8 @@
   color: #decbc3;
   }
   .ajouter{
- background-color:#c5ac9b;
- color: #182c42;
+ background-color:#003048;
+ color: #fff;
  padding: 10px 10px;
  font-size: 23px; 
  border-radius:7px;
@@ -110,6 +111,6 @@
  text-decoration: none;
   }
   .ajouter:hover{
-    background-color:#f0cfb5;
+    background-color:rgb(240, 119, 6);
     transition: .03 time;
   }

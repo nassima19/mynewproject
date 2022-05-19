@@ -22,10 +22,16 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
+         <script src="/js/javascript.js"></script>
     </head>
     <body class="font-sans antialiased ">
         <x-jet-banner />
+
+            <div class="min-h-full bg-gray-100">
+                @yield('search') 
+            </div>
+
+
 
         <div class="min-h-full  bg-gray-100"  >
             @livewire('navigation-menu') 
@@ -40,7 +46,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="min-h-full ">
+            <main class="min-h-full p-5 ">
                 @yield('content')
             </main>
         </div>

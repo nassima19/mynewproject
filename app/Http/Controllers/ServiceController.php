@@ -156,4 +156,10 @@ class ServiceController extends Controller
             "success"=> "Service supprimée avec succes"
         ]);
     }
+    public function search()
+    {
+        $search_text=$_GET['q'];
+        $service=Service::where('nom','like','%'.$search_text.'%')->get();
+        return view('service.search',compact('service'));
+    }
 }

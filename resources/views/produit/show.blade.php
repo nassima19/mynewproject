@@ -7,27 +7,32 @@
             <link rel="stylesheet" href="/css/style.css">
       @endsection
       <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:rgb(233, 157, 122);font-size:28px">
+        <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:#a45e5f;font-size:28px">
             {{ __('PRODUIT') }}
         </h2>
 </x-slot>
 @section('content')
-<div class="container  p-2">
+<div class="container  p-3">
   <div class="row justify-content-center" style="padding: 12px">
       <div class="col-md-10">
-          <div class="card">
+          <div class="card shadow p-3 mb-5 bg-body rounded">
               <div class="card-body" >
                   <div class="row " style="padding: 12px;">
                       <div class="col-md-12">
                           <div class="d-flex flex-row justify-content-between align-items-center pb-2">
                               <h3 class="text-secondary border-bottom mb-3 p-1"> 
-                                        <i class="fas fa-eye" style="font-size:30px;color:rgb(224, 204, 24) "></i> Détail de produit {{$produit->libele}}
+                                        <i class="fas fa-eye" style="font-size:30px;color:#a45e5f "></i> Détail de produit {{$produit->libele}}
                                         </h3>
                                         <a type="button" class="btn-close close " href="{{route("produit.index")}}"></a>
                                   </div>
                                     <form action="{{route("produit.show",$produit->id)}}" method="post"> 
                                       @csrf
                                       @method('put')
+                                      {{-- ************************************************************************ --}}
+                                      <div class="rounded-lg w-full">
+                                        <img src="/imag{{$produit->image}}" class="rounded-lg cursor-pointer hover-drope-shadow transition duration-300" alt="{{$produit->libele}}" >
+                                    </div>
+                                    {{-- ********************************************** --}}
                                       <div class="row ">
                                         <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" > 
                                             <label for="libele" class="col-form-label" style=" font-size:19px">Libelle :</label><br>

@@ -172,7 +172,7 @@ class FournisseurController extends Controller
         $pays = $request->pays;
         $code_postal= $request->code_postal;
         $curriel = $request->curriel;
-      $telephone = $request->telephone ; 
+        $telephone = $request->telephone ; 
         $site_internet = $request->site_internet;
         $note = $request->note;
 
@@ -186,7 +186,7 @@ class FournisseurController extends Controller
             "pays"=> $pays,
             "code_postal"=>  $code_postal,
             "curriel"=>  $curriel ,
-             "telephone"=>  $telephone, 
+            "telephone"=>  $telephone, 
             "site_internet"=>  $site_internet,
             "note"=>  $note ,
             "categorie_id"=> $request->categorie_id ,
@@ -213,5 +213,11 @@ class FournisseurController extends Controller
         return redirect()->route("fournisseur.index")->with([
             "success"=> "Fournisseur supprimée avec succes"
         ]);
+    }
+    public function search_fournisseur()
+    {
+        $search_text=$_GET['q'];
+        $fournisseur=Fournisseur::where('nom','like','%'.$search_text.'%')->get();
+        return view('fournisseur.search',compact('fournisseur'));
     }
 }

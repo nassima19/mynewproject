@@ -10,6 +10,7 @@
               body{
                 /* background-color:#d5b0d3;  */ 
             }
+           
           </style>
     @endsection
     <x-slot name="header">
@@ -25,18 +26,23 @@
         </div>
         @endforeach
         @endif
-    <div class="container p-4 " >
+    <div class="container p-3" >
         <div class="row justify-content-center">
-            <div class="col-md-8" style="border-radius: 7px;background-color:#1e2329">
-                <div class="card" style="border-radius: 7px;background-color:#1e2329">
+            <div class="col-md-10" >
+                <div class="card shadow p-3 mb-5 bg-body rounded" >
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="d-flex flex-row justify-content-between align-items-center  pb-2">
-                                    <h3 class="text-secondary border-bottom mb-3 p-2" > 
-                                      <i class="fa fa-plus" style="font-size:26px;color:rgb(224, 204, 24)"></i> Ajouter nouveau charge
+                                    <h3 class="border-bottom mb-3 p-2" style="color: #f69000" > 
+                                      <i class="fa fa-plus" style="font-size:26px;color: #f69000"></i> Ajouter nouveau charge
                                       </h3>
                                 </div>
+                                <script type="text/javascript">
+                                function calculer(){
+                                    document.getElementById('total').value=document.getElementById('prix').value* document.getElementById('qte').value;
+                                }
+                                </script>
                                     <form action="{{route("charge.store")}}" method="post"> 
                                     @csrf
                                     <div class="row ">
@@ -44,13 +50,13 @@
                                                 <label 
                                                     for="produit_id"
                                                     class="col-form-label "
-                                                    style="font-size:19px;color:white"
+                                                    style="font-size:19px;color:black"
                                                     >Produit : 
                                                 </label>
                                                     <select
                                                             name="produit_id" 
                                                             class="form-control col-form-label"
-                                                            style="background-color:#6D8B74 ;color:white;padding: 8px; font-size:19px;">
+                                                            style="background-color:#f3f4d3 ;color:;padding: 8px; font-size:19px;">
                                                            <option value="" >Choisir un produit</option>
                                                             @foreach($produit as $product)
                                                             <option value="{{$product->id}}">{{$product->libele}}</option>
@@ -61,12 +67,12 @@
                                                 <label 
                                                         for="taxes"
                                                         class="col-form-label "
-                                                        style=" font-size:20px;color:white">Taxes :
+                                                        style=" font-size:20px;color:black">Taxes :
                                                     </label>
                                                         <input  
                                                             name="taxes"
                                                             type="text" 
-                                                            style="padding: 8px; font-size:19px;background-color:#6D8B74;color:white"
+                                                            style="padding: 8px;cursor:context-menu; font-size:19px;background-color:#f3f4d3;color:black"
                                                             class="form-control" id="taxes"
                                                             placeholder="nom du service">
                                              </div>
@@ -75,28 +81,28 @@
                                                     <div class=" form-group col-sm-5 my-3"  style="padding-left: 50px" >
                                                                     <label 
                                                                             for="fournisseur_id" 
-                                                                            style="font-size:19px;color:white"
+                                                                            style="font-size:19px;color:black"
                                                                             class="col-form-label" >Fournisseur :
-                                                                   </label><button style="font-size:19px;color: #1a3733" class=" pull-right"><a href="{{route("fournisseur.create")}}" style="text-decoration: none;color:rgb(233, 157, 122)"><i class="fa fa-plus-circle" aria-hidden="true"></i>Ajouter</a></button><br>
+                                                                   </label><button style="font-size:19px;color: #1a3733" class=" pull-right"><a href="{{route("fournisseur.create")}}" style="text-decoration: none;color:#f69000"><i class="fa fa-plus-circle" aria-hidden="true"></i>Ajouter</a></button><br>
                                                                             <select  
                                                                                     name="fournisseur_id"
                                                                                     class="form-control col-form-label" 
-                                                                                    style="background-color:#6D8B74 ;color:white;padding: 8px; font-size:19px;">
+                                                                                    style="background-color:#f3f4d3 ;color:black;padding: 8px; font-size:19px;">
                                                                                     <option value=""  selected="select" >Choisir un fournisseur</option>
                                                                                 @foreach($fournisseur as $vendor)
-                                                                                    <option value="{{$vendor->id}}">{{$vendor->nom}}</option>
+                                                                                    <option value="{{/* $charge->fournisseur->categorie->libele == $charge->produit->categorie->libele ? */ $vendor->id}}">{{$vendor->nom}}</option>
                                                                                    @endforeach  
                                                                             </select>
                                                     </div>
                                                          <div class=" form-group col-sm-5 my-3"  style="padding-left: 100px;padding-right:0%" >
                                                                             <label class="col-form-label " 
                                                                                 for="statu" 
-                                                                                style="font-size:19px;color:white">Statue : 
+                                                                                style="font-size:19px;color:black">Statue : 
                                                                             </label>
                                                                                   <select  
                                                                                         name="statu"
                                                                                         class="form-control " 
-                                                                                        style="background-color:#6D8B74 ;color:white;padding: 8px; font-size:19px;"
+                                                                                        style="background-color:#f3f4d3 ;color:black;padding: 8px; font-size:19px;"
                                                                                         id="statu">
                                                                                           <option value="0">Brouillon</option>
                                                                                           <option value="Payée">Payée</option>
@@ -108,95 +114,101 @@
                                                         <div class=" form-group col-sm-5 my-3"  style="padding-left: 50px" >
                                                                 <label class="col-form-label " 
                                                                     for="date" 
-                                                                    style="font-size:19px;color:white">Date : 
+                                                                    style="font-size:19px;color:black">Date : 
                                                                 </label><br>
                                                                         <input 
+                                                                        name="date"
                                                                             class="form-control " 
                                                                             type="Date"
-                                                                            style="background-color:#6D8B74 ;color:white;font-size:19px;padding:8px " >
+                                                                            style="background-color:#f3f4d3 ;color:black;font-size:19px;padding:8px " >
                                                         </div>
                                                          <div class=" form-group col-sm-5 my-3" style="padding-left: 100px;padding-right:0%" > 
                                                             <label 
                                                                     for="piece_id"
                                                                     class="col-form-label "
-                                                                    style=" font-size:20px;color:white">N° piece fournisseur :
-                                                                </label>
-                                                                    <input  
-                                                                        name="piece_id"
-                                                                        type="number" 
-                                                                        style="padding: 8px; font-size:19px;background-color:#6D8B74;color:white"
-                                                                        class="form-control" id="piece_id"
-                                                                        placeholder="numéro de peice">
+                                                                    style=" font-size:20px;color:black">N° piece fournisseur :
+                                                                </label> <select  
+                                                                                        name="piece_id"
+                                                                                        class="form-control " 
+                                                                                        style="background-color:#f3f4d3 ;color:black;padding: 8px; font-size:19px;"
+                                                                                        id="piece">
+                                                                                          <option value="0">---</option>
+                                                                                          @foreach($piece as $pieces)
+                                                                                          <option value="{{$pieces->id}}">{{$pieces->numero}}</option>
+                                                                                          @endforeach
+                                                                        </select>
                                                          </div>  
                                                      </div><br>
                                                     <div class="row">
-                                                        <div class=" form-group  col-md-6 my-3" style="padding-left: 55px;padding-right:0%">
+                                                        <div class=" form-group  col-md-5 my-3" style="padding-left: 50px;">
                                                             <label class="sr-only" for="prix">Prix</label>
                                                             <div class="input-group">
                                                               <div class="input-group-prepend">
                                                                 <div 
                                                                    class="input-group-text" 
-                                                                   style="padding: 8px; font-size:19px;background-color: #6D8B74;color:white;">Prix HT
+                                                                   style="padding: 8px; font-size:19px;background-color: #f69000;color:white;">Prix HT
                                                                 </div>
                                                               </div>
                                                               <input 
                                                               name="prix"
                                                                     type="text" 
+                                                                    onkeyup="calculer()"
                                                                     class="form-control" 
                                                                     id="prix"
                                                                     value="0.00"
-                                                                    style="padding: 8px; font-size:19px;background-color:#6D8B74;color:white; text-align:right"
+                                                                    style="padding: 8px; font-size:19px;background-color:#f3f4d3;color:black; text-align:right;cursor:context-menu"
                                                                     placeholder="Prix">
                                                             </div>
-                                                          </div> </div><br>
-                                                          <div class="row">
-                                                                <div class=" form-group  col-md-6 my-3" style="padding-left: 50px;padding-right:0%">
+                                                          </div><br>
+                                                                <div class=" form-group  col-sm-5 my-3" style="padding-left: 80px;padding-right:2%">
                                                                     <label class="sr-only" for="qte">Qté</label>
                                                                     <div class="input-group">
                                                                     <div class="input-group-prepend">
                                                                         <div 
                                                                         class="input-group-text" 
-                                                                        style="padding: 8px; font-size:19px;background-color: #6D8B74;color:white">Quantité
+                                                                        style="padding: 8px; font-size:19px;background-color:#f69000;color:white">Quantité
                                                                         </div>
                                                                     </div>
                                                                     <input 
                                                                     name="qte"
+                                                                    onkeyup="calculer()"
                                                                     type="text" 
                                                                     class="form-control" 
                                                                     id="qte"
                                                                     value="1"
-                                                                    style="padding: 8px; font-size:19px;background-color:#6D8B74;color:white;text-align:right"
+                                                                    style="padding: 8px; font-size:19px;cursor:context-menu;background-color:#f3f4d3;color:black;text-align:right"
                                                                     placeholder="Quantité">
                                                             </div>
                                                           </div>
                                                         </div><br>
                                                         <div class="row">
-                                                            <div class="form-group  col-md-9 my-3"  style="padding-left: 50px; padding-right:0px">
-                                                                 <label class="sr-only " for="total">Total</label>
+                                                            <div class="form-group  col-md-10 my-3"  style="padding-left: 50px; padding-right:0px;">
+                                                                 <label class="sr-only " style="padding: 4px 4px " for="total">Total</label>
                                                                     <div class="input-group">
                                                                         <div class="input-group-prepend">
                                                                           <div 
                                                                                 class="input-group-text" 
-                                                                                style="padding: 8px; font-size:19px;background-color: #6D8B74;color:white;cursor: pointer;caret-color: red;">Total
+                                                                                style="padding: 8px; font-size:19px;background-color: #f69000;color:white;cursor: pointer;caret-color: red;">Total
                                                                           </div>
                                                                       </div>
+                                                                      {{-- onfocus="calculer()" --}}
                                                                             <input 
                                                                                     name="total"
                                                                                     type="text" 
                                                                                     class="form-control" 
                                                                                     id="total"
                                                                                     value="0.00"
-                                                                                    style="float:left;padding: 8px; font-size:19px;background-color:#6D8B74;color:white;text-align:right;"
+                                                                                    style="float:left;padding: 8px; font-size:19px;cursor:context-menu;background-color:#f3f4d3;color:black;text-align:right;"
                                                                                      placeholder="Total">
                                                                     </div>
                                                              </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" form-group col-md-9 my-3" style="padding-left: 50px;padding-right:0%" > 
+                                                            <div class=" form-group col-md-10 my-3" style="padding-left: 50px;padding-right:0%" > 
                                                                <label 
                                                                        for="description"
                                                                        class="col-form-label "
-                                                                       style=" font-size:20px;color:white">Discription :
+                                                                       style=" font-size:20px;color:black">Discription :
                                                                    </label>
                                                                <textarea 
                                                                        name="description" 
@@ -206,13 +218,13 @@
                                                                        rows="5"
                                                                        class="form-control"
                                                                        
-                                                                       style=" background-position: bottom;padding: 8px; font-size:19px;background-color:#6D8B74;color:white; "
+                                                                       style="padding: 8px; font-size:19px;background-color:#f3f4d3;color:black;cursor:context-menu;"
                                                                        >
                                                                    </textarea>
                                                        </div> </div><br>
-                                                          <div class="form-group pull-right my-3" >
-                                                                                <button type="submit "  class="btn2 fw-bold "  ><i class="fa fa-save"></i> Enregistrer</button>
-                                                                                <button class="btn2 fw-bold"><a type="button" style="text-decoration: none;  color:white"  href="{{route("charge.index")}}" ><i class="fa fa-times"></i>Annuler</a></button>
+                                                          <div class="form-group pull-right my-4" >
+                                                                                <button type="submit "  class="btn2 fw-bold "  style="background-color: #f69000  "><i class="fa fa-save"></i> Enregistrer</button>
+                                                                                <button class="btn2 fw-bold" style="background-color: #f69000"><a type="button" style="text-decoration: none;  color:#f3f4d3"  href="{{route("charge.index")}}" ><i class="fa fa-times"></i>Annuler</a></button>
                                                         </div>
                                                  </form>
                                            </div>

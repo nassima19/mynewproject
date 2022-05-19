@@ -28,6 +28,7 @@ class AddTotalCollumnToChargesTable extends Migration
     {
         Schema::table('charges', function (Blueprint $table) {
             //
+            $table->bigInteger('total')->default(0);
         });
     }
 }
