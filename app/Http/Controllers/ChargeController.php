@@ -44,7 +44,7 @@ class ChargeController extends Controller
         
       /*   $fournisseur = fournisseur::all(); */
         $produit = produit::all();
-        $fournisseur = fournisseur::all();
+        $fournisseur = fournisseur::all();/* :where('categorie_id','==',$produit->categorie_id)->first(); */
         $piece = piece::all();
         return view('charge.create',compact('produit','fournisseur','piece'));
     }
@@ -72,18 +72,20 @@ class ChargeController extends Controller
                "produit_id"=> "required", 
           ]); 
           //store data
-          $piec=0;
-          $qte = $request->qte;
-          $taxes = $request->taxes;
-          $date = $request->date; 
-          $statu = $request->statu;
-          $description = $request->description;
-          $remarque = $request->remarque;
-          $prix = $request->prix;
-          $total = $request->total;
-          if($request->piece_id!=0){ 
+     
+                $qte = $request->qte;
+                $taxes = $request->taxes;
+                $date = $request->date; 
+                $statu = $request->statu;
+                $description = $request->description;
+                $remarque = $request->remarque;
+                $prix = $request->prix;
+                $total = $request->total;
+  
+           if($request->piece_id!=0)
+           { 
           Charge::create([
-              "qte"=>   $qte ,
+                 "qte"=>   $qte ,
                   "taxes"=>$taxes ,
                   "date"=>  $date,
                   "statu"=> $statu,
@@ -92,29 +94,26 @@ class ChargeController extends Controller
                   */             
                   "prix"=> $prix,
                   "total"=>  $total,
-                  "produit_id" => $request->produit_id,   
-                  "piece_id" => $request->piece_id,
+                 "produit_id" => $request->produit_id,   
+                    "piece_id" => $request->piece_id,
                   "fournisseur_id" => $request->fournisseur_id,
                   "user_id"=> auth()->user()->id,
                 ]);
-            }
-            else{
+           }else{
                  Charge::create([
-                        "qte"=>   $qte ,
+                            "qte"=>   $qte ,
                             "taxes"=>$taxes ,
                             "date"=>  $date,
                             "statu"=> $statu,
-                            "description"=> $description,
-                            /*               "remarque"=> $remarque,
-                            */             
+                            "description"=> $description,    
                             "prix"=> $prix,
                             "total"=>  $total,
                             "produit_id" => $request->produit_id,   
-                            "piece_id" => $piec,
+                            "piece_id" =>null,
                             "fournisseur_id" => $request->fournisseur_id,
                             "user_id"=> auth()->user()->id,
                           ]);
-                        }
+                        } 
                 return redirect()->route("charge.index")->with([
               'success','fournisseur ajouter avec succes'
           ]);
@@ -188,21 +187,36 @@ class ChargeController extends Controller
           $prix = $request->prix;
           $total = $request->total; 
 
-          $charge->update([
-                 "qte"=>   $qte ,
-                  "taxes"=>$taxes ,
-                  "date"=>  $date,
-                  "statu"=> $statu,
-                  "description"=> $description,
-                  /*               "remarque"=> $remarque,
-                  */             
-                  "prix"=> $prix,
-                  "total"=>  $total,
-                  "produit_id" => $request->produit_id,   
-                  "piece_id" => $request->piece_id,
-                  "fournisseur_id" => $request->fournisseur_id,
-                ]);
-
+          if($request->piece_id!=0)
+          { 
+            $charge->update([
+                "qte"=>   $qte ,
+                 "taxes"=>$taxes ,
+                 "date"=>  $date,
+                 "statu"=> $statu,
+                 "description"=> $description,
+                 /*               "remarque"=> $remarque,
+                 */             
+                 "prix"=> $prix,
+                 "total"=>  $total,
+                "produit_id" => $request->produit_id,   
+                   "piece_id" => $request->piece_id,
+                 "fournisseur_id" => $request->fournisseur_id,
+               ]);
+          }else{
+                $charge->update([
+                           "qte"=>   $qte ,
+                           "taxes"=>$taxes ,
+                           "date"=>  $date,
+                           "statu"=> $statu,
+                           "description"=> $description,    
+                           "prix"=> $prix,
+                           "total"=>  $total,
+                           "produit_id" => $request->produit_id,   
+                           "piece_id" =>null,
+                           "fournisseur_id" => $request->fournisseur_id,
+                         ]);
+                       } 
                 return redirect()->route("charge.index")->with([
               'success','fournisseur modifier avec succes'
           ]);
@@ -247,39 +261,40 @@ class ChargeController extends Controller
             "fournisseur"=>$fournisseur,
             "piece"=> $piece,
      ]);}
-     
+
+     //
+     //lier un charge à un facture
      public function charge_Facturé(Request $request)
      {
-        $depence = $request->input('factureà');
-        $facture = $request->input('facture');
-        $factur =(int)$facture;
-       if (!$facture || !$depence) //null
-        {
-                $fournisseur =fournisseur::all();
-                $produit = produit::all();
-                $piece = piece::all();
-                $chargenonfacture = Charge::where('piece_id',)->get();
-                return view("charge.NonFacturé")->with([
-                "chargenonfacture"=> $chargenonfacture,
-                "produit"=>$produit,
-                "fournisseur"=>$fournisseur,
-                "piece"=> $piece,
-            
-     ]);}else{
-        $fournisseur =fournisseur::all();
-        $produit = Produit::all();
-        $piece = Piece::all();
-        $charge = Charge::where('id','=',$depence)->first();
-        $charge->update([
-            "piece_id"=> $facture
-        ]);
+        /*  dd($request->charges); */
+     
+        $depence = $request->input('charges');
+        $piece = $request->input('piece');
+        $facture = Piece::where('id', $piece)->first();
         
-        return view("facture.show")->with([
-            "produit" => $produit,
-            "fournisseur"=>$fournisseur,
-            "piece"=> $piece,
-            "chargeFacture" => $charge,
-        ]);
-        } 
+         $this->validate($request,[
+               "charges"=> "required",
+               "piece"=>"required",]);
+                $fournisseur =fournisseur::all();
+                $produit = Produit::all();
+                foreach($request->charges as $charge)
+                {
+                  $chargeFacture = Charge::where('id','=',$charge)->first();
+                  $chargeFacture->update([
+                  "piece_id"=> $piece
+                  ]);   
+           }
+           return view("facture.show")->with([
+                "produit" => $produit,
+                "fournisseur"=>$fournisseur,
+                "piece"=> $facture,
+            ]);
+    } 
+  
+    public function sortBy()
+    {
+        $produit = produit::all()
+        ->sortBy('produit_id');
     }
    }
+  

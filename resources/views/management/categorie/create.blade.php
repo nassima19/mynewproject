@@ -7,8 +7,8 @@
              <link rel="stylesheet" href="/css/style.css">
       @endsection
       <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:#a45e5f;font-size:28px">
-            {{ __('CATEGORIE') }}
+        <h2 class="font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:#a45e5f;font-size:28px">
+          {{ __('CATEGORIE') }}
         </h2>
 </x-slot>
 @section('content')

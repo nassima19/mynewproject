@@ -111,6 +111,6 @@
  text-decoration: none;
   }
   .ajouter:hover{
-    background-color:rgb(240, 119, 6);
+    background-color:#f69000;
     transition: .03 time;
   }

@@ -112,7 +112,7 @@ config('jetstream.auth_session'),
  Route::resource('home', HomeController::class);
 
 Route::get('search_produit', [ProduitController::class, 'search_produit'])->name('produit.search_produit');
- Route::get('search_fournisseur', [FournisseurController::class, 'search_fournisseur'])->name('fournisseur.search_fournisseur');
+Route::get('search_fournisseur', [FournisseurController::class, 'search_fournisseur'])->name('fournisseur.search_fournisseur');
 Route::get('search', [ServiceController::class, 'search'])->name('service.search');
 Route::get('search_categorie', [CategorieController::class, 'search_categorie'])->name('categorie.search_categorie');
 Route::get('search_charge', [ChargeController::class, 'search_charge'])->name('charge.search_charge');

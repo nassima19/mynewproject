@@ -31,7 +31,7 @@ class produit extends Model
         }
         public function fournisseur()
         {
-           return $this->belongsToMany(fournisseur::class, 'fournisseur_produit_table', 'produit_id', 'fournisseur_id');
+           return $this->belongsToMany(fournisseur::class);
         }
         
 }

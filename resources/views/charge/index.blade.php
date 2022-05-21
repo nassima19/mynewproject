@@ -91,7 +91,12 @@
                                             <th>N°</th>
                                             <th>Piece</th>
                                             <th>FOURNISSEUR</th>
-                                            <th>PRODUIT</th>
+                                            <th> PRODUIT
+                                             {{--    <span onclick ="sortBy({{$produit->id}})" class="pull-right " style="cursor:pointer">
+
+                                                    <i class="fa fa-arrow-up"></i>
+                                                    <i class="fa fa-arrow-down  text-muted"></i> --}}
+                                            </th>
                                             <th>DATE</th>
                                             <th>STATU</th>
                                             <th>PRIX</th>
@@ -103,7 +108,7 @@
                                                 @foreach($charge as $depence)
                                                <tr>
                                                 <td>
-                                                    {{$depence->id}}
+                                                {{$depence->id}}
                                                 </td>
                                                 <td>
                                                     {{$depence->piece_id}}
@@ -135,7 +140,7 @@
                                                                     <button 
                                                                     onclick="
                                                                                event.preventDefault();
-                                                                               if(confirm('Vous voulez supprimer le charge de produit {{$depence->produit->lible}}?'))
+                                                                               if(confirm('Vous voulez supprimer le charge de produit  {{$depence->produit->libele}}?'))
                                                                                document.getElementById({{$depence->id}}).submit()
                                                                                "
                                                                     class="btn1 btn-sm mr-2">
@@ -156,6 +161,6 @@
                 </div>
              </div>
         </div>
-   </div>
+   </div><script src="/js/javascript.js"></script>
    @endsection
 </x-app-layout>

@@ -18,4 +18,7 @@ for (var i = 0; i < pname.length; i++) {
     }  
 }
 } */
-  
+ function sortBy($columnName)
+{
+  dd('hires');
+}

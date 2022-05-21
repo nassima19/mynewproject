@@ -48,4 +48,5 @@ class charge extends Model
         {
             return $this->belongsTo(fournisseur::class);
         }
+       
 }

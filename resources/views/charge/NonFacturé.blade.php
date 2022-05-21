@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="/css/bootstrap.min.css">
       <link rel="stylesheet" href="/css/style.css">
       <style>
-        .search{
+      /*   .search{
         border: none;
         display: block;
         box-shadow: none; 
@@ -43,10 +43,10 @@
     }
     .searchicon:hover{
           color:rgb(250, 151, 21);
-        }
+        } */
     </style>
 @endsection
-@section('search')
+{{-- @section('search')
 <div style="background-color: #003048;;" class="divSearch">
 <form action="{{route('charge.search_charge')}}" class="d-flex mr-3 justify-content-center ">
     <div class="form-group mb-1 mr-1 p-2 ">
@@ -56,7 +56,7 @@
    <button type="submit" class="btn"><i class="fas fa-search searchicon" aria-hidden="true"></i></button> 
 </form>
 </div>
-@endsection
+@endsection --}}
 @section('content')
                 @if(session()->has('success'))
                 <div class="alert alert-success">
@@ -91,7 +91,7 @@
                                       <tbody class="tab">
                                                   @foreach($chargenonfacture as $depence)
                                                  <tr>
-                                                     <td><input type="checkbox" name="factureà" value="{{$depence->id}}" /></td>
+                                                     <td><input type="checkbox" name="charges[{{$depence->id}}]" value="{{$depence->id}}" /></td>
                                                   <td>
                                                       {{$depence->id}}
                                                   </td>
@@ -144,7 +144,7 @@
                                     @foreach($piece as $document)
                                    <tr>
                                        <td> 
-                                           <input type="radio" name="facture" value="{{$document->id}}" ></td>
+                                           <input type="radio" name="piece" value="{{$document->id}}" ></td>
                                        <td>
                                            {{$document->numero}}
                                        </td>

@@ -68,14 +68,13 @@
                     <div class="card col-md-12 shadow p-3 mb-5 bg-body rounded pb-2 ">
                                   <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
                                       <h3 class="text-secondary">
-                                          <button ><i class="fa-solid fa-list" style="font-size:28px;color:#a0627d"></i> Liste des charges Non facturé</button>
+                                          <button ><i class="fa-solid fa-list" style="font-size:28px;color:#a0627d"></i> Liste des charges associer à la pièce <span style="color: #003048;padding:1px 4px;background-color:#dfb3c6;border-radius: 3px" > {{ $piece->id}} </span> </button>
                                       </h3>
                                        </div>
                                   <table  class="table " id="ex2">
                                       <thead>
                                           <tr class="cellule">
                                               <th>N°</th>
-                                              <th>piee</th>
                                               <th>FOURNISSEUR</th>
                                               <th>PRODUIT</th>
                                               <th>DATE</th>
@@ -85,37 +84,37 @@
                                           </tr>
                                       </thead> 
                                       <tbody class="tab">
-                                                  @foreach($chargeFacture as $depence)
+                                          @foreach($piece->charges as $charge)
                                                   <td>
-                                                       {{$depence->id}}
+                                                       {{$charge->id}}
                                                   </td>
                                                   <td>
-                                                    {{$depence->piece_id}}
-                                               </td>
-                                                  <td>
-                                                      {{$depence->fournisseur->nom}}
+                                                      {{$charge->fournisseur->nom}}
                                                   </td>
                                                   <td>
-                                                      {{$depence->produit->libele}}
+                                                      {{$charge->produit->libele}}
                                                   </td>
                                                   <td>
-                                                      {{$depence->date}}
+                                                      {{$charge->date}}
                                                    </td> 
                                                    <td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-                                                      {{$depence->statu}}
+                                                      {{$charge->statu}}
                                                    </td>
                                                   <td>
-                                                      {{$depence->prix}}   
+                                                      {{$charge->prix}}   
                                                   </td>
                                                   <td>
-                                                      {{$depence->qte}}   
+                                                      {{$charge->qte}}   
                                                   </td>
                                                  </tr>
-                                              @endforeach
+                                                 @endforeach
                                           </tbody>
                                   </table>
-                              </div>
-                        </div><br>
+                                </div>
+                                <div class="form-group float-end">
+                                    <button class="ajouter "><a type="button" style="text-decoration: none;  color:white"  href="{{route('charge.index')}}" >Retour</a></button>
+                                 </div>
+                            </div><br>
                       </div>
-   @endsection
+         @endsection
 </x-app-layout>

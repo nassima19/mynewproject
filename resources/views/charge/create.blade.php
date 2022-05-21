@@ -14,7 +14,7 @@
           </style>
     @endsection
     <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:rgb(233, 157, 122);font-size:28px">
+        <h2 class="font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:rgb(233, 157, 122);font-size:28px">
             {{ __('CHARGE') }}
         </h2>
 </x-slot>
@@ -131,8 +131,8 @@
                                                                                         name="piece_id"
                                                                                         class="form-control " 
                                                                                         style="background-color:#f3f4d3 ;color:black;padding: 8px; font-size:19px;"
-                                                                                        id="piece">
-                                                                                          <option value="0">---</option>
+                                                                                        id="piece_id">
+                                                                                          <option >---</option>
                                                                                           @foreach($piece as $pieces)
                                                                                           <option value="{{$pieces->id}}">{{$pieces->numero}}</option>
                                                                                           @endforeach

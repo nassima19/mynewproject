@@ -22,7 +22,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-         <script src="/js/javascript.js"></script>
+        <script src="/js/javascrsipt.js"></script>
     </head>
     <body class="font-sans antialiased ">
         <x-jet-banner />

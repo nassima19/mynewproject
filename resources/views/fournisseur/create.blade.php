@@ -20,7 +20,7 @@
            </style>
     @endsection
     <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:#a45e5f;font-size:28px">
+        <h2 class="font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:#a45e5f;font-size:28px">
             {{ __('FOURNISSEUR') }}
         </h2>
 </x-slot>
@@ -59,6 +59,7 @@
                                                                 class="form-control col-md-1 " 
                                                                 name="nom"
                                                                 id="nom" 
+                                                                value="{{old('nom')}}"
                                                                 style="background-color:white ;color:black;font-size:19px;padding:8px " 
 
                                                                 placeholder="Nom">
@@ -94,6 +95,7 @@
                                                                     class="form-control col-md-2"
                                                                     placeholder="Titre"
                                                                     id="titre"
+                                                                    value="{{old('titre')}}"
                                                                     style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                                     name="titre"> <br>
                                             </div>
@@ -110,6 +112,7 @@
                                                                         class="form-control col-md-4" 
                                                                         placeholder="Demaine d'activité" 
                                                                         id=" domaine_activite" 
+                                                                        value="{{old('domaine_activite')}}"
                                                                         name="domaine_activite"><br>
                                             </div>
                                            </div>
@@ -125,6 +128,7 @@
                                                                     class="form-control col-md-2" 
                                                                     placeholder="Adresse" 
                                                                     id="adresse" 
+                                                                    value="{{old('adresse')}}"
                                                                     style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                                     name="adresse">
                                            </div>
@@ -141,6 +145,7 @@
                                                             class="form-control col-md-2" 
                                                             placeholder="Code postal" 
                                                             id="code_postal" 
+                                                            value="{{old('code_postal')}}"
                                                             name="code_postal">
                                            </div>
                                            </div>
@@ -238,6 +243,7 @@
                                                                     class="form-control col-md-2" 
                                                                     placeholder="Curriel" 
                                                                     id="curriel" 
+                                                                    value="{{old('curriel')}}"
                                                                     style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                                     name="curriel">
                                                    </div>
@@ -253,6 +259,7 @@
                                                                         class="form-control col-md-2" 
                                                                         placeholder="telephone" 
                                                                         id="telephone" 
+                                                                        value="{{old('telephone')}}"
                                                                         style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                                         name="telephone">
                                                         </div>
@@ -268,6 +275,7 @@
                                                                      style="background-color:white ;color:black;font-size:19px;padding:8px " 
 {{--                                                                     id="ContentPlaceHolder_TabsControl_ctl02_BusinessEditFormOld_WebSiteField" 
  --}}                                                                    type="text"
+                                                                         value="{{old('site_internet')}}"
                                                                         class="form-control col-md-2" 
                                                                         placeholder="Site internet" 
                                                                         id="site_internet" 
@@ -298,7 +306,7 @@
                                                                     style="font-size:19px;color:black"
                                                                     class="col-form-label">notes : 
                                                                 </label>
-                                                                <textarea name="note" id="note" class="form-control col-md-2" cols="45" rows="8"  placeholder="note" ></textarea>
+                                                                <textarea name="note" id="note" class="form-control col-md-2" cols="45" rows="8"  placeholder="note" > {{old('description')}}</textarea>
                                                         </div>
                                                     </div>
                                                         <div class="form-group pull-right" >

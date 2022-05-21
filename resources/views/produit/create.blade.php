@@ -147,7 +147,7 @@
                                     </div>
                                   </div>
                                   <br><br>
-                                  <div class="row">
+                                  {{-- <div class="row">
                                     <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" >
                                     <label for="image"  class="col-form-label"  style=" font-size:20px;color:black">Image :</label><br>
                                       <input 
@@ -160,7 +160,7 @@
                                                     <div class="alert alert-danger mt-1 mb-1">{{$message}}</div>
                                               @enderror
                                     </div>
-                                  </div><br>
+                                  </div> --}}<br>
                                   <div class="row ">
                                     <div class=" form-group  col- col-sm-8"  style="padding-left: 70px" >
                                             <label for="description" class="col-form-label" style=" font-size:19px">Description : </label><br>
