@@ -7,6 +7,7 @@ use App\Http\Controllers\ChargeController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\DashboaredController;
 use App\Http\Controllers\FournisseurController;
 
 /*
@@ -24,14 +25,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum',
+/* Route::middleware(['auth:sanctum',
 config('jetstream.auth_session'),
 'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('/dashboard/index');
     })->name('dashboard');
-});
+}); */
 /* Route::middleware(['auth:sanctum',
 config('jetstream.auth_session'),
 'verified'
@@ -110,6 +111,8 @@ config('jetstream.auth_session'),
  Route::resource('service', ServiceController::class);
  Route::resource('piece', PieceController::class);
  Route::resource('home', HomeController::class);
+ Route::resource('dashboard',  DashboaredController::class );
+
 
 Route::get('search_produit', [ProduitController::class, 'search_produit'])->name('produit.search_produit');
 Route::get('search_fournisseur', [FournisseurController::class, 'search_fournisseur'])->name('fournisseur.search_fournisseur');

@@ -23,7 +23,7 @@ class ServiceController extends Controller
     {
         //
            //  
-            $service=service::with('fournisseur')->get();
+            $service=service::all();
            return view("service.index")->with([
             "service"=> service::paginate(5)
         ]);
@@ -37,8 +37,7 @@ class ServiceController extends Controller
     public function create()
     {
         //
-        $fournisseur = fournisseur::all();
-        return view('service.create',compact('fournisseur'));
+        return view('service.create');
     }
 
     /**
@@ -53,25 +52,20 @@ class ServiceController extends Controller
         $this->validate($request,[
             "nom"=> "required|min:3",
             "description"=> "min:5",
-            "methode_paiement"=> "required", 
-            "fournisseur_id"=>"required",
         ]); 
       
         //store data
         $nom = $request->nom;
         $description = $request->description;
-        $methode_paiement = $request->methode_paiement;
         Service::create([
             "nom"=> $nom,
-            "methode_paiement"=>$methode_paiement,
             "description"=> $description,
-            "fournisseur_id"=>$request->fournisseur_id,
             "user_id"=> auth()->user()->id,
         ]);
         //redirect user
         
         return redirect()->route("service.index")->with([
-            'success','Srvice ajouter avec succes'
+            'success','Service ajouter avec succes'
         ]);
     }
 
@@ -84,10 +78,9 @@ class ServiceController extends Controller
     public function show(service $service)
     {
         //
-        $fournisseur = fournisseur::all();
         return view('service.show')->with([
             'service'=> $service,
-            'fournisseur'=> $fournisseur
+           
         ]);
     }
 
@@ -100,10 +93,8 @@ class ServiceController extends Controller
     public function edit(service $service)
     {
         //
-        $fournisseur = fournisseur::all();
         return view("service.edit")->with([
             "service"=> $service,
-            "fournisseur" =>$fournisseur
         ]);
     }
 
@@ -120,24 +111,19 @@ class ServiceController extends Controller
         $this->validate($request,[
             "nom"=> "required|min:3",
             "description"=> "min:5",
-            "methode_paiement"=> "required",
-            "fournisseur_id"=>"required",
         ]); 
         //store data
         $nom = $request->nom;
         $description = $request->description;
-        $methode_paiement = $request->methode_paiement;
       
         $service->update([
             "nom"=> $nom,
             "description"=> $description,
-            "methode_paiement"=>$methode_paiement,
-            "fournisseur_id"=>$request->fournisseur_id,
         ]);
         //redirect user
         
         return redirect()->route("service.index")->with([
-            'success','Srvice ajouter avec succes'
+            'success','Service ajouter avec succes'
         ]);
     }
 

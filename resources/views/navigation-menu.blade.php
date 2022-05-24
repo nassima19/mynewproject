@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <div class="navbar ">
                 <nav class="navbar navbar-inverse navbar-fixed-top  ">
-                                <a class="navbar-brand" href="{{ route('dashboard') }}" ><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+                                <a class="navbar-brand" href="{{ route('dashboard.index') }}" ><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
                                     </a> 
                                 <a class="navbar-brand" href="{{ route('fournisseur.index') }}"><i class='fa fa-industry'></i> Fournisseur</a>
                                 <a class="navbar-brand" href="{{ route('produit.index') }}"> <i class="fa fa-product-hunt"></i> Produit</a>

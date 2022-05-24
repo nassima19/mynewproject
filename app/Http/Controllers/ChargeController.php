@@ -29,7 +29,7 @@ class ChargeController extends Controller
          "charge"=> $charge,
          "produit"=>$produit,
          "fournisseur"=>$fournisseur,
-         "piece"=> $piece
+         "piece"=> $piece,
      ]);
     }
 
@@ -81,7 +81,6 @@ class ChargeController extends Controller
                 $remarque = $request->remarque;
                 $prix = $request->prix;
                 $total = $request->total;
-  
            if($request->piece_id!=0)
            { 
           Charge::create([

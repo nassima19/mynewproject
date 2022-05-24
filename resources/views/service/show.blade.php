@@ -57,57 +57,22 @@
                                         </div>
                                     </div><br>
                                             <div class="row ">
-                                                <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" >
-                                                                <label for="fournisseur_id"
-                                                                class="col-form-label "
-                                                                style="font-size:20px;color:black"
-                                                                >Fournisseur : </label><button style="font-size:19px;color:#a45e5f; "  class="col-form-label pull-right"><a href="{{route("fournisseur.create")}}" style="text-decoration: none;color:#f69000"><i class="fa fa-plus-circle" aria-hidden="true"></i>Ajouter</a></button><br>
-                                                                        <select  name="fournisseur_id" 
-                                                                        class="form-control col-form-label"
-                                                                        style="background-color:#a45e5f;color:white;padding: 8px; font-size:19px;">
-                                                                            <option value="" >Choisir un fournisseur</option>
-                                                                                @foreach($fournisseur as $vendor)
-                                                                                <option value="{{ $vendor->id}}" {{old('fournisseur_id') == $vendor->id|| $service->fournisseur->id== $vendor->id? "selected" : ""}}>{{ $vendor->nom }}</option>
-                                                                                @endforeach
-                                                                        </select>  
-                                                        </div> 
-                                                </div><br>
-                                                <div class="row ">
-                                                    <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" >
-                                                                    <label 
-                                                                            for="methode_paiement" 
-                                                                            style="font-size:20px;color: black"
-                                                                            class="col-form-label " 
-                                                                            >Methode de paiement :
-                                                                   </label> 
-                                                                            <select  name="methode_paiement"
-                                                                             class="form-control col-form-label" 
-                                                                              style="background-color:#a45e5f ;color:white;padding: 8px; font-size:19px;">
-                                                                                    <option value=""  selected="select" >Choisir une méthode</option>
-                                                                                    <option value="Espèce">Espèce</option>
-                                                                                    <option value="Chèque">Chèque</option>
-                                                                                    <option value="Carte bancaire">Carte bancaire</option>
-                                                                                    <option value="autre méthode">autre méthode</option>
-                                                                            </select>
+                                                            <div class=" form-group col-sm-7"  style="padding-left: 70px" >
+                                                                <label class="col-form-label" 
+                                                                for="description" 
+                                                                style="font-size:20px;color:white"
+                                                                style="color: #2B4C59">Description : 
+                                                                </label>
+                                                                <textarea   
+                                                                        name="description" 
+                                                                        id="description" 
+                                                                        style="background-color:white ;color:black;padding:0px;font-size:19px;"
+                                                                        class="form-control "
+                                                                        cols="40" rows="8"  
+                                                                        placeholder="">
+                                                                {{$service->description}} </textarea>
                                                             </div>
-                                                      </div><br>
-                                                             <div class="row ">
-                                                                     <div class=" form-group col-sm-7"  style="padding-left: 70px" >
-                                                                         <label class="col-form-label" 
-                                                                            for="description" 
-                                                                            style="font-size:20px;color:white"
-                                                                            style="color: #2B4C59">Description : 
-                                                                         </label>
-                                                                            <textarea   
-                                                                                    name="description" 
-                                                                                    id="description" 
-                                                                                    style="background-color:white ;color:black;padding:0px;font-size:19px;"
-                                                                                    class="form-control "
-                                                                                    cols="40" rows="8"  
-                                                                                    placeholder="">
-                                                                           {{$service->description}} </textarea>
-                                                                      </div>
-                                                                </div> <br><br>
+                                                        </div> <br><br>
                                                                     <div class="form-group pull-right" >
                                                                                 <button type="submit "  class="btn2 fw-bold "  > Modifier</button>
                                                                     </div>

@@ -39,12 +39,11 @@
                                     <form action="{{route("service.store")}}" method="post"> 
                                     @csrf
                                     <div class="row ">
-                                        <div class=" form-group col-sm-4" style="padding-left: 70px" > 
+                                        <div class=" form-group col-sm-5" style="padding-left: 70px" > 
                                                <label 
                                                     for="nom"
                                                     class="col-form-label "
-                                                    style=" font-size:20px;color:black">Nom du service :
-                                                </label>
+                                                    style=" font-size:20px;color:black">Nom du service <em style="color:#01555f"> (Domaine d'activité)</em> : </label>
                                                         <input  
                                                             name="nom"
                                                             type="text" 
@@ -52,60 +51,22 @@
                                                             class="form-control" id="nom"
                                                             placeholder="nom du service">
                                         </div>
-                                    </div><br>
+                                    </div><br> 
                                             <div class="row ">
-                                                <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" >
-                                                                <label 
-                                                                    for="fournisseur_id"
-                                                                    class="col-form-label "
-                                                                    style="font-size:19px;color:black"
-                                                                    >Fournisseur : 
+                                                            <div class=" form-group col-sm-8"  style="padding-left: 70px" >
+                                                                <label class="col-form-label " 
+                                                                    for="description" 
+                                                                    style="font-size:19px;color:black">Description : 
                                                                 </label>
-                                                                <button style="font-size:18px;" class="col-form-label  pull-right"><a href="{{route("fournisseur.create")}}" style="text-decoration: none;color:#a45e5f"><i class="fa fa-plus-circle" aria-hidden="true"></i>Ajouter</a></button><br>
-                                                                        <select  name="fournisseur_id" 
-                                                                        class="form-control col-form-label"
-                                                                        style="background-color: #a45e5f;color:black;padding: 8px; font-size:19px;">
-                                                                            <option value="" >Choisir un fournisseur</option>
-                                                                                @foreach($fournisseur as $vendor)
-                                                                                <option value="{{$vendor->id}}">{{$vendor->nom}}</option>
-                                                                                @endforeach
-                                                                        </select>  
-                                                        </div> 
-                                                </div><br>
-                                                <div class="row ">
-                                                    <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" >
-                                                                    <label 
-                                                                            for="methode_paiement" 
-                                                                            style="font-size:19px;color:black"
-                                                                            class="col-form-label" >Methode de paiement :
-                                                                   </label> 
-                                                                            <select  
-                                                                                    name="methode_paiement"
-                                                                                    class="form-control col-form-label" 
-                                                                                    style="background-color:#a45e5f ;color:black;padding: 8px; font-size:19px;">
-                                                                                    <option value=""  selected="select" >Choisir une méthode</option>
-                                                                                    <option value="Espèce">Espèce</option>
-                                                                                    <option value="Chèque">Chèque</option>
-                                                                                    <option value="Carte bancaire">Carte bancaire</option>
-                                                                                    <option value="autre méthode">autre méthode</option>
-                                                                            </select>
+                                                                    <textarea   
+                                                                            name="description" 
+                                                                            id="description" 
+                                                                            style="font-size:19px;background-color:white ;color:black"
+                                                                            class="form-control "
+                                                                            cols="40" rows="8"  
+                                                                            placeholder="Description">
+                                                                    </textarea>
                                                             </div>
-                                                      </div>
-                                                             <br><div class="row ">
-                                                                     <div class=" form-group col-sm-8"  style="padding-left: 70px" >
-                                                                         <label class="col-form-label " 
-                                                                            for="description" 
-                                                                            style="font-size:19px;color:black">Description : 
-                                                                         </label>
-                                                                            <textarea   
-                                                                                    name="description" 
-                                                                                    id="description" 
-                                                                                    style="font-size:19px;background-color:white ;color:black"
-                                                                                    class="form-control "
-                                                                                    cols="40" rows="8"  
-                                                                                    placeholder="Description">
-                                                                            </textarea>
-                                                                      </div>
                                                                 </div> <br><br>
                                                                     <div class="form-group pull-right" >
                                                                                 <button type="submit " class="btn2 fw-bold "  ><i class="fa fa-save"></i> Enregistrer</button>

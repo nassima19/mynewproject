@@ -106,14 +106,16 @@
                                                             class="col-form-label">Domaine activité 
                                                     </label>
                                                             <span class="required colorr" aria-hidden="true">*</span>
-                                                                <input 
-                                                                        type="text" 
-                                                                        style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                                                        class="form-control col-md-4" 
-                                                                        placeholder="Demaine d'activité" 
-                                                                        id=" domaine_activite" 
-                                                                        value="{{old('domaine_activite')}}"
-                                                                        name="domaine_activite"><br>
+                                                            <select 
+                                                                    name="domaine_activite" 
+                                                                    id="domaine_activite" 
+                                                                    class="form-control col-md-2"  
+                                                                    style="background-color:#a45e5f ;color:white;padding: 8px; font-size:19px;">
+                                                                    <option value="choisir une pays" selected="select">choisir une domaine</option>
+                                                                    @foreach($services as $service)
+                                                                      <option value="{{$service->id}}">{{$service->nom}}</option>
+                                                                      @endforeach
+                                                     </select>
                                             </div>
                                            </div>
                                            <div class=" mb-2 row flex-container">
@@ -178,56 +180,56 @@
                                                             class="form-control col-md-2"
                                                             style="background-color:#a45e5f ;color:white;padding: 8px; font-size:19px;">
                                                             <option value="0" >choisir une ville</option>
-                                                            <option value="1">AL HAJEB</option>
-                                                            <option value="2">AGADIR</option>
-                                                            <option value="3">AL HOCEIMA</option>
-                                                            <option value="4">ASSA ZAG</option>
-                                                            <option value="5">AZILAL</option>
-                                                            <option value="6">BENI MELLAL</option>
-                                                            <option value="7">BENSLIMANE</option>
-                                                            <option value="8">BOUJDOUR</option>
-                                                            <option value="9">BOULEMANE</option>
-                                                            <option value="10">BERRECHID</option>
-                                                            <option value="11">CASABLANCA</option>
-                                                            <option value="12">CHEFCHAOUEN</option>
-                                                            <option value="13">CHTOUKA AIT BAHA</option>
-                                                            <option value="14">CHICHAOUA</option>
-                                                            <option value="15">EL JADIDA</option>
-                                                            <option value="16">EL KELAA DES SRAGHNAS</option>
-                                                            <option value="17">ERRACHIDIA</option>
-                                                            <option value="18">ESSAOUIRA</option>
-                                                            <option value="19"> ES SEMARA</option>
-                                                            <option value="20"> FES</option>
-                                                            <option value="21">FIGUIG</option>
-                                                            <option value="22">GUELMIM</option>
-                                                            <option value="23">IFRANE</option>
-                                                            <option value="24">KENITRA</option>
-                                                            <option value="24">KHEMISSET</option>
-                                                            <option value="25">KHENIFRA</option>
-                                                            <option value="26">KHOURIBGA</option>
-                                                            <option value="27">LAAYOUNE</option>
-                                                            <option value="28">LARACHE</option>
-                                                            <option value="29">MOHAMMEDIA</option>
-                                                            <option value="30">MARRAKECH</option>
-                                                            <option value="31">MEKNES</option>
-                                                            <option value="32">NADOR</option>
-                                                            <option value="33">OUARZAZATE</option>
-                                                            <option value="34">OUJDA</option>
-                                                            <option value="35">OUED EDDAHAB</option>
-                                                            <option value="36">RABAT</option>
-                                                            <option value="37">SALE</option>
-                                                            <option value="38">SKHIRAT TEMARA</option>
-                                                            <option value="39">SEFROU</option> 
-                                                            <option value="40">SAFI</option>
-                                                            <option value="41">SETTAT</option>
+                                                            <option value="AL HAJEB">AL HAJEB</option>
+                                                            <option value="AGADIR">AGADIR</option>
+                                                            <option value="AL HOCEIMA">AL HOCEIMA</option>
+                                                            <option value="ASSA ZAG">ASSA ZAG</option>
+                                                            <option value="AZILAL">AZILAL</option>
+                                                            <option value="BENI MELLAL">BENI MELLAL</option>
+                                                            <option value="BENSLIMANE">BENSLIMANE</option>
+                                                            <option value="BOUJDOUR">BOUJDOUR</option>
+                                                            <option value="BOULEMANE">BOULEMANE</option>
+                                                            <option value="BERRECHID">BERRECHID</option>
+                                                            <option value="CASABLANCA">CASABLANCA</option>
+                                                            <option value="CHEFCHAOUEN">CHEFCHAOUEN</option>
+                                                            <option value="CHTOUKA AIT BAHA">CHTOUKA AIT BAHA</option>
+                                                            <option value="CHICHAOUA">CHICHAOUA</option>
+                                                            <option value="EL JADIDA">EL JADIDA</option>
+                                                            <option value="EL KELAA DES SRAGHNAS">EL KELAA DES SRAGHNAS</option>
+                                                            <option value="ERRACHIDIA">ERRACHIDIA</option>
+                                                            <option value="ESSAOUIRA">ESSAOUIRA</option>
+                                                            <option value="EL SEMARA"> EL SEMARA</option>
+                                                            <option value="FES"> FES</option>
+                                                            <option value="FIGUIG">FIGUIG</option>
+                                                            <option value="GUELMIM">GUELMIM</option>
+                                                            <option value="IFRANE">IFRANE</option>
+                                                            <option value="KENITRA">KENITRA</option>
+                                                            <option value="KHEMISSET">KHEMISSET</option>
+                                                            <option value="KHENIFRA">KHENIFRA</option>
+                                                            <option value="KHOURIBGA">KHOURIBGA</option>
+                                                            <option value="LAAYOUNE">LAAYOUNE</option>
+                                                            <option value="LARACHE">LARACHE</option>
+                                                            <option value="MOHAMMEDIA">MOHAMMEDIA</option>
+                                                            <option value="MARRAKECH">MARRAKECH</option>
+                                                            <option value="MEKNES">MEKNES</option>
+                                                            <option value="NADOR">NADOR</option>
+                                                            <option value="OUARZAZATE">OUARZAZATE</option>
+                                                            <option value="OUJDA">OUJDA</option>
+                                                            <option value="OUED EDDAHAB">OUED EDDAHAB</option>
+                                                            <option value="RABAT">RABAT</option>
+                                                            <option value="SALE">SALE</option>
+                                                            <option value="SKHIRAT TEMARA">SKHIRAT TEMARA</option>
+                                                            <option value="SEFROU">SEFROU</option> 
+                                                            <option value="SAFI">SAFI</option>
+                                                            <option value="SETTAT">SETTAT</option>
                                                             <option value="42">SIDI KACEM</option>
-                                                            <option value="43">TANGER</option>
-                                                            <option value="44">  TAN TAN</option>
-                                                            <option value="45">TAOUNAT</option>
-                                                            <option value="46">TATA</option>
-                                                            <option value="47">TAZA</option>
-                                                            <option value="48">TETOUAN</option> 
-                                                            <option value="49">TIZNIT</option>
+                                                            <option value="TANGER">TANGER</option>
+                                                            <option value="TAN TAN">  TAN TAN</option>
+                                                            <option value="TAOUNAT">TAOUNAT</option>
+                                                            <option value="TATA">TATA</option>
+                                                            <option value="TAZA">TAZA</option>
+                                                             <option value="TETOUAN">TETOUAN</option> 
+                                                             <option value="TIZNIT">TIZNIT</option>
                                                     </select>
                                                 </div>
                                             </div>

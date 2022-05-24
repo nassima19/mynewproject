@@ -1,9 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-use ulluminate\Http\Request;
+use App\Models\service;
 use App\Models\categorie;
 use App\Models\fournisseur;
+use ulluminate\Http\Request;
 use App\Http\Requests\StorefournisseurRequest;
 use App\Http\Requests\UpdatefournisseurRequest;
 
@@ -18,8 +19,10 @@ class FournisseurController extends Controller
     public function index()
     {
         //
+        $services = service::all();
         $fournisseur=Fournisseur::with('categorie')->get();
         return view("fournisseur.index")->with([
+            "services"=>$services,
             "fournisseur"=> fournisseur::paginate(5)
         ]);
     }
@@ -32,8 +35,9 @@ class FournisseurController extends Controller
     public function create()
     {
         //
+        $services = service::all();
         $categorie = categorie::all();
-        return view('fournisseur.create',compact('categorie'));
+        return view('fournisseur.create',compact('categorie', 'services'));
 
     }
 
@@ -49,7 +53,7 @@ class FournisseurController extends Controller
       $this->validate($request,[
           "nom"=> "required|min:3",
            "titre"=>"required|min:2",
-           "domaine_activite"=> "required|min:3",
+           "domaine_activite"=> "required",
            "adresse"=> "required|min:2",
            "ville"=> "required", 
            "pays"=> "required", 
@@ -61,9 +65,7 @@ class FournisseurController extends Controller
              "categorie_id"=> "required",
              "genre"=> "required", 
         ]);  
-    
-    
-           
+
         //store data
         $nom = $request->nom;
         $titre = $request->titre;
@@ -111,9 +113,12 @@ class FournisseurController extends Controller
     public function show(fournisseur $fournisseur)
     {
         //
+        $fournisseur = Fournisseur::find($fournisseur->id);
+        $services = service::all()->first();
         $categorie = categorie::all();
         return view('fournisseur.show',compact('categorie'))->with([
-            'fournisseur'=> $fournisseur
+            'fournisseur'=> $fournisseur,
+            'services'=> $services,
         ]);
     }
 
@@ -126,9 +131,11 @@ class FournisseurController extends Controller
     public function edit(fournisseur $fournisseur)
     {
         //
+         $services = service::all();
          $categorie = categorie::all();
         return view("fournisseur.edit")->with([
             "fournisseur" =>$fournisseur,
+            "services"=>$services,
             "categorie" => $categorie,
         ]);
        
@@ -149,7 +156,7 @@ class FournisseurController extends Controller
             "nom"=> "required|min:3",
             "titre"=>"required|min:2",
             "genre"=> "required|min:5",
-            "domaine_activite"=> "required|min:3",
+            "domaine_activite"=> "required",
              "adresse"=> "required|min:2",
                  "ville"=> "required", 
                   "pays"=> "min:3", 

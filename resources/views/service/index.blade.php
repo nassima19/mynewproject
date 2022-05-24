@@ -59,8 +59,8 @@
     </div>
     @endsection
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container col-md-12">
+        <div class="row justify-content-center ">
             <div class="col-md-12">
                 @if(session()->has('success'))
                 <div class="alert alert-success">
@@ -70,7 +70,7 @@
                 <div class="card shadow p-3 mb-5 bg-body rounded">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-14">
+                            <div class="col-md-12">
                                 <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
                                     <h3 class="text-secondary">
                                         <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list" style="font-size:28px;color:#003048"></i> Liste des services</button>
@@ -80,11 +80,10 @@
                                     </a>
                                 </div>
                                 <table  class="table collapse" id="ex2">
-                                    <thead>
+                                    <thead >
                                         <tr class="cellule">
                                             <th>ID</th>
                                             <th>NOM</th>
-                                            <th>METHODE_PAIEMENT</th>
                                             <th>DESCRIPTION</th>
                                             <th>ACTION</th>
                                         </tr>
@@ -99,13 +98,10 @@
                                                     {{$servicee->nom}}
                                                 </td>
                                                 <td>
-                                                    {{$servicee->methode_paiement}}
-                                                 </td>
-                                                <td>
-                                                    {{Str::limit($servicee->description, 20)}}
+                                                    {{Str::limit($servicee->description, 30)}}
                                                 </td>
                                             <td class="d-flex flex-row justify-content-center align-items-center  pull-left">
-                                                <a href="{{route("service.edit",$servicee->id)}}" class="btn1 btn-sm mr-2">
+                                                <a href="{{route("service.edit",$servicee->id)}}" class="btn1 btn-sm mr-2  me-3">
                                                     <i class="fas fa-edit" style="color:#5d3277"></i></a>
                                                         <form id="{{$servicee->id}}" action="{{route("service.destroy",$servicee->id)}}" method="post">
                                                                 @csrf
@@ -116,11 +112,11 @@
                                                                                if(confirm('Vous voulez supprimer la service {{$servicee->nom}}?'))
                                                                                document.getElementById({{$servicee->id}}).submit()
                                                                                "
-                                                                    class="btn1 btn-sm mr-2">
-                                                                        <i class="fas fa-trash" style="color:#5d3277"></i>
+                                                                    class="btn1 btn-sm mr-2  me-3">
+                                                                        <i class="fas fa-trash" style="color:#5d3277;"></i>
                                                                     </button>
                                                         </form>
-                                                        <a href="{{route("service.show",$servicee->id)}}" class="btn1 btn-warning btn-sm ">
+                                                        <a href="{{route("service.show",$servicee->id)}}" class="btn1 btn-warning btn-sm  me-3 ">
                                                             <i class="fas fa-info-circle " style="color:#5d3277"></i></a>
                                                          
                                               </td> 
