@@ -24,6 +24,7 @@
     .productDashboared:hover{
         color: #717171;
     }
+  
       </style>
 @endsection
 <x-slot name="header">
@@ -31,6 +32,7 @@
         {{ __('DASHBOARED') }}
     </h2>
 </x-slot>
+
 @section('content')
 <div class="container p-3" >
     <div class="row justify-content-center">

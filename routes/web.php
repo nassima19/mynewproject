@@ -31,8 +31,8 @@ config('jetstream.auth_session'),
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('/dashboard/index');
-    })->name('dashboard');
-}); */
+    })->name('dashboard.index');
+});  */
 /* Route::middleware(['auth:sanctum',
 config('jetstream.auth_session'),
 'verified'
@@ -111,7 +111,9 @@ config('jetstream.auth_session'),
  Route::resource('service', ServiceController::class);
  Route::resource('piece', PieceController::class);
  Route::resource('home', HomeController::class);
- Route::resource('dashboard',  DashboaredController::class );
+
+ 
+ Route::resource('dashboard',  DashboaredController::class )->middleware("auth");
 
 
 Route::get('search_produit', [ProduitController::class, 'search_produit'])->name('produit.search_produit');

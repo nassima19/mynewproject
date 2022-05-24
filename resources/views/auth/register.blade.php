@@ -18,7 +18,10 @@
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
-
+            <div class="mt-4">
+                <x-jet-label for="entreprise" value="{{ __('Entreprise') }}" />
+                <x-jet-input id="entreprise" class="block mt-1 w-full" type="text" name="entreprise" :value="old('entreprise')" required />
+            </div>
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />

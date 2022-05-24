@@ -44,7 +44,6 @@
                     </div>
                 </header>
             @endif
-
             <!-- Page Content -->
             <main class="min-h-full p-5 ">
                 @yield('content')

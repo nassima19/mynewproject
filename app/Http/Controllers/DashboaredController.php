@@ -26,7 +26,7 @@ class DashboaredController extends Controller
         $Total += $charge->prix*$charge->qte;
         $request->session()->put('Total',number_format($Total,2,".",""));
 }
-        return view('dashboared.index',compact('charges','produits'));
+        return view('dashboard.index',compact('charges','produits'));
     }
     /**
      * Show the form for creating a new resource.
