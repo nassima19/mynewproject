@@ -29,9 +29,9 @@
                                       @csrf
                                       @method('put')
                                       {{-- ************************************************************************ --}}
-                                      <div class="rounded-lg w-full">
+                                     {{--  <div class="rounded-lg w-full">
                                         <img src="/imag{{$produit->image}}" class="rounded-lg cursor-pointer hover-drope-shadow transition duration-300" alt="{{$produit->libele}}" >
-                                    </div>
+                                    </div> --}}
                                     {{-- ********************************************** --}}
                                       <div class="row ">
                                         <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" > 
