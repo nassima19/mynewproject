@@ -290,10 +290,10 @@ class ChargeController extends Controller
             ]);
     } 
   
-    public function sortBy()
+   /*  public function sortBy()
     {
         $produit = produit::all()
         ->sortBy('produit_id');
-    }
+    } */-
    }
   

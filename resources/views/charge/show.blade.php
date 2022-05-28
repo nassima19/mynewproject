@@ -34,7 +34,7 @@
                             <div class="col-md-12">
                                 <div class="d-flex flex-row justify-content-between align-items-center  pb-2">
                                     <h3 class="border-bottom mb-3 p-2" style="color: #f69000" > 
-                                         <i class="fas fa-eye" style="font-size:26px;color: #f69000"></i> Modifier la charge de produit {{$charge->produit->libele}} 
+                                         <i class="fas fa-eye" style="font-size:26px;color: #f69000"></i> Détail de la charge de produit {{$charge->produit->libele}} 
                                       </h3>
                                       <a type="button" class="close btn-close " href="{{route("charge.index")}}"></a>
                                 </div>
