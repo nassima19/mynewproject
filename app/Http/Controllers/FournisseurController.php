@@ -98,7 +98,7 @@ class FournisseurController extends Controller
 
         ]); 
         return redirect()->route("fournisseur.index")->with([
-            "success","Fournisseur crée avec succes"
+            "success"=> "Fournisseur crée avec succes"
         ]);
        
         
@@ -201,7 +201,7 @@ class FournisseurController extends Controller
         ]);
             
         return redirect()->route("fournisseur.index")->with([
-            "success","Fournisseur modifier avec succes"
+            "success"=> "Fournisseur modifier avec succes"
         ]);
     }
 

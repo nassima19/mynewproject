@@ -64,7 +64,7 @@ class CategorieController extends Controller
         //redirect user
         
         return redirect()->route("categorie.index")->with([
-            'success','Categorie ajouter avec succes'
+            'success'=> 'Categorie ajouter avec succes'
         ]);
     }
 

@@ -73,7 +73,7 @@ class PieceController extends Controller
         //redirect user
         
         return redirect()->route("piece.index")->with([
-            'success','Piece ajouter avec succes'
+            'success'=>'Piece ajouter avec succes'
         ]);
     }
 

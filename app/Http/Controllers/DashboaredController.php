@@ -17,15 +17,23 @@ class DashboaredController extends Controller
     {
         //
 
-        $charges = charge::all();
+        $charges = charge::where('statu','A Payée')->get();
+        $chargesP = charge::where('statu','Payée')->get();
         $produits = produit::all();
         $Total=0;
+        $TotalP=0;
         if($request->session()->has('Total')) 
         $request->session()->forget('Total');
         foreach($charges as $charge){
         $Total += $charge->prix*$charge->qte;
         $request->session()->put('Total',number_format($Total,2,".",""));
 }
+        if($request->session()->has('TotalP')) 
+        $request->session()->forget('TotalP');
+        foreach($chargesP as $charge){
+            $TotalP += $charge->prix*$charge->qte;
+            $request->session()->put('TotalP',number_format($TotalP,2,".",""));
+        }
         return view('dashboard.index',compact('charges','produits'));
     }
     /**

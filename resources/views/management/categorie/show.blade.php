@@ -21,7 +21,7 @@
                               <div class="col-md-12 ">
                                   <div class="d-flex flex-row justify-content-between align-items-center pb-2">
                                       <h3 class="text-secondary border-bottom mb-3 p-1"> 
-                                        <i class="fas fa-edit" style="color:#a45e5f"></i> Détail de la categorie {{$categorie->libele}}
+                                        <i class="fas fa-eye" style="color:#a45e5f"></i> Détail de la categorie {{$categorie->libele}}
                                        </h3>
                                         <a type="button" class="close btn-close " href="{{route("categorie.index")}}"></a>
                                   </div>

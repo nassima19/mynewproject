@@ -126,7 +126,7 @@
                                                                                 </button>
                                                                     </form>
                                                             <a href="{{route("produit.show",$product->id)}}" class="btn1 btn-warning btn-sm ">
-                                                            <i class="fas fa-info-circle " style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-eye" style="color:#5d3277"></i></a>
                                                                     
                                                         </td> 
                                                        </tr>

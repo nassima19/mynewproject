@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\charge;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class benificiere extends Model
 {
@@ -17,9 +18,19 @@ class benificiere extends Model
        'nom',
        'curriel',
        'genre',
+       'langue',
        'date_naissance',
        'ville',
        'pays',
        'number_employe' ,
+       'user_id'
     ];
+    public function getRouteKeyName()
+    {
+      return 'id';
+    }
+    public function charge()
+    {
+       return $this->belongsToMany(charge::class);
+    }
 }

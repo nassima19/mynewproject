@@ -74,7 +74,7 @@ class ProduitController extends Controller
         //redirect user
         
         return redirect()->route("produit.index")->with([
-            'success','produit ajouter avec succes'
+            'success'=>'produit ajouter avec succes'
         ]);
     }
 

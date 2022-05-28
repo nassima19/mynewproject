@@ -117,7 +117,7 @@
                                                                     </button>
                                                         </form>
                                                         <a href="{{route("service.show",$servicee->id)}}" class="btn1 btn-warning btn-sm  me-3 ">
-                                                            <i class="fas fa-info-circle " style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-eye " style="color:#5d3277"></i></a>
                                                          
                                               </td> 
                                                </tr>

@@ -65,7 +65,7 @@ class ServiceController extends Controller
         //redirect user
         
         return redirect()->route("service.index")->with([
-            'success','Service ajouter avec succes'
+            'success'=>'Service ajouter avec succes'
         ]);
     }
 
@@ -123,7 +123,7 @@ class ServiceController extends Controller
         //redirect user
         
         return redirect()->route("service.index")->with([
-            'success','Service ajouter avec succes'
+            'success'=>'Service ajouter avec succes'
         ]);
     }
 

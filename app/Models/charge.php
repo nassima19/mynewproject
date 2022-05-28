@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\piece;
 use App\Models\produit;
+use App\Models\benificiere;
 use App\Models\fournisseur;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -44,9 +45,13 @@ class charge extends Model
          *
          * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
          */
+        
         public function fournisseur()
         {
             return $this->belongsTo(fournisseur::class);
         }
-       
+        public function benificiere()
+    {
+       return $this->belongsToMany(benificiere::class);
+    }
 }

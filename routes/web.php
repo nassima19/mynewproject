@@ -8,6 +8,7 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboaredController;
+use App\Http\Controllers\BenificiereController;
 use App\Http\Controllers\FournisseurController;
 
 /*
@@ -24,76 +25,6 @@ use App\Http\Controllers\FournisseurController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-/* Route::middleware(['auth:sanctum',
-config('jetstream.auth_session'),
-'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('/dashboard/index');
-    })->name('dashboard.index');
-});  */
-/* Route::middleware(['auth:sanctum',
-config('jetstream.auth_session'),
-'verified'
-])->group(function () {
-    Route::get('/fournisseur', function () {
-        return view('/fournisseur/create');
-    })->name('fournisseur');
-}); */
-
-/*Route::middleware(['auth:sanctum',
-config('jetstream.auth_session'),
-'verified'
- ])->group(function () {
-    Route::get('/produit', function () {
-        return view('/produit/create');
-    })->name('produit');
-}); */
-/* Route::middleware(['auth:sanctum',
-config('jetstream.auth_session'),
-'verified'
-])->group(function () {
-    Route::get('/depence', function () {
-        return view('/depence/create');
-    })->name('depence');
-}); */
-/* Route::middleware(['auth:sanctum',
-config('jetstream.auth_session'),
-'verified'
-])->group(function () {
-    Route::get('/rapport', function () {
-        return view('rapport.index');
-    })->name('rapport');
-});  */
-/* Route::middleware(['auth:sanctum',
-config('jetstream.auth_session'),
-'verified'
-])->group(function () {
-    Route::get('/categorie', function () {
-        return view('/categorie/show');
-    })->name('categorie');
-}); */
-/* Route::middleware(['auth:sanctum',
-config('jetstream.auth_session'),
-'verified'
-])->group(function () {
-    Route::get('/categorie', function () {
-        return view('/categorie/show');
-    })->name('categorie');
-}); */
-/* Route::resource('categories', CategorieController::class);
- */
-
-
-/*  Route::middleware(['auth:sanctum',
-config('jetstream.auth_session'),
-'verified'
-])->group(function () {
-    Route::get('/categories', function () {
-        return view('/management/categorie/index');
-    })->name('categories.index');
-});  */
 /* Route::middleware(['auth:sanctum',
 config('jetstream.auth_session'),
 'verified'
@@ -104,22 +35,24 @@ config('jetstream.auth_session'),
 });  */
 //don't work!!!!
 // 
- Route::resource('categorie', CategorieController::class);
- Route::resource('produit', ProduitController::class);
- Route::resource('fournisseur', FournisseurController::class);
- Route::resource('charge', ChargeController::class);
- Route::resource('service', ServiceController::class);
- Route::resource('piece', PieceController::class);
- Route::resource('home', HomeController::class);
+ Route::resource('categorie', CategorieController::class)->middleware("auth");
+ Route::resource('produit', ProduitController::class)->middleware("auth");
+ Route::resource('fournisseur', FournisseurController::class)->middleware("auth");
+ Route::resource('charge', ChargeController::class)->middleware("auth");
+ Route::resource('service', ServiceController::class)->middleware("auth");
+ Route::resource('piece', PieceController::class)->middleware("auth");
+ Route::resource('home', HomeController::class)->middleware("auth");
+ Route::resource('benificiere', BenificiereController::class)->middleware("auth");
+ Route::get('Charge_benificier/{benificiaire}', [BenificiereController::class, 'Charge_benificier'])->name('benificiere.Charge_benificier')->middleware("auth");
 
  
  Route::resource('dashboard',  DashboaredController::class )->middleware("auth");
 
 
-Route::get('search_produit', [ProduitController::class, 'search_produit'])->name('produit.search_produit');
-Route::get('search_fournisseur', [FournisseurController::class, 'search_fournisseur'])->name('fournisseur.search_fournisseur');
-Route::get('search', [ServiceController::class, 'search'])->name('service.search');
-Route::get('search_categorie', [CategorieController::class, 'search_categorie'])->name('categorie.search_categorie');
-Route::get('search_charge', [ChargeController::class, 'search_charge'])->name('charge.search_charge');
-Route::get('Charge_non_facturé', [ChargeController::class, 'NonFacturé'])->name('charge.NonFacturé');
-Route::get('Charge_facturé', [ChargeController::class, 'charge_Facturé'])->name('facture.show');
+Route::get('search_produit', [ProduitController::class, 'search_produit'])->name('produit.search_produit')->middleware("auth")->middleware("auth");
+Route::get('search_fournisseur', [FournisseurController::class, 'search_fournisseur'])->name('fournisseur.search_fournisseur')->middleware("auth");
+Route::get('search', [ServiceController::class, 'search'])->name('service.search')->middleware("auth");
+Route::get('search_categorie', [CategorieController::class, 'search_categorie'])->name('categorie.search_categorie')->middleware("auth");
+Route::get('search_charge', [ChargeController::class, 'search_charge'])->name('charge.search_charge')->middleware("auth");
+Route::get('Charge_non_facturé', [ChargeController::class, 'NonFacturé'])->name('charge.NonFacturé')->middleware("auth");
+Route::get('Charge_facturé', [ChargeController::class, 'charge_Facturé'])->name('facture.show')->middleware("auth");

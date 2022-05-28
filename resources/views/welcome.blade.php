@@ -31,22 +31,32 @@
               background-repeat: no-repeat;
               background-attachment: scroll;
               background-position: center center;
-              background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url("/img/resources-photos-de-couvertures-62.png");
+              background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url("/img/https___b2bquotes.com_sn_uploads_B2BQuotes_10-outils-productivite_ordi-telephone.jpg");
               background-size: cover;
               padding-top: 9rem;
               padding-bottom:17.5rem;
-              opacity: 0.9;
+              opacity: 1;
              
             } 
            .masthead-subheading{
             font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";                font-size: 6rem;
                 font-style: italic;
-                line-height: 3rem;
-                margin-bottom: 10rem;
+                line-height: 8rem;
+                margin-bottom: 19rem;
                 text-align: center;
                color: #f8f8f8d0;/* a53305 */
                opacity: 1;
             }
+            .masthead-subheading2{
+                  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";                font-size: 6rem;
+                font-style: italic;
+                line-height: 0rem;
+                margin-bottom: 3rem;
+                text-align: center;
+               color: #f8f8f8d0;/* a53305 */
+               opacity: 1;
+            }
+          
           .btn-primary {
             color:#f8f8f8d0;
             background-color:transparent ;
@@ -59,41 +69,35 @@
  */            border: 3px solid #684560;
             
           }
-          /*   .navbar-collapse {
-            flex-basis: 100%;
-            flex-grow: 1;
-            display: flex !important;
-            font-size: 1.25rem;
-            padding-left: 50%;
-        } */
-
-              </style>
+          .btn-primary:hover{
+            color:#bbddf8; 
+            transition: 0.3s; 
+          }
+         </style>
     </head>
     <body >
     <header class="masthead">
-       
         <div class="container">
-         <div class="masthead-subheading  ">
-                          Bienvenue  Dans Votre Charges</div>
-                          <div class="masthead-subheading">
-                            <a href="{{ route('home.index') }}" class="btn btn-primary shadow p-3 mb-5 bg-body rounded" ><i class="fa fa-home" style="color: #85637d"></i> Accueil</a>
-                    </div>
-                    @if (Route::has('login'))
+            <div class="masthead-subheading2  d-flex justify-content-center align-items-center"> 
+                         <a href="{{ route('home.index') }}" class="btn btn-primary shadow p-3 mb-5 bg-body rounded" ><i class="fa fa-home" style="color: #371d10"></i> Accueil</a>
+                @if (Route::has('login'))
                          @auth
-                            <div class="masthead-subheading">
-                                <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-x1 shadow p-3 mb-5 bg-body rounded " ><i class="fa fa-tachometer" aria-hidden="true" style="color: #85637d"></i> Dashboar</a>
-                            </div>
+                           
+                                <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-x1 shadow p-3 mb-5 bg-body rounded " ><i class="fa fa-tachometer" aria-hidden="true" style="color: #371d10"></i> Dashboar</a>
+            </div>
                                 @else
                                 
-                                    <a href="{{ route('login') }}" class=" dark:text-gray-500 underline" style="color:yellow ;font-size:2.5rem">Log in</a>
+                                    <a href="{{ route('login') }}" class="btn btn-primary  dark:text-gray-500" style=";font-size:2.5rem"><i class="fa fa-sign-in" style="color: #371d10" aria-hidden="true"></i>
+                                        Log in</a>
                              
                                 @if (Route::has('register'))
                                            
-                                <a href="{{ route('register') }}" class=" dark:text-gray-500 " style="color:yellow ;font-size:2.5rem">Register</a>
+                                <a href="{{ route('register') }}" class=" btn btn-primary dark:text-gray-500 " style=";font-size:2.5rem"><i class="fa fa-registered"style="color: #371d10"></i> Register</a>
                               @endif
                          @endauth
-                    @endif
-                   
+                    @endif <br><br>
+                    <div class="masthead-subheading">
+                          Bienvenue  Dans Votre Charges</div>
                      </div>
     
   </header>
