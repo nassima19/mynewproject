@@ -43,9 +43,6 @@
                                     document.getElementById('total').value=document.getElementById('prix').value* document.getElementById('qte').value;
                                 }
                                 </script>
-                                    <form action="{{route("charge.show",$charge->id)}}" method="post"> 
-                                    @csrf
-                                    @method('put')
                                     <div class="row ">
                                         <div class=" form-group col-sm-5 my-3" style="padding-left: 50px" > 
                                                 <label 
@@ -216,7 +213,6 @@
                                                                        >
                                                                   {{$charge->description}} </textarea>
                                                        </div> </div><br>
-                                                 </form>
                                            </div>
                                      </div>
                                </div>
