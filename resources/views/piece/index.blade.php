@@ -7,11 +7,21 @@
 @section('style')
       <link rel="stylesheet" href="/css/bootstrap.min.css">
       <link rel="stylesheet" href="/css/style.css">
+      <style>
+            .bg-white{
+        color: #1e768a;
+        background-color: #b37f4c;
+        font-size: 1.25rem;
+    }
+    .text-gray-700 {
+        color:#b17438;
+    }
+      </style>
 @endsection
 @section('content')
 @if(session()->has('success'))
-<div class="alert alert-success">
-    {{ session()->get('success') }}
+<div class="alert alert-success " style="text-transform: uppercase;color:rgb(163, 101, 8);font-weight: bold; text-align:center;font-size:1.7rem;  font-family: 'Roboto Slab';">
+   <i class="fas fa-check-circle" style="font-size:1.7rem"></i>  {{ session()->get('success') }}
 </div>
 @endif
         <div class="container ">
@@ -22,12 +32,16 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
-                                      <h3 class="text-secondary">
-                                            <button data-bs-toggle="collapse" data-bs-target="#ex1"><i class="fa-solid fa-list" style="font-size:28px;color:#a0627d"></i> Liste des pieces</button>
+                                        <x-slot name="header">
+                                           <h2 class="d-flex flex-row justify-content-end   font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:#728a8d;font-size:28px">
+                                                <a href="{{route("piece.create")}}">
+                                                    <button type="button" class="ajouter"> Ajouter <i class="fa fa-plus-circle" ></i></button>
+                                                </a>
+                                          </h2>
+                                        </x-slot>
+                                      <h3 class="titre">
+                                            <button data-bs-toggle="collapse" data-bs-target="#ex1"><i class="fa-solid fa-list list"></i> Liste des pièces</button>
                                          </h3> 
-                                          <a href="{{route("piece.create")}}">
-                                            <button type="button" class="ajouter"><i class="fas fa-plus" style="font-size:22px;color:#fff"></i> Ajouter</button>
-                                        </a>
                                     </div>
                                         <table  class=" collapse table " id="ex1">
                                             <thead>
@@ -56,7 +70,7 @@
                                                         </td>
                                                     <td class="d-flex flex-row justify-content-center align-items-center ">
                                                             <a href="{{route("piece.edit",$document->id)}}" class="btn1 btn-sm mr-2">
-                                                                <i class="fas fa-edit" style="color:#5d3277"></i></a>
+                                                                <i class="fas fa-edit" ></i></a>
                                                                     <form id="{{$document->id}}"  action="{{route("piece.destroy",$document->id)}}" method="post">
                                                                             @csrf
                                                                             @method("delete")
@@ -67,17 +81,20 @@
                                                                                document.getElementById({{$document->id}}).submit()
                                                                                "
                                                                                 class="btn1 btn-sm mr-2">
-                                                                                    <i class="fas fa-trash" style="color:#5d3277"></i>
+                                                                                    <i class="fas fa-trash" ></i>
                                                                                 </button>
                                                                     </form>
                                                             <a href="{{route("piece.show",$document->id)}}" class="btn1 btn-warning btn-sm ">
-                                                            <i class="fas fa-eye" style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-eye" ></i></a>
                                                                     
                                                         </td> 
                                                        </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div  class="justify-content-center  d-flex flex-row " style="color:#003048">
+                                                {{ $piece->links() }}
+                                            </div> 
                                             </div>
                                          </div>
                                     </div>
