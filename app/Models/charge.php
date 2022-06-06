@@ -50,7 +50,7 @@ class charge extends Model
         {
             return $this->belongsTo(fournisseur::class);
         }
-        public function benificiere()
+        public function benificieres()
     {
        return $this->belongsToMany(benificiere::class);
     }

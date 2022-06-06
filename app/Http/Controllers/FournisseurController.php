@@ -1,10 +1,12 @@
 <?php
 namespace App\Http\Controllers;
-
 use App\Models\service;
 use App\Models\categorie;
 use App\Models\fournisseur;
-use ulluminate\Http\Request;
+use Illuminate\Http\Request;
+use App\Exports\FournisseurExport;
+use App\Imports\FournisseurImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StorefournisseurRequest;
 use App\Http\Requests\UpdatefournisseurRequest;
 
@@ -23,7 +25,7 @@ class FournisseurController extends Controller
         $fournisseur=Fournisseur::with('categorie')->get();
         return view("fournisseur.index")->with([
             "services"=>$services,
-            "fournisseur"=> fournisseur::paginate(5)
+            "fournisseur"=> fournisseur::paginate(8)
         ]);
     }
 
@@ -51,19 +53,19 @@ class FournisseurController extends Controller
     {
       //
       $this->validate($request,[
-          "nom"=> "required|min:3",
-           "titre"=>"required|min:2",
-           "domaine_activite"=> "required",
-           "adresse"=> "required|min:2",
-           "ville"=> "required", 
-           "pays"=> "required", 
-           "telephone"=> "required", 
-             "code_postal"=> "required",
-             "curriel"=> "min:3",
-             "site_internet"=> "min:3",
-             "note"=>"required",
-             "categorie_id"=> "required",
-             "genre"=> "required", 
+            "nom"=> "required|min:3",
+            "titre"=>"required|min:2",
+            "domaine_activite"=> "required",
+            "adresse"=> "required|min:2",
+            "code_postal"=> "required",
+            "categorie_id"=> "required",
+            "genre"=> "required", 
+            "curriel"=> "required",
+            "telephone"=> "required|min:10", 
+            "ville"=> "", 
+            "pays"=> "", 
+            "site_internet"=> "min:3",
+            "note"=>"min:3",
         ]);  
 
         //store data
@@ -98,7 +100,7 @@ class FournisseurController extends Controller
 
         ]); 
         return redirect()->route("fournisseur.index")->with([
-            "success"=> "Fournisseur crée avec succes"
+            "success"=> "Fournisseur crée avec succès"
         ]);
        
         
@@ -155,17 +157,17 @@ class FournisseurController extends Controller
         $this->validate($request,[
             "nom"=> "required|min:3",
             "titre"=>"required|min:2",
-            "genre"=> "required|min:5",
             "domaine_activite"=> "required",
-             "adresse"=> "required|min:2",
-                 "ville"=> "required", 
-                  "pays"=> "min:3", 
-                  "code_postal"=> "required",
-                   "telephone"=> "required", 
-                   "curriel"=> "min:3",
-                   "site_internet"=> "min:3",
-                  "note"=>"min:3",
-                  "categorie_id"=> "required",
+            "adresse"=> "required|min:2",
+            "code_postal"=> "required",
+            "categorie_id"=> "required",
+            "genre"=> "required", 
+            "curriel"=> "required",
+            "telephone"=> "required|min:10", 
+            "ville"=> "", 
+            "pays"=> "", 
+            "site_internet"=> "min:3",
+            "note"=>"min:3",
                 ]);  
               
         //store data
@@ -201,7 +203,7 @@ class FournisseurController extends Controller
         ]);
             
         return redirect()->route("fournisseur.index")->with([
-            "success"=> "Fournisseur modifier avec succes"
+            "success"=> "Fournisseur modifier avec succès"
         ]);
     }
 
@@ -218,7 +220,7 @@ class FournisseurController extends Controller
         $fournisseur->delete();
         //redirect user
         return redirect()->route("fournisseur.index")->with([
-            "success"=> "Fournisseur supprimée avec succes"
+            "success"=> "Fournisseur supprimée avec succès"
         ]);
     }
     public function search_fournisseur()
@@ -227,4 +229,20 @@ class FournisseurController extends Controller
         $fournisseur=Fournisseur::where('nom','like','%'.$search_text.'%')->get();
         return view('fournisseur.search',compact('fournisseur'));
     }
+    public function export_fournisseur() 
+    {
+       return Excel::download(new FournisseurExport, 'fournisseurs.xlsx');
+    }
+
+    public function  upload_fournisseur(Request $request)
+    {
+        Excel::import(new FournisseurImport, $request->file);
+         return redirect()->route('fournisseur.index')->with('success', 'fournisseur Imported avec succès');
+    }
+    
+    public function  import_fournisseur(){
+        return view('fournisseur.import');
+    }
+
 }
+

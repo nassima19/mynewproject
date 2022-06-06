@@ -33,6 +33,14 @@
         right: 5px;
         top: 2px;
         }
+        .bg-white{
+        color: #1e768a;
+        background-color: #b37f4c;
+        font-size: 1.25rem;
+    }
+    .text-gray-700 {
+        color:#b17438;
+    }
     .divSearch{
     width: 100%;
     margin: 0 auto;
@@ -70,8 +78,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-14">
                     @if(session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success') }}
+                    <div class="alert alert-success " style="text-transform: uppercase;color:rgb(163, 101, 8); text-align:center;font-size:1.7rem;  font-family: 'Roboto Slab';font-weight:bold">
+                       <i  class="fas fa-info-circle" style="font-size:1.7rem"></i>  {{ session()->get('success') }}
                     </div>
                 @endif
                     <div class="card shadow p-3 mb-5 bg-body rounded">
@@ -79,12 +87,25 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
-                                        <h3 class="text-secondary">
-                                            <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list" style="font-size:28px;color:#003048"></i> Liste des fournisseurs</button>
-                                        </h3>
+                                        <h3 class="titre">
+                                            <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list list" ></i> Liste des fournisseurs</button>
+                                        </h3> <x-slot name="header">
+                                            <h2 class="d-flex flex-row justify-content-end font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:#728a8d;font-size:28px">
                                         <a href="{{route("fournisseur.create")}}">
-                                            <button type="button" class="ajouter"><i class="fas fa-plus" style="font-size:23px;color:#fff"></i> Ajouter</button>
+                                            <button type="button" class="ajouter me-3"> Ajouter <i class="fa fa-plus-circle"></i></button>
                                         </a>
+                                    </h2>
+                                    </x-slot> <h2 class="d-flex flex-row justify-content-end font-semibold text-xl leading-tight fw-bold">
+                                        <div class="d-flex justify-content-end me-2">
+                                          <a href="{{route("importF")}}" class="me-2">
+                                              <button type="button" class="  ajouter fw-bold import " > Import <i class="fa fa-cloud-upload" aria-hidden="true"></i>                                            </button> 
+                                               </a>
+                                      </div>
+                                    <div class="d-flex justify-content-end">
+                                        <a href="{{route("exportF")}}" class="me-2">
+                                            <button type="button" class="  ajouter fw-bold import " > Export <i class='fas fa-file-export pls '></i></button> 
+                                             </a>
+                                    </div></h2>
                                     </div>
                                     <table  class="table collapse" id="ex2">
                                         <thead>
@@ -113,28 +134,30 @@
                                                                 </td> 
                                                     <td class="d-flex flex-row justify-content-center align-items-center pull-left ">
                                                         <a href="{{route("fournisseur.edit",$vendor->id)}}" class="btn1 btn-sm mr-2">
-                                                            <i class="fas fa-edit" style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-edit" ></i></a>
                                                                 <form id="{{$vendor->id}}" action="{{route("fournisseur.destroy",$vendor->id)}}" method="post">
                                                                     @csrf
                                                                     @method("delete")
                                                                         <button 
                                                                         onclick="
                                                                                event.preventDefault();
-                                                                               if(confirm('Vous voulez supprimer le fournisseur {{$vendor->nom}}?'))
+                                                                               if(confirm('Attion!! si vous supprimer le fournisseur {{$vendor->nom}} tous les charge associer à ce fournisseur seront suppimer. vous etes sur de cette supprision  ?'))
                                                                                document.getElementById({{$vendor->id}}).submit()
                                                                                "
                                                                         class="btn1 btn-sm mr-2">
-                                                                            <i class="fas fa-trash" style="color:#5d3277"></i>
+                                                                            <i class="fas fa-trash" ></i>
                                                                         </button>
                                                                 </form>
                                                         <a href="{{route("fournisseur.show",$vendor->id)}}" class="btn1 btn-warning btn-sm ">
-                                                            <i class="fas fa-eye " style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-eye " ></i></a>
                                                                 
                                                     </td> 
                                                    </tr>
                                                 @endforeach
                                             </tbody>
-                                    </table>
+                                    </table><div  class="justify-content-center d-flex flex-row " style="color:#003048">
+                                        {{ $fournisseur->links() }}
+                                    </div> 
                                 </div>
                             </div>
                         </div>

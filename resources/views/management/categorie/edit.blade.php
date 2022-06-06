@@ -21,7 +21,7 @@
                               <div class="col-md-12 ">
                                   <div class="d-flex flex-row justify-content-between align-items-center pb-2">
                                       <h3 class="text-secondary border-bottom mb-3 p-1"> 
-                                        <i class="fas fa-edit" style="color:#a45e5f"></i> Modifier la categorie {{$categorie->libele}}
+                                        <i class="fas fa-edit" style="color:#a45e5f"></i> Modifier la catégorie {{$categorie->libele}}
                                        </h3>
                                         <a type="button" class="close btn-close " href="{{route("categorie.index")}}"></a>
                                   </div>
@@ -48,11 +48,9 @@
                                          placeholder="description">{{$categorie->description}}</textarea>
                                         </div><br> <br>
                                         <div class="form-group pull-right" >
-                                          <button type="submit "  class="btn2 fw-bold" > Modifier</button>
-{{--                                          <button type="button" class=" btn2 fw-bold" onclick="location.href='{{url('categorie.index')}}" ><i class="fa fa-close"></i> Annuler</button>       
-                                          <button type="reset" class="btn btn-default pull-right">Cancel</button>--}}
-                                  </div>
-                                  </form>
+                                          <button type="submit "  class="btn2"> Modifier</button>
+                                             </div>
+                                      </form>
                                     </div>
                               </div>
                          </div>

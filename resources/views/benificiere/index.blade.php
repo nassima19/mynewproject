@@ -33,6 +33,14 @@
         right: 5px;
         top: 2px;
         }
+        .bg-white{
+        color: #1e768a;
+        background-color: #b37f4c;
+        font-size: 1.25rem;
+    }
+    .text-gray-700 {
+        color:#b17438;
+    }
     .divSearch{
     width: 100%;
     margin: 0 auto;
@@ -46,10 +54,10 @@
           color:rgb(250, 151, 21);
         }
     </style>
-@endsection{{-- 
-@section('search')
+@endsection 
+ @section('search')
 <div style="background-color: #003048;" class="divSearch">
-<form action="{{route('fournisseur.search_fournisseur')}}" class="d-flex mr-3 justify-content-center ">
+<form action="{{route('benificiere.search_benificiaire')}}" class="d-flex mr-3 justify-content-center ">
     <div class="form-group mb-1 mr-1 p-2 ">
         <input type="text" name="q" value="{{request()->q ?? ''}}" style="color:#fff;background-color: #003048" class="form-control search ">
     </div>
@@ -57,7 +65,7 @@
    <button type="submit" class="btn"><i class="fas fa-search searchicon" aria-hidden="true"></i></button> 
 </form>
 </div> 
-@endsection--}}
+@endsection
 @section('content')
 @if ($errors->any())
 @foreach ($errors as $error)
@@ -70,23 +78,37 @@
             <div class="row justify-content-center">
                 <div class="col-md-14">
                     @if(session()->has('success'))
-                    <div class="alert alert-success " style="text-transform: uppercase;color:rgb(30, 179, 0);font-weight: bold; text-align:center">
-                       <i class="fa-solid fa-check"></i>  {{ session()->get('success') }}
+                    <div class="alert alert-success " style="text-transform: uppercase;color:rgb(163, 101, 8); text-align:center;font-size:1.7rem;  font-family: 'Roboto Slab';font-weight:bold">
+                       <i  class="fas fa-info-circle" style="font-size:1.7rem"></i>  {{ session()->get('success') }}
                     </div>
                 @endif
                     <div class="card shadow p-3 mb-5 bg-body rounded">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
-                                        <h3 class="text-secondary">
-                                            <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list" style="font-size:28px;color:#003048"></i> Liste des benificiares</button>
-                                        </h3>
-                                        <a href="{{route("benificiere.create")}}">
-                                            <button type="button" class="ajouter"><i class="fas fa-plus" style="font-size:23px;color:#fff"></i> Ajouter</button>
-                                        </a>
+                                    <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-2">
+                                        <h3 class="titre">
+                                            <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list list"></i> Liste des bénéficiaires</button>
+                                        </h3> <x-slot name="header">
+                                            <h2 class="d-flex flex-row justify-content-end font-semibold text-xl leading-tight fw-bold" style="text-transform:uppercase; text-shadow: 4px 4px 5px #a3a3a3;color:#728a8d;font-size:28px">
+                                                
+                                            <a href="{{route("benificiere.create")}}">
+                                            <button type="button" class="ajouter me-3"> Ajouter <i class="fa fa-plus-circle" style="font-size:23px;"></i></button>
+                                        </a>  
+                                    </h2>
+                                    </x-slot> <h2 class="d-flex flex-row justify-content-end font-semibold text-xl leading-tight fw-bold">
+                                        <div class="d-flex justify-content-end me-2">
+                                          <a href="{{route("importB")}}" class="me-2">
+                                              <button type="button" class="  ajouter fw-bold import" > Import <i class="fa fa-cloud-upload" aria-hidden="true"></i>                                            </button> 
+                                               </a>
+                                      </div>
+                                    <div class="d-flex justify-content-end">
+                                        <a href="{{route("exportB")}}" class="me-2">
+                                            <button type="button" class="  ajouter fw-bold import "> Export <i class='fas fa-file-export pls '></i></button> 
+                                             </a>
+                                    </div></h2>
                                     </div>
-                                    <table  class="table collapse" id="ex2">
+                                    <table  class="table collapse pb-14" id="ex2">
                                         <thead>
                                             <tr class="cellulef">
                                                 <th> #</th>
@@ -113,7 +135,7 @@
                                                         </td>
                                                     <td class="d-flex flex-row justify-content-center align-items-center pull-left ">
                                                         <a href="{{route("benificiere.edit",$benificiare->id)}}" class="btn1 btn-sm mr-2">
-                                                            <i class="fas fa-edit" style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-edit"></i></a>
                                                                 <form id="{{$benificiare->id}}" action="{{route("benificiere.destroy",$benificiare->id)}}" method="post">
                                                                     @csrf
                                                                     @method("delete")
@@ -124,17 +146,19 @@
                                                                                document.getElementById({{$benificiare->id}}).submit()
                                                                                "
                                                                         class="btn1 btn-sm mr-2">
-                                                                            <i class="fas fa-trash" style="color:#5d3277"></i>
+                                                                            <i class="fas fa-trash" ></i>
                                                                         </button>
                                                                 </form>
                                                         <a href="{{route("benificiere.show",$benificiare->id)}}" class="btn1 btn-warning btn-sm ">
-                                                            <i class="fas fa-eye " style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-eye " ></i></a>
                                                                 
                                                     </td> 
                                                    </tr>
                                                 @endforeach
                                             </tbody>
-                                    </table>
+                                    </table><div  class="justify-content-center  d-flex flex-row " style="color:#003048">
+                                        {{ $benificiares->links() }}
+                                    </div> 
                                 </div>
                             </div>
                         </div>

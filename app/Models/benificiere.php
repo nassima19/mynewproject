@@ -29,7 +29,7 @@ class benificiere extends Model
     {
       return 'id';
     }
-    public function charge()
+    public function charges()
     {
        return $this->belongsToMany(charge::class);
     }

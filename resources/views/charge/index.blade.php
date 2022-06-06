@@ -44,6 +44,18 @@
     .searchicon:hover{
           color:rgb(250, 151, 21);
         }
+        .pls{
+            font-size:22px;
+            color:#003048;
+        }
+        .bg-white{
+        color: #1e768a;
+        background-color: #b37f4c;
+        font-size: 1.25rem;
+    }
+    .text-gray-700 {
+        color:#b17438;
+    }
     </style>
 @endsection
 @section('search')
@@ -62,8 +74,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @if(session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session()->get('success') }}
+                <div class="alert alert-success " style="text-transform: uppercase;color:rgb(163, 101, 8); text-align:center;font-size:1.7rem;  font-family: 'Roboto Slab';font-weight:bold">
+                   <i  class="fas fa-info-circle" style="font-size:1.7rem"></i>  {{ session()->get('success') }}
                 </div>
             @endif
                 <div class="card shadow p-3 mb-5 bg-body rounded ">
@@ -71,17 +83,30 @@
                         <div class="row">
                             <div class="col-md-14">
                                 <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
-                                    <h3 class="text-secondary">
-                                        <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list" style="font-size:28px;color:#003048"></i> Liste des charges</button>
-                                    </h3><div class="d-flex justify-content-end">
-                                            <a href="{{route("charge.create")}}" class="me-2">
-                                           <button type="button" class="ajouter"><i class="fas fa-plus" style="font-size:22px;color:#fff "></i> Ajouter</button> 
+                                    <h3 class="titre">
+                                        <button data-bs-toggle="collapse" data-bs-target="#ex2"><i class="fa-solid fa-list list" ></i> Liste des charges</button>
+                                    </h3>
+                                    <x-slot name="header">
+                                        <h2 class="d-flex flex-row justify-content-end font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:#728a8d;font-size:28px">
+                                            <div>
+                                            <a href="{{route("charge.create")}}" class="me-2" style="text-decoration: none">
+                                                <button type="button" class="ajouter"> Ajouter <i class="fa fa-plus-circle" ></i></button> 
                                             </a>
-                                            <a href="{{route("charge.NonFacturé")}}" class="">
-                                                <button type="button" class="ajouter"> Charge non facturé</button> 
-                                            </a>
-   
-                                        </div>
+                                            <a href="{{route("charge.NonFacturé")}}" class="me-2">
+                                                <button type="button" class="ajouter chargefactureButton" > Charges non facturé</button> 
+                                            </a> </div>
+                                        </h2>
+                                        </x-slot><h2 class="d-flex flex-row justify-content-end font-semibold text-xl leading-tight fw-bold">
+                                            <div class="d-flex justify-content-end me-2">
+                                              <a href="{{route("importC")}}" class="me-2">
+                                                  <button type="button" class="  ajouter fw-bold import " > Import <i class="fa fa-cloud-upload" aria-hidden="true"></i>                                            </button> 
+                                                   </a>
+                                          </div>
+                                        <div class="d-flex justify-content-end">
+                                            <a href="{{route("exportC")}}" class="me-2">
+                                                <button type="button" class="  ajouter fw-bold import"> Export <i class='fas fa-file-export pls '></i></button> 
+                                                 </a>
+                                        </div></h2>
                                      </div>
                                 
 
@@ -91,12 +116,7 @@
                                             <th>N°</th>
                                             <th>Piece</th>
                                             <th>FOURNISSEUR</th>
-                                            <th> PRODUIT
-                                             {{--    <span onclick ="sortBy({{$produit->id}})" class="pull-right " style="cursor:pointer">
-
-                                                    <i class="fa fa-arrow-up"></i>
-                                                    <i class="fa fa-arrow-down  text-muted"></i> --}}
-                                            </th>
+                                            <th> PRODUIT</th>
                                             <th>DATE</th>
                                             <th>STATU</th>
                                             <th>PRIX</th>
@@ -133,7 +153,7 @@
                                                 </td>
                                             <td class="d-flex flex-row justify-content-center align-items-center  pull-left">
                                                 <a href="{{route("charge.edit",$depence->id)}}" class="btn1 btn-sm mr-2">
-                                                    <i class="fas fa-edit" style="color:#5d3277"></i></a>
+                                                    <i class="fas fa-edit"></i></a>
                                                         <form id="{{$depence->id}}" action="{{route("charge.destroy",$depence->id)}}" method="post">
                                                                 @csrf
                                                                 @method("delete")
@@ -144,17 +164,19 @@
                                                                                document.getElementById({{$depence->id}}).submit()
                                                                                "
                                                                     class="btn1 btn-sm mr-2">
-                                                                        <i class="fas fa-trash" style="color:#5d3277"></i>
+                                                                        <i class="fas fa-trash" ></i>
                                                                     </button>
                                                         </form>
                                                         <a href="{{route("charge.show",$depence->id)}}" class="btn1 btn-warning btn-sm ">
-                                                            <i class="fas fa-eye" style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-eye" ></i></a>
                                                          
                                               </td> 
                                                </tr>
                                             @endforeach
                                         </tbody>
-                                </table>
+                                </table><div  class="justify-content-center  d-flex flex-row " style="color:#003048">
+                                    {{ $charge->links() }}
+                                </div> 
                             </div>
                         </div>
                     </div>

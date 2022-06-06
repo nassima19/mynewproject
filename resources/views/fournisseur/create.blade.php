@@ -50,32 +50,30 @@
                                                 <div class="form-group mb-3 ">
                                                         <label
                                                             for="nom" 
-                                                            style="font-size:19px;color:black"
-                                                            class="col-form-label">Nom 
+                                                            class="labelStyle col-form-label">Nom 
                                                         </label>
                                                             <span class="required colorr" aria-hidden="true">*</span>
                                                             <input 
                                                                 type="text"
-                                                                class="form-control col-md-1 " 
+                                                                class="inputText form-control col-md-1 " 
                                                                 name="nom"
                                                                 id="nom" 
                                                                 value="{{old('nom')}}"
-                                                                style="background-color:white ;color:black;font-size:19px;padding:8px " 
-
                                                                 placeholder="Nom">
                                                             <br>
                                              </div>
                                                     <div class="form-group mb-3 ">
                                                             <label
                                                                     for="genre" 
-                                                                    style="font-size:19px;color:black"
-                                                                    class="col-form-label"> Genre
+                                                                    class=" labelStylecol-form-label"> Genre
                                                             </label>
                                                                 <span class="required colorr" aria-hidden="true">*</span>
                                                                     <select name="genre"
-                                                                            id="genre" 
-                                                                            class="form-control" 
-                                                                            style="background-color:#a45e5f ;color:white;padding: 8px; font-size:19px;">
+                                                                            id="genre" style=" background-color:#a45e5f ;
+                                                                            color:white;
+                                                                            padding: 8px;
+                                                                             font-size:19px;"
+                                                                            class=" form-control">
                                                                             <option value="---"  selected="select" >---</option>
                                                                                     <option value="Masculain" selected="select">Masculain</option>
                                                                                     <option value="Féminain" selected="select">Féminain</option>
@@ -86,32 +84,32 @@
                                             <div class="form-group mb-3 "> 
                                                     <label 
                                                             for="titre"  
-                                                            style="font-size:19px;color:black"
-                                                            class="col-form-label">Titre :
+                                                            class="labelStyle col-form-label">Titre
                                                    </label>
                                                           <span class="required colorr" aria-hidden="true">*</span>
                                                                 <input 
                                                                     type="text" 
-                                                                    class="form-control col-md-2"
+                                                                    class="inputText form-control col-md-2"
                                                                     placeholder="Titre"
                                                                     id="titre"
                                                                     value="{{old('titre')}}"
-                                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                                     name="titre"> <br>
                                             </div>
                                             <div class="form-group mb-3 ">
                                                     <label
                                                             for="domaine_activite" 
-                                                            style="font-size:19px;color:black" 
-                                                            class="col-form-label">Domaine activité 
+                                                            class="labelStyle col-form-label">Domaine activité 
                                                     </label>
                                                             <span class="required colorr" aria-hidden="true">*</span>
                                                             <select 
                                                                     name="domaine_activite" 
                                                                     id="domaine_activite" 
-                                                                    class="form-control col-md-2"  
-                                                                    style="background-color:#a45e5f ;color:white;padding: 8px; font-size:19px;">
-                                                                    <option value="choisir une pays" selected="select">choisir une domaine</option>
+                                                                    style=" background-color:#a45e5f ;
+                                                                            color:white;
+                                                                            padding: 8px;
+                                                                             font-size:19px;"
+                                                                    class=" form-control col-md-2"  
+>                                                                    <option value="choisir une pays" selected="select">choisir une domaine</option>
                                                                     @foreach($services as $service)
                                                                       <option value="{{$service->id}}">{{$service->nom}}</option>
                                                                       @endforeach
@@ -121,30 +119,26 @@
                                            <div class=" mb-2 row flex-container">
                                             <div class="form-group mb-3 ">
                                                     <label 
-                                                    style="font-size:19px;color:black"
                                                             for="adresse" 
-                                                            class="col-form-label">Adresse 
+                                                            class="labelStyle col-form-label">Adresse 
                                                     </label>
                                                            <span class="required colorr" aria-hidden="true">*</span>
                                                                 <input  
-                                                                    class="form-control col-md-2" 
+                                                                    class="inputText form-control col-md-2" 
                                                                     placeholder="Adresse" 
                                                                     id="adresse" 
                                                                     value="{{old('adresse')}}"
-                                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                                     name="adresse">
                                            </div>
                                            <div class="col-xs-15 col-sm-2">
                                                  <label 
                                                         for="code_postal"
-                                                        style="font-size:19px;color:black"  
-                                                        class="col-form-label">Code postale
+                                                        class="labelStyle col-form-label">Code postale
                                                  </label>
                                                        <span class="required colorr" aria-hidden="true">*</span>
                                                             <input 
                                                             type="text" 
-                                                            style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                                            class="form-control col-md-2" 
+                                                            class="inputText form-control col-md-2" 
                                                             placeholder="Code postal" 
                                                             id="code_postal" 
                                                             value="{{old('code_postal')}}"
@@ -155,14 +149,16 @@
                                             <div class="form-group mb-3 ">
                                                     <label 
                                                             for="pays" 
-                                                            style="font-size:19px;color:black" 
-                                                            class="col-form-label">Pays:
+                                                            class="labelStyle col-form-label">Pays
                                                     </label><br>
                                                               <select 
                                                                     name="pays" 
                                                                     id="pays" 
-                                                                    class="form-control col-md-2"  
-                                                                    style="background-color:#a45e5f ;color:white;padding: 8px; font-size:19px;">
+                                                                    style=" background-color:#a45e5f ;
+                                                                            color:white;
+                                                                            padding: 8px;
+                                                                             font-size:19px;"
+                                                                    class="form-control col-md-2 " > 
                                                                     <option value="choisir une pays" selected="select">choisir une pays</option>
                                                                     <option value="marocco" selected="select">morocco</option>
                                                                     <option value="autre" selected="select">autre</option>
@@ -171,15 +167,17 @@
                                                 <div class="form-group mb-3 ">
                                                     <label 
                                                         for="ville" 
-                                                        style="font-size:19px;color:black" 
-                                                        class="col-form-label">Ville:
+                                                        class="labelStyle col-form-label">Ville:
                                                     </label>
                                                     <select
                                                             name="ville" 
                                                             id="ville" 
-                                                            class="form-control col-md-2"
-                                                            style="background-color:#a45e5f ;color:white;padding: 8px; font-size:19px;">
-                                                            <option value="0" >choisir une ville</option>
+                                                            class="form-control col-md-2 "
+                                                            style=" background-color:#a45e5f ;
+                                                                            color:white;
+                                                                            padding: 8px;
+                                                                             font-size:19px;"
+>                                                            <option value="0" >choisir une ville</option>
                                                             <option value="AL HAJEB">AL HAJEB</option>
                                                             <option value="AGADIR">AGADIR</option>
                                                             <option value="AL HOCEIMA">AL HOCEIMA</option>
@@ -237,32 +235,30 @@
                                                     <div class="form-group mb-3 ">                                                    
                                                         <label 
                                                             for="curriel" 
-                                                            style="font-size:19px;color:black" 
-                                                            class="col-form-label">Curriel :
+                                                            class="labelStyle col-form-label">Curriel
                                                        </label>
+                                                       <span class="required colorr" aria-hidden="true">*</span>
+
                                                                <input 
                                                                     type="text" 
-                                                                    class="form-control col-md-2" 
+                                                                    class="inputText form-control col-md-2" 
                                                                     placeholder="Curriel" 
                                                                     id="curriel" 
                                                                     value="{{old('curriel')}}"
-                                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                                     name="curriel">
                                                    </div>
                                                         <div class="form-group mb-3 ">                                                    
                                                             <label 
                                                                 for="telephone" 
-                                                                style="font-size:19px;color:black" 
-                                                                class="col-form-label">Telephone
+                                                                class="labelStyle col-form-label">Telephone
                                                             </label>
                                                                     <span class="required colorr" aria-hidden="true">*</span>
                                                                         <input 
                                                                         type="text" 
-                                                                        class="form-control col-md-2" 
+                                                                        class="inputText form-control col-md-2" 
                                                                         placeholder="telephone" 
                                                                         id="telephone" 
                                                                         value="{{old('telephone')}}"
-                                                                        style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                                         name="telephone">
                                                         </div>
                                                 </div>
@@ -270,15 +266,12 @@
                                                         <div class="form-group mb-3 ">                          
                                                             <label 
                                                                 for="site_internet" 
-                                                                style="font-size:19px;color:black"
-                                                                class="col-form-label"> Site internet :
+                                                                class="labelStyle col-form-label"> Site internet
                                                             </label>
                                                                     <input                                                                
-                                                                     style="background-color:white ;color:black;font-size:19px;padding:8px " 
-{{--                                                                     id="ContentPlaceHolder_TabsControl_ctl02_BusinessEditFormOld_WebSiteField" 
- --}}                                                                    type="text"
+                                                                     type="text"
                                                                          value="{{old('site_internet')}}"
-                                                                        class="form-control col-md-2" 
+                                                                        class="inputText form-control col-md-2" 
                                                                         placeholder="Site internet" 
                                                                         id="site_internet" 
                                                                         name="site_internet"><a id="ContentPlaceHolder_TabsControl_ctl02_BusinessEditFormOld_WebSiteLink" href="http://" target="_blank"><i class="fa fa-external-link"></i></a>
@@ -286,14 +279,16 @@
                                                               <div class="form-group mb-3 ">                                                 
                                                                    <label 
                                                                         for="categorie_id"  
-                                                                        style="font-size:19px;color:black"
-                                                                        class="col-form-label">Categorie 
+                                                                        class="labelStyle col-form-label">Categorie 
                                                                    </label>
                                                                         <span class="required colorr" aria-hidden="true">*</span>
                                                                         <select  
                                                                                 name="categorie_id"   
-                                                                                class="form-control" 
-                                                                                style="background-color:#a45e5f ;color:white;padding: 8px; font-size:19px;">
+                                                                                style=" background-color:#a45e5f ;
+                                                                                color:white;
+                                                                                padding: 8px;
+                                                                                 font-size:19px;"
+                                                                                class="form-control "> 
                                                                                 <option value="" selected="select" >choisir une categorie</option>
                                                                                     @foreach($categorie as $category)
                                                                                     <option value="{{$category->id}}">{{$category->libele}}</option>
@@ -305,15 +300,14 @@
                                                              <div class="form-group mb-3 ">  
                                                                 <label 
                                                                     for="note"  
-                                                                    style="font-size:19px;color:black"
-                                                                    class="col-form-label">notes : 
+                                                                    class="labelStyle col-form-label">notes : 
                                                                 </label>
                                                                 <textarea name="note" id="note" class="form-control col-md-2" cols="45" rows="8"  placeholder="note" > {{old('description')}}</textarea>
                                                         </div>
                                                     </div>
                                                         <div class="form-group pull-right" >
-                                                            <button type="submit "  class="btn2  " ><i class="fa fa-save"></i> Enregistrer</button>
-                                                            <button class="btn2 "><a type="button" style="text-decoration: none;  color:white"  href="{{route("fournisseur.index")}}" ><i class="fa fa-times"></i>Annuler</a></button>
+                                                            <button type="submit "  class="btn2  " > Enregistrer <i class="fa fa-save" style="color: #efc8b1"></i></button>
+                                                            <button class="btn2 "><a type="button" style="text-decoration: none;  color:white"  href="{{route("fournisseur.index")}}" >Annuler <i class="fa fa-times" style="color:#efc8b1"></i></a></button>
                                                         </div>
                                                 </form>
                                           </div>

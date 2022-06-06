@@ -32,6 +32,14 @@
         right: 5px;
         top: 2px;
         }
+        .bg-white{
+        color: #1e768a;
+        background-color: #b37f4c;
+        font-size: 1.25rem;
+    }
+    .text-gray-700 {
+        color:#b17438;
+    }
     .divSearch{
     width: 100%;
     margin: 0 auto;
@@ -60,8 +68,8 @@
     @endsection
 @section('content')
 @if(session()->has('success'))
-<div class="alert alert-success">
-    {{ session()->get('success') }}
+<div class="alert alert-success " style="text-transform: uppercase;color:rgb(163, 101, 8);font-weight: bold; text-align:center;font-size:1.7rem;  font-family: 'Roboto Slab';">
+   <i class="fas fa-check-circle" style="font-size:1.7rem"></i>  {{ session()->get('success') }}
 </div>
 @endif
         <div class="container ">
@@ -73,12 +81,27 @@
                                 <div class="col-md-12">
                                     <section class="container">
                                     <div class="d-flex flex-row justify-content-between align-items-center border-bottom pb-1">
-                                      <h3 class="text-secondary">
-                                            <button data-bs-toggle="collapse" data-bs-target="#ex1"><i class="fa-solid fa-list" style="font-size:28px;color:#003048"></i> Liste des produits</button>
+                                      <h3 class="titre">
+                                            <button data-bs-toggle="collapse" data-bs-target="#ex1" ><i class="fa-solid fa-list list"></i> Liste des produits</button>
                                          </h3> 
-                                          <a href="{{route("produit.create")}}">
-                                            <button type="button" class="ajouter"><i class="fas fa-plus" style="font-size:22px;color:#fff"></i> Ajouter</button>
-                                        </a>
+                                          <x-slot name="header">
+                                            <h2 class="d-flex flex-row justify-content-end font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #c7c3c3;color:#728a8d;font-size:28px">
+                                           <a href="{{route("produit.create")}}">
+                                            <button type="button" class="ajouter me-3"> Ajouter <i class="fa fa-plus-circle"></i></button>
+                                        </a>   
+                                     </h2>
+                                      </x-slot> 
+                                          <h2 class="d-flex flex-row justify-content-end font-semibold text-xl leading-tight fw-bold" >
+                                              <div class="d-flex justify-content-end me-2">
+                                                <a href="{{route("importP")}}" class="me-2">
+                                                    <button type="button" class="  ajouter fw-bold import" > Import <i class="fa fa-cloud-upload" aria-hidden="true"></i>                                            </button> 
+                                                     </a>
+                                            </div>
+                                      <div class="d-flex justify-content-end">
+                                        <a href="{{route("exportP")}}" class="me-2">
+                                            <button type="button" class="  ajouter fw-bold import" > Export <i class='fas fa-file-export pls '></i></button> 
+                                             </a>
+                                    </div></h2>
                                     </div>
                                         <table  class=" collapse table " id="ex1">
                                             <thead>
@@ -111,7 +134,7 @@
                                                                         </td>
                                                     <td class="d-flex flex-row justify-content-center align-items-center ">
                                                             <a href="{{route("produit.edit",$product->id)}}" class="btn1 btn-sm mr-2">
-                                                                <i class="fas fa-edit" style="color:#5d3277"></i></a>
+                                                                <i class="fas fa-edit" ></i></a>
                                                                     <form id="{{$product->id}}" action="{{route("produit.destroy",$product->id)}}" method="post">
                                                                             @csrf
                                                                             @method("delete")
@@ -122,17 +145,19 @@
                                                                                document.getElementById({{$product->id}}).submit()
                                                                                "
                                                                                 class="btn1 btn-sm mr-2">
-                                                                                    <i class="fas fa-trash" style="color:#5d3277"></i>
+                                                                                    <i class="fas fa-trash"></i>
                                                                                 </button>
                                                                     </form>
                                                             <a href="{{route("produit.show",$product->id)}}" class="btn1 btn-warning btn-sm ">
-                                                            <i class="fas fa-eye" style="color:#5d3277"></i></a>
+                                                            <i class="fas fa-eye" ></i></a>
                                                                     
                                                         </td> 
                                                        </tr>
                                                     @endforeach
                                                 </tbody>
-                                            </table>
+                                            </table><div  class="justify-content-center  d-flex flex-row " style="color:#003048">
+                                                {{ $produit->links() }}
+                                            </div> 
                                             <script src="javascript.js"></script>
                                             </div>
                                          </div>

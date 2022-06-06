@@ -51,146 +51,156 @@
                                     @method('put')
                                        <div class="row mb-2 flex-container">
                                         <div class="col-xs-12 col-sm-4 ">
-                                                <label for="nom"   style="font-size:19px;color:black" class="col-form-label">Nom </label>
+                                                <label for="nom"   
+                                                class="col-form-label labelStyle">Nom 
+                                            </label>
                                                 <span class="required colorr" aria-hidden="true">*</span>
                                                 <input 
                                                 type="text" 
-                                                class="form-control col-md-1 " 
+                                                class="form-control col-md-1 inputText " 
                                                 name="nom" 
-                                                style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                 id="nom" 
                                                 value="{{$fournisseur->nom}}"><br>
                                         </div>
                                         <div class="col-xs-12 col-sm-3">
-                                                <label for="genre"  class="col-form-label" 
-                                                 style="font-size:19px;color:black">Genre </label>
+                                                <label 
+                                                for="genre"  
+                                                class="col-form-label labelStyle" 
+                                                 >Genre 
+                                                </label>
                                                 <span class="required colorr" aria-hidden="true">*</span>
                                                 <input 
-                                                type="text" 
-                                                class="form-control col-md-1 " 
-                                                name="genre" 
-                                                style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                                id="genre" 
-                                                value="{{$fournisseur->genre}}"><br>
+                                                    type="text" 
+                                                    class="form-control col-md-1 inputText" 
+                                                    name="genre" 
+                                                    id="genre" 
+                                                    value="{{$fournisseur->genre}}"><br>
                                            </div> 
                                         </div> 
                                            <div class=" mb-2 row flex-container">
                                             <div class="col-xs-12 col-sm-4"> 
-                                                    <label for="titre" style="font-size:19px;color:black"  class="col-form-label">Titre :</label>
+                                                    <label for="titre" 
+                                                     class="col-form-label labelStyle">Titre :</label>
                                                     <span class="required colorr" aria-hidden="true">*</span>
                                                     <input 
-                                                    type="text" 
-                                                    class="form-control col-md-2"  
-                                                    value="{{$fournisseur->titre}}" 
-                                                    id="titre" 
-                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                                    name="titre"><br>
+                                                        type="text" 
+                                                        class="form-control col-md-2 inputText"  
+                                                        value="{{$fournisseur->titre}}" 
+                                                        id="titre" 
+                                                        name="titre"><br>
                                             </div>
                                             <div class="col-xs-12 col-sm-4">
-                                                <label for="domaine_activite"   style="font-size:19px;color:black" class="col-form-label">Domaine activité </label>
+                                                <label 
+                                                for="domaine_activite"   
+                                                class="col-form-label labelStyle ">Domaine activité :
+                                            </label>
                                                 <span class="required colorr" aria-hidden="true">*</span>
-                                           {{--    <input 
-                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
+                                              <input 
                                                     type="text" 
                                                     id=" domaine_activite" 
                                                     name="domaine_activite"
-                                                    class="form-control col-md-4"  
-                                                    value="{{$fournisseur->domaine_activite}}" > --}}<br>
+                                                    class="form-control col-md-4 inputText"  
+                                                    value="{{$fournisseur->domaine_activite}}" ><br>
                                             </div>
                                            </div>
                                            <div class=" mb-2 row flex-container">
                                             <div class="col-xs-12 col-sm-4"> 
-                                                <label for="adresse"    style="font-size:19px;color:black" class="col-form-label">Adresse </label>
+                                                <label 
+                                                for="adresse"    
+                                                class="col-form-label labelStyle">Adresse :
+                                            </label>
                                                 <span class="required colorr" aria-hidden="true">*</span>
                                                 <input  
-                                                class="form-control col-md-2"   
-                                                value="{{$fournisseur->adresse}}" 
-                                                id="adresse" 
-                                                style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                                name="adresse">
+                                                    class="form-control col-md-2 inputText"   
+                                                    value="{{$fournisseur->adresse}}" 
+                                                    id="adresse" 
+                                                    name="adresse">
                                            </div>
                                            <div class="col-xs-15 col-sm-2">
-                                            <label for="code_postal"   style="font-size:19px;color:black" class="col-form-label">Code postale</label>
-                                            <span class="required colorr" aria-hidden="true">*</span>
+                                                <label 
+                                                for="code_postal"   
+                                                class="col-form-label labelStyle">Code postale :
+                                            </label>
+                                                <span class="required colorr" aria-hidden="true">*</span>
                                             <input 
-                                            style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                            type="text" 
-                                            class="form-control col-md-2" 
-                                            value="{{$fournisseur->code_postal}}"  
-                                            id="code_postal" 
-                                            name="code_postal">
+                                                type="text" 
+                                                class="inputText form-control col-md-2" 
+                                                value="{{$fournisseur->code_postal}}"  
+                                                id="code_postal" 
+                                                name="code_postal">
                                            </div>
                                            </div>
                                            <div class="mb-2 row flex-container">
                                                 <div class="col-xs-12 col-sm-4">
-                                                    <label for="pays"  style="font-size:19px;color:black"   class="col-form-label">Pays:</label><br>
+                                                    <label for="pays"  
+                                                      class=" labelStyle col-form-label">Pays:</label><br>
                                                     <input
-                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                     type="text" 
-                                                    class="form-control col-md-2" 
+                                                    class="form-control col-md-2 inputText" 
                                                     value="{{$fournisseur->pays}}" 
                                                     id="pays" 
                                                     name="pays">
                                                 </div>
                                                     <div class="col-xs-12 col-sm-4">
-                                                    <label for="ville"   style="font-size:19px;color:black" class="col-form-label">Ville:</label>
+                                                    <label 
+                                                        for="ville"
+                                                        class="col-form-label labelStyle">Ville:</label>
                                                     <input
-                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                                    type="text" 
-                                                    class="form-control col-md-2" 
-                                                    value="{{$fournisseur->ville}}" 
-                                                    id="ville" 
-                                                    name="ville">
+                                                        type="text" 
+                                                        class="form-control col-md-2 inputText" 
+                                                        value="{{$fournisseur->ville}}" 
+                                                        id="ville" 
+                                                        name="ville">
                                                 </div>
                                             </div>
                                                 <div class=" mb-2 row flex-container">
                                                     <div class="form-group mb-3 ">                                                    
-                                                        <label for="curriel"  
-                                                        style="font-size:19px;color:black"
-                                                        class="col-form-label">Curriel :</label>
+                                                        <label 
+                                                        for="curriel"  
+                                                        class=" labelStyle col-form-label">Curriel :</label>
                                                     <input
-                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                                    type="text" 
-                                                    class="form-control col-md-2" 
-                                                    value="{{$fournisseur->curriel}}" 
-                                                    id="curriel" 
-                                                    name="curriel">
+                                                        type="text" 
+                                                        class="form-control col-md-2 inputText" 
+                                                        value="{{$fournisseur->curriel}}" 
+                                                        id="curriel" 
+                                                        name="curriel">
                                               </div>
                                               <div class="form-group mb-3 ">       
-                                                  <label for="telephone"   
-                                                  style="font-size:19px;color:black"
-                                                  class="col-form-label">Télephone :</label>
+                                                  <label 
+                                                        for="telephone"   
+                                                        class=" labelStyle col-form-label">Télephone :
+                                                  </label>
                                                     <span class="required colorr" aria-hidden="true">*</span>
                                                     <input 
-                                                    style="background-color:white ;color:black;font-size:19px;padding:8px " 
-                                                    type="text" 
-                                                    class="form-control col-md-2"  
-                                                    value="{{$fournisseur->telephone}}" 
-                                                    id="telephone" 
-                                                    name="telephone">
+                                                            type="text" 
+                                                            class="inputText form-control col-md-2"  
+                                                            value="{{$fournisseur->telephone}}" 
+                                                            id="telephone" 
+                                                            name="telephone">
                                                 </div>
                                              </div>
                                              <div class="row mb-2 flex-container">
                                                 <div class="form-group mb-3 ">
-                                                      <label for="site_internet"  
-                                                      style="font-size:19px;color:black"
-                                                      class="col-form-label"> Site internet :</label>
+                                                      <label 
+                                                      for="site_internet"  
+                                                      class=" labelStyle col-form-label"> Site internet :
+                                                    </label>
                                                       <input 
-                                                      style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                       id="ContentPlaceHolder_TabsControl_ctl02_BusinessEditFormOld_WebSiteField" 
-                                                      type="text" class="form-control col-md-2" 
+                                                      type="text" 
+                                                      class="form-control col-md-2 inputText" 
                                                        value="{{$fournisseur->site_internet}}" 
                                                        id="site_internet" name="site_internet"><a id="ContentPlaceHolder_TabsControl_ctl02_BusinessEditFormOld_WebSiteLink" href="http://" target="_blank"><i class="fa fa-external-link"></i></a>
                                                 </div>
                                                 <div class="form-group mb-3 ">
-                                                    <label for="categorie_id"  
-                                                    style="font-size:19px;color:black"
-                                                    class="col-form-label">Categorie </label>
+                                                    <label 
+                                                        for="categorie_id"  
+                                                        class="col-form-label labelStyle">Categorie :
+                                                    </label>
                                                     <span class="required colorr" aria-hidden="true">*</span>
                                                     <input 
-                                                            style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                             type="text" 
-                                                            class="form-control col-md-4"  
+                                                            class="inputText form-control col-md-4"  
                                                             value="{{$fournisseur->categorie->libele}}"
                                                             id=" categorie_id" 
                                                             name="categorie_id">  
@@ -198,8 +208,7 @@
                                             </div>
                                             <div class="row flex-container col-sm-6" style="margin:auto">
                                                 <label for="note"                                                                    
-                                                 style="font-size:19px;color:black"
-                                                class="col-form-label">notes : </label>
+                                                class="col-form-label labelStyle">notes : </label>
                                                 <textarea name="note" id="note" 
                                                 style="background-color:white ;color:black;font-size:19px;padding:8px " 
                                                 class="form-control col-md-4" cols="40" rows="10"   placeholder="" >{{$fournisseur->note}}</textarea>

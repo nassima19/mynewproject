@@ -7,6 +7,9 @@ use App\Models\produit;
 use App\Models\benificiere;
 use App\Models\fournisseur;
 use Illuminate\Http\Request;
+use App\Exports\BenificiereExport;
+use App\Imports\BenificiereImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StorebenificiereRequest;
 use App\Http\Requests\UpdatebenificiereRequest;
 
@@ -22,7 +25,7 @@ class BenificiereController extends Controller
         //
         $benificiares = benificiere::all();
         return view("benificiere.index")->with([
-            "benificiares"=> $benificiares
+            "benificiares"=> benificiere::paginate(10)
         ]);
     }
 
@@ -81,7 +84,7 @@ class BenificiereController extends Controller
   
           ]); 
           return redirect()->route("benificiere.index")->with([
-              "success"=> "Bénificiere crée avec succes"
+              "success"=> "Bénéficiaire crée avec succès"
           ]);
     }
 
@@ -94,38 +97,42 @@ class BenificiereController extends Controller
     public function show(benificiere $benificiere)
     {
         //
-        $chargenonfacture = Charge::where('benificiere_id',)->get();
         $benificiere = benificiere::find($benificiere->id);
+        $charges = Charge::whereNotIn("id",$benificiere->charges->pluck("id"))->get();
         return view('benificiere.show')->with([
             'benificiere'=> $benificiere,
             "charges"=>$charges,
         ]);
     }
-    public function Charge_benificier(Request $request ,$benificiaire)
+    public function Charge_benificier(Request $request ,$benificiere)
     {
-       
-    
        $charges = $request->input('charges');
-       $benificiaire = benificiere::find($benificiaire);
+       $benificiere = benificiere::find($benificiere);
         $this->validate($request,[
-              "charges"=> "required",
-              ]);
-               $fournisseur =fournisseur::all();
-               $produit = produit::all(); 
-               foreach($request->charges as $charge)
-               {
-                 $charge_Benificier = charge::where('id','=',$charge)->first();
-                 $charge_Benificier->update([
-                 'benificiare_id'=>$benificiaire,
-                 ]);  
-          }
-          return view("benificiere.show")->with([
-               "produit" => $produit,
-               "fournisseur"=>$fournisseur,
-               "charges"=> $charge,
-           ]);
+            "charges"=> "required",
+        ]);
+        $fournisseur =fournisseur::all();
+        $produit = produit::all(); 
+        $benificiere->charges()->attach($charges);
+       
+        $charges = Charge::all();
+        return redirect()->route("benificiere.show",$benificiere->id);
    } 
-
+   //
+   ////////////
+   
+   public function Annuler_Charge(Request $request ,$benificiere)
+    {
+   /*      dd($request->charges); */
+       $charges = $request->input('charges');
+        $this->validate($request,[
+            "charges"=> "required",
+        ]);
+        $benificiere = benificiere::find($benificiere);
+        $charges = $benificiere->charges->whereNotIn("id",$charges);
+        $benificiere->charges()->sync($charges);
+        return redirect()->route("benificiere.show",$benificiere->id);
+   } 
     /**
      * Show the form for editing the specified resource.
      *
@@ -135,7 +142,6 @@ class BenificiereController extends Controller
     public function edit(benificiere $benificiere)
     {
         //
-       
        return view("benificiere.edit")->with([
            "benificiere" =>$benificiere,
            
@@ -173,7 +179,7 @@ class BenificiereController extends Controller
           $ville = $request->ville;
           $pays = $request->pays;
           $number_employe=$request->number_employe;
-         $benificiere->update([
+          $benificiere->update([
               "nom"=>   $nom ,
               "genre"=>  $genre,              
               "curriel"=>  $curriel ,
@@ -185,7 +191,7 @@ class BenificiereController extends Controller
   
           ]); 
           return redirect()->route("benificiere.index")->with([
-              "success"=> "Bénificiere modifier avec succes"
+              "success"=> "Bénéficiaire modifier  avec succès"
           ]);
     }
 
@@ -202,7 +208,27 @@ class BenificiereController extends Controller
          $benificiere->delete();
          //redirect user
          return redirect()->route("benificiere.index")->with([
-             "success"=> "Benificiere supprimée avec succes"
+             "success"=> "bénéficiaire supprimée avec succès"
          ]);
     }
+    public function search_benificiaire()
+    {
+        $search_text=$_GET['q'];
+        $benificiaire=benificiere::where('nom','like','%'.$search_text.'%')->get();  /* dd($benificiaire); */
+        return view('benificiere.search',compact('benificiaire'));
+      
+    } public function export() 
+{
+   return Excel::download(new BenificiereExport, 'bénéficiaires.xlsx');
 }
+public function  upload_beneficiare(Request $request)
+{  
+    Excel::import(new BenificiereImport, $request->file);
+  
+     return redirect()->route('benificiere.index')->with('success', 'bénéficiaires Imported avec succès');
+}
+
+public function  import_beneficiare(){
+    return view('Benificiere.import');
+}
+}   

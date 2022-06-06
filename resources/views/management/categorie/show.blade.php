@@ -21,7 +21,7 @@
                               <div class="col-md-12 ">
                                   <div class="d-flex flex-row justify-content-between align-items-center pb-2">
                                       <h3 class="text-secondary border-bottom mb-3 p-1"> 
-                                        <i class="fas fa-eye" style="color:#a45e5f"></i> Détail de la categorie {{$categorie->libele}}
+                                        <i class="fas fa-eye" style="color:#a45e5f"></i> Détail de la catégorie {{$categorie->libele}}
                                        </h3>
                                         <a type="button" class="close btn-close " href="{{route("categorie.index")}}"></a>
                                   </div>
@@ -29,17 +29,22 @@
                                     @csrf
                                     @method('put')
                                     <div class="form-group col-md-4" style="padding-left: 40px">
-                                    <label for="name" class="col-form-label" style=" font-size:19px">Libelle :</label><br>
-                                    <input name="libele"
-                                     type="text" 
-                                     class="form-control " 
-                                     id="name" 
-                                      style="padding: 8px; font-size:20px;" 
-                                      placeholder=""
-                                      value="{{$categorie->libele}}"><br>
-                                    </div>
-                                    <div class="form-group col-md-8" style="padding-left: 40px">
-                                        <label for="description" class="col-form-label" style=" font-size:19px">Description : </label><br>
+                                        <label 
+                                            for="name" 
+                                            class="col-form-label" 
+                                            style=" font-size:19px">Libelle :
+                                    </label><br>
+                                            <input 
+                                                name="libele"
+                                                type="text" 
+                                                class="form-control " 
+                                                id="name" 
+                                                style="padding: 8px; font-size:20px;" 
+                                                placeholder=""
+                                                value="{{$categorie->libele}}"><br>
+                                            </div>
+                                        <div class="form-group col-md-8" style="padding-left: 40px">
+                                            <label for="description" class="col-form-label" style=" font-size:19px">Description : </label><br>
                                         <textarea name="description"  
                                          class="form-control "
                                          cols="60"

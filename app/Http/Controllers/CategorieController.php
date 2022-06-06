@@ -23,8 +23,9 @@ class CategorieController extends Controller
     public function index()
     {
         //
+        $categorie= Categorie::all();
         return view("management.categorie.index")->with([
-            "categorie"=> Categorie::paginate(5)
+            "categorie"=> Categorie::paginate(8), 
         ]);
     }
 
@@ -123,7 +124,7 @@ class CategorieController extends Controller
         ]);
         //redirect user
         return redirect()->route("categorie.index")->with([
-            "success"=> "Categorie modifier avec succes"
+            "success"=> "Categorie modifier avec succès"
         ]);
     }
 
@@ -139,7 +140,7 @@ class CategorieController extends Controller
         $categorie->delete();
         //redirect user
         return redirect()->route("categorie.index")->with([
-            "success"=> "Categorie supprimée avec succes"
+            "success"=> "Categorie supprimée avec succès"
         ]);
 
     }

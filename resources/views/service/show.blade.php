@@ -33,14 +33,11 @@
                             <div class="col-md-12">
                                 <div class="d-flex flex-row justify-content-between align-items-center  pb-2">
                                     <h3 class="text-secondary border-bottom mb-3 p-2" style="color: #6D8B74"> 
-                                        <i class="fas fa-eye" style="font-size:30px;color:#a45e5f "></i>  Modifier la service {{$service->nom}}
+                                        <i class="fas fa-eye" style="font-size:30px;color:#a45e5f "></i>  Détail de la service {{$service->nom}}
                                       </h3>
                                       <a type="button" class="close btn-close " style="background-color: #a45e5f"  href="{{route("service.index")}}"></a>
 
                                 </div>
-                                    <form action="{{route("service.update",$service->id)}}" method="post"> 
-                                    @csrf
-                                    @method('put')
                                     <div class="row ">
                                         <div class=" form-group  col- col-sm-4"  style="padding-left: 70px" > 
                                                <label for="nom"
@@ -72,11 +69,7 @@
                                                                         placeholder="">
                                                                 {{$service->description}} </textarea>
                                                             </div>
-                                                        </div> <br><br>
-                                                                    <div class="form-group pull-right" >
-                                                                                <button type="submit "  class="btn2 fw-bold "  > Modifier</button>
-                                                                    </div>
-                                                 </form>
+                                                        </div> 
                                            </div>
                                      </div>
                                </div>

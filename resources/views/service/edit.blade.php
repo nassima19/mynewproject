@@ -42,7 +42,7 @@
                                     @csrf
                                     @method('put')
                                     <div class="row ">
-                                        <div class=" form-group  col- col-sm-4"  style="padding-left: 70px" > 
+                                        <div class=" form-group col-sm-4"  style="padding-left: 70px" > 
                                                <label for="nom"
                                                  class="col-form-label"
                                                  style=" font-size:20px;color:black"
@@ -57,24 +57,21 @@
                                         </div>
                                     </div><br>
                                              <div class="row ">
-                                                            <div class=" form-group col-sm-7"  style="padding-left: 70px" >
-                                                                <label class="col-form-label" 
-                                                                    for="description" 
-                                                                    style="font-size:20px;color:white"
-                                                                    style="color: #2B4C59">Description : 
-                                                                </label>
+                                                            <div class=" form-group col-sm-7 "  style="padding-left: 70px" >
+                                                                <label class="col-form-label" for="description"  style="background-color:transparent font-size:20px;color:black">Description :
+                                                                </label><br>
                                                                     <textarea   
                                                                             name="description" 
                                                                             id="description" 
-                                                                            style="background-color:white ;color:black;padding:0px;font-size:19px;"
+                                                                           style="color:black;padding:0px;font-size:19px;"
                                                                             class="form-control "
-                                                                            cols="40" rows="8"  
+                                                                            cols="25" rows="8"  
                                                                             placeholder="">
                                                                 {{$service->description}} </textarea>
                                                             </div>
                                                                 </div> <br><br>
                                                                     <div class="form-group pull-right" >
-                                                                                <button type="submit "  class="btn2 fw-bold "  > Modifier</button>
+                                                                                <button type="submit "  class="btn2"> Modifier</button>
                                                                     </div>
                                                             </form>
                                                     </div>

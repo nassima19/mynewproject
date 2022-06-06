@@ -6,8 +6,12 @@ use App\Models\piece;
 use App\Models\charge;
 use App\Models\produit;
 use App\Models\fournisseur;
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
+use App\Exports\ChargeExport;
+use App\Imports\ChargeImport;
 use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StorechargeRequest;
 use App\Http\Requests\UpdatechargeRequest;
 
@@ -26,7 +30,7 @@ class ChargeController extends Controller
         $charge=charge::all();
         $piece = piece::all();
         return view("charge.index")->with([
-         "charge"=> $charge,
+         "charge"=> charge::paginate(10),
          "produit"=>$produit,
          "fournisseur"=>$fournisseur,
          "piece"=> $piece,
@@ -44,7 +48,7 @@ class ChargeController extends Controller
         
       /*   $fournisseur = fournisseur::all(); */
         $produit = produit::all();
-        $fournisseur = fournisseur::all();/* :where('categorie_id','==',$produit->categorie_id)->first(); */
+        $fournisseur = fournisseur::all();
         $piece = piece::all();
         return view('charge.create',compact('produit','fournisseur','piece'));
     }
@@ -55,13 +59,14 @@ class ChargeController extends Controller
      * @param  \App\Http\Requests\StorechargeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorechargeRequest $request)
+    public function store(StorechargeRequest $request )
     {
         //
+   
         $this->validate($request,[
             "qte"=> "required",
-              "taxes"=>"required",
-            "date"=> "required",
+            "taxes"=>"required",
+            "date"=> "string",
              "statu"=> "required|min:2",
               "description"=> "min:3", 
              "remarque"=> "min:5", 
@@ -114,7 +119,7 @@ class ChargeController extends Controller
                           ]);
                         } 
                 return redirect()->route("charge.index")->with([
-              'success','fournisseur ajouter avec succes'
+              'success','Charge ajouter avec succès'
           ]);
     }
 
@@ -166,7 +171,7 @@ class ChargeController extends Controller
         $this->validate($request,[
               "qte"=> "required",
               "taxes"=>"required",
-               "date"=> "required",
+               "date"=> "string",
                "statu"=> "required|min:2",
                "description"=> "min:3", 
               "remarque"=> "min:5", 
@@ -217,7 +222,7 @@ class ChargeController extends Controller
                          ]);
                        } 
                 return redirect()->route("charge.index")->with([
-              'success','fournisseur modifier avec succes'
+              'success','Charge modifier avec succès'
           ]);
     }
 
@@ -234,7 +239,7 @@ class ChargeController extends Controller
         $charge->delete();
         //redirect user
         return redirect()->route("charge.index")->with([
-            "success"=> "Charge supprimée avec succes"
+            "success"=> "Charge supprimée avec succès"
         ]);
     }
     //
@@ -258,15 +263,15 @@ class ChargeController extends Controller
             "chargenonfacture"=> $chargenonfacture,
             "produit"=>$produit,
             "fournisseur"=>$fournisseur,
-            "piece"=> $piece,
+            "piece"=> piece::paginate(7),
      ]);}
 
      //
      //lier un charge à un facture
      public function charge_Facturé(Request $request)
      {
-        /*  dd($request->charges); */
-     
+       
+     //
         $depence = $request->input('charges');
         $piece = $request->input('piece');
         $facture = Piece::where('id', $piece)->first();
@@ -288,12 +293,22 @@ class ChargeController extends Controller
                 "fournisseur"=>$fournisseur,
                 "piece"=> $facture,
             ]);
-    } 
-  
-   /*  public function sortBy()
+    }     
+    public function export_charge() 
     {
-        $produit = produit::all()
-        ->sortBy('produit_id');
-    } */-
+       return Excel::download(new ChargeExport, 'charges.xlsx');
+    }
+
+
+    public function  upload_charge(Request $request)
+  {  
+    Excel::import(new ChargeImport, $request->file);
+  
+     return redirect()->route('charge.index')->with('success', 'charge Imported avec succès');
+ }
+
+public function  import_charge(){
+    return view('charge.import');
+}
    }
   

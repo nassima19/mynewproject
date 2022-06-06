@@ -25,17 +25,9 @@
                                         </h3>
                                         <a type="button" class="btn-close close " href="{{route("produit.index")}}"></a>
                                   </div>
-                                    <form action="{{route("produit.show",$produit->id)}}" method="post"> 
-                                      @csrf
-                                      @method('put')
-                                      {{-- ************************************************************************ --}}
-                                     {{--  <div class="rounded-lg w-full">
-                                        <img src="/imag{{$produit->image}}" class="rounded-lg cursor-pointer hover-drope-shadow transition duration-300" alt="{{$produit->libele}}" >
-                                    </div> --}}
-                                    {{-- ********************************************** --}}
                                       <div class="row ">
                                         <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" > 
-                                            <label for="libele" class="col-form-label" style=" font-size:19px">Libelle :</label><br>
+                                            <label for="libele" class="col-form-label labelStyle">Libelle :</label><br>
                                             <input 
                                               style="padding: 8px; font-size:20px;"
                                               name="libele"
@@ -47,7 +39,7 @@
                                              <br>
                                         </div>
                                         <div class="  form-group  col-sm-5" style="padding-left: 100px" > 
-                                          <label for="code_barre" class="col-form-label"  style=" font-size:19px">Code :</label><br>
+                                          <label for="code_barre" class="col-form-label labelStyle">Code :</label><br>
                                             <input name="code_barre" 
                                               type="text"
                                               class="form-control " 
@@ -60,7 +52,7 @@
                                     <br>
                                       <div class="row">
                                         <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" > 
-                                          <label for="methode_paiement"  class="col-form-label"  style=" font-size:19px" >Methode de paiement :</label><br>
+                                          <label for="methode_paiement"  class="col-form-label labelStyle">Methode de paiement :</label><br>
                                           <input 
                                               type="text" 
                                               name="methode_paiement"
@@ -70,7 +62,7 @@
                                               value="{{$produit->methode_paiement}}">
                                             </div>
                                             <div class="  form-group  col-sm-5" style="padding-left: 100px" >
-                                            <label for="categorie_id"  class="col-form-label"  style=" font-size:19px" >Categorie :</label><br>
+                                            <label for="categorie_id"  class="labelStyle col-form-label">Categorie :</label><br>
                                             <input 
                                                 type="text" 
                                                 name="categorie_id"
@@ -83,19 +75,18 @@
                                       </div><br>
                                       <div class="row ">
                                         <div class=" col-md-7"   style="padding-left: 70px"> 
-                                          <label for="description" class="col-form-label" style=" font-size:19px">Description : </label><br>
+                                          <label for="description" class="col-form-label labelStyle" >Description : </label><br>
                                                   <textarea
                                                    name="description"
                                                     id="description"
                                                      class="form-control"
-                                                      cols="40"
-                                                       rows="10"
+                                                      cols="25"
+                                                       rows="5"
                                                        style="padding: 13px; font-size:20px;"
                                                        placeholder=""
                                                        >{{$produit->description}}</textarea>  
                                         </div> 
                                       </div>
-                                    </form>
                                  </div>
                               </div>
                          </div>

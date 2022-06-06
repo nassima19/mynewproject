@@ -4,7 +4,12 @@
     @endsection
     @section('style')
           <link rel="stylesheet" href="/css/bootstrap.min.css">
-           <link rel="stylesheet" href="/css/style.css">
+          <link rel="stylesheet" href="/css/style.css">
+          <style>
+               .colorr{
+                  color: red;
+                }
+          </style>
     @endsection
     <x-slot name="header">
       <h2 class="font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:#a45e5f;font-size:28px">
@@ -28,30 +33,25 @@
                               <div class="col-md-12">
                                   <div class="d-flex flex-row justify-content-between align-items-center  pb-2">
                                       <h3 class="text-secondary border-bottom mb-3 p-1">  
-                                        <i class="fa fa-plus" style="font-size:30px;color:#a45e5f "></i> Ajouter nouveau piece
+                                        <i class="fa fa-plus" style="font-size:30px;color:#a45e5f "></i> Ajouter nouveau pièce
                                         </h3>
                                   </div>
-                                {{--   <script>
-                                      var a = 1;
-                                      function numeropiece(){
-                                            var piece = document.getElementById("numero");
-                                            piece.value = a;
-                                            a++;
-                                    }  
-                                     
-                                </script> --}}
                                   <form action="{{route("piece.store")}}" method="post"> 
                                     @csrf
                                    <div class=" form-group  col-sm-5 my-4"  style="padding-left: 50px" >
                                                 <label 
                                                     for="type_piece"  
-                                                    class="col-form-label" 
-                                                    style=" font-size:19px">Type de piece : 
-                                                </label><br>
+                                                    class="col-form-label labelStyle">Type de piece 
+                                                </label>
+                                                <span class="required colorr" aria-hidden="true">*</span>
+                                                <br>
                                                         <select 
                                                                 name="type_piece"  
-                                                                class="form-control" 
-                                                                style="color:white ;background-color: #a45e5f;padding: 8px; font-size:20px;" >
+                                                                class="form-control "    style=" background-color:#a45e5f ;
+                                                                color:white;
+                                                                padding: 8px;
+                                                                 font-size:19px;"
+                                                                style=" font-size:20px;" >
                                                                 <option value="Facture"  selected="select" >Facture</option>
                                                                 <option value="Bound"  selected="select" >Bound</option>
                                                                 <option value="0"   >choisir type de piece</option>
@@ -60,9 +60,9 @@
                                         <div class=" form-group  col-sm-5 my-4"  style="padding-left: 50px" > 
                                                      <label 
                                                              for="numero"  
-                                                             class="col-form-label" 
-                                                             style=" font-size:19px">Numéro :
+                                                             class="labelStyle col-form-label" >Numéro
                                                       </label>
+                                                      <span class="required colorr" aria-hidden="true">*</span>
                                                          <input 
                                                              style="padding: 8px; font-size:20px;"
                                                              name="numero"
@@ -72,10 +72,11 @@
                                         </div>       
                                             <div class=" form-group col-sm-5 my-4"  style="padding-left: 50px" >
                                                     <label 
-                                                            class="col-form-label " 
-                                                            for="paiement_date" 
-                                                            style="font-size:19px;color:black">Date de paimement: 
-                                                    </label><br>
+                                                            class="col-form-label labelStyle" 
+                                                            for="paiement_date" >Date de paimement
+                                                            <span class="required colorr" aria-hidden="true">*</span>
+                                                        </label>
+                                                    <br>
                                                             <input 
                                                                 name="paiement_date"
                                                                 class="form-control " 
@@ -85,8 +86,7 @@
                                                     <div class=" form-group  col-sm-5 my-4"  style="padding-left: 50px" > 
                                                         <label 
                                                                 for="bank_account"  
-                                                                class="col-form-label" 
-                                                                style=" font-size:19px">Compte bancaire :
+                                                                class="col-form-label labelStyle" >Compte bancaire
                                                        </label>
                                                             <input 
                                                                 style="padding: 8px; font-size:20px;"
@@ -97,8 +97,7 @@
                                                     </div>   
                                                         <div class=" form-group  col-sm-8 my-4"  style="padding-left: 50px" >
                                                                         <label for="note" 
-                                                                                class="col-form-label" 
-                                                                                style=" font-size:19px">Note : 
+                                                                                class="col-form-label labelStyle">Note 
                                                                        </label><br>
                                                                         <textarea  name="note"
                                                                             id="note"
@@ -109,8 +108,8 @@
                                                                         </textarea>
                                                         </div>
                                                             <div class="form-group pull-right my-4" >
-                                                                            <button type="submit "  class="btn2 "  ><i class="fa fa-save"></i> Enregistrer</button>
-                                                                            <button class="btn2 "  ><a type="button" style="text-decoration: none; color:white"  href="{{route("piece.index")}}" ><i class="fa fa-times"></i>Annuler</a></button>
+                                                                            <button type="submit "  class="btn2 "  > Enregistrer <i class="fa fa-save" style="color: #efc8b1"></i></button>
+                                                                            <button class="btn2 "  ><a type="button" style="text-decoration: none; color:white"  href="{{route("piece.index")}}" >Annuler <i class="fa fa-times" style="color: #efc8b1"></i></a></button>
                                                               </div>
                                         
                                   </form>

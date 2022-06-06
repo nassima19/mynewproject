@@ -25,8 +25,8 @@ class ServiceController extends Controller
            //  
             $service=service::all();
            return view("service.index")->with([
-            "service"=> service::paginate(5)
-        ]);
+            "service"=>service::paginate(8) 
+                ]);
     }
 
     /**
@@ -65,7 +65,7 @@ class ServiceController extends Controller
         //redirect user
         
         return redirect()->route("service.index")->with([
-            'success'=>'Service ajouter avec succes'
+            'success'=>'Service ajouter avec succès'
         ]);
     }
 
@@ -123,7 +123,7 @@ class ServiceController extends Controller
         //redirect user
         
         return redirect()->route("service.index")->with([
-            'success'=>'Service ajouter avec succes'
+            'success'=>'Service modifier avec succès'
         ]);
     }
 
@@ -139,7 +139,7 @@ class ServiceController extends Controller
         $service->delete();
         //redirect user
         return redirect()->route("service.index")->with([
-            "success"=> "Service supprimée avec succes"
+            "success"=> "Service supprimée avec succès"
         ]);
     }
     public function search()

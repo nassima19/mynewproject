@@ -21,14 +21,24 @@
                                 <div class="col-md-12 ">
                                     <div class="d-flex flex-row justify-content-between align-items-center  pb-2">
                                         <h3 class="text-secondary border-bottom mb-3 p-2"> 
-                                          <i class="fa fa-plus" style="font-size:30px;color:#a45e5f"></i> Ajouter nouveau categorie
+                                          <i class="fa fa-plus" style="font-size:30px;color:#a45e5f"></i> Ajouter nouveau catégorie
                                           </h3>
                                     </div>
                                     <form action="{{route("categorie.store")}}" method="post"> 
                                       @csrf
                                       <div class="form-group col-md-4" style="padding-left: 40px">
-                                        <label for="name" class="col-form-label" style=" font-size:19px">Libelle :</label><br>
-                                        <input name="libele" type="text" class="form-control " id="name"  style="padding: 8px; font-size:20px;" placeholder="libelle categorie"><br>
+                                        <label 
+                                        for="name" 
+                                        class="col-form-label" 
+                                        style=" font-size:19px">Libelle :
+                                      </label><br>
+                                        <input 
+                                          name="libele" 
+                                          type="text" 
+                                          class="form-control " 
+                                          id="name"  
+                                          style="padding: 8px; font-size:20px;" 
+                                          placeholder="libelle categorie"><br>
                                       </div>
                                      
                                           <div class="form-group col-md-6" style="padding-left: 40px">
@@ -41,10 +51,8 @@
                                                placeholder="description"></textarea>
                                           </div><br><br>
                                           <div class="form-group  pull-right" >
-                                            <button type="submit "  class="btn2  " ><i class="fa fa-save"></i> Enregistrer</button>
-{{--                                             <button  type="reset"  class="btn2 " href="{{ route('categorie.index') }}" ><i class="fa fa-close"></i> Annuler</button>
- --}}                                         <button class="btn2 "><a type="button" style="text-decoration: none;  color:white"  href="{{route("categorie.index")}}" ><i class="fa fa-times"></i>Annuler</a></button>
-
+                                            <button type="submit " class="btn2 "> Enregistrer <i class="fa fa-save" style="color: #efc8b1"></i></button>
+                                            <button class="btn2 "><a type="button" style="text-decoration: none;  color:white"  href="{{route("categorie.index")}}" >Annuler <i class="fa fa-times" style="color: #efc8b1"></i></a></button>            
                                           </div>
                                     </form>
                                       </div>

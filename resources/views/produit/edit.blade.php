@@ -38,7 +38,7 @@
                                     <br>
                                     <div class="row ">
                                         <div class=" form-group  col-sm-5"  style="padding-left: 70px" > 
-                                              <label for="libele"  class="col-form-label" style=" font-size:19px">Libelle :</label>
+                                              <label for="libele"  class="col-form-label labelStyle" >Libelle :</label>
                                               <input style="padding: 8px; font-size:20px;"
                                               name="libele"
                                               type="text" 
@@ -47,7 +47,7 @@
                                               placeholder="" value="{{$produit->libele}}">
                                           </div>
                                           <div class=" form-group  col- col-sm-5"  style="padding-left: 100px" >
-                                              <label for="code_barre"  class="col-form-label" style=" font-size:19px">Code :</label>
+                                              <label for="code_barre"  class="col-form-label labelStyle">Code :</label>
                                               <input name="code_barre" type="text"
                                                     class="form-control " 
                                                     id="code_barre"
@@ -57,7 +57,7 @@
                                     </div> <br>
                                     <div class="row ">
                                         <div class=" form-group  col- col-sm-5"  style="padding-left: 70px" >
-                                            <label for="categorie_id"  class="col-form-label" style=" font-size:19px">Categorie : </label>
+                                            <label for="categorie_id"  class="col-form-label labelStyle" >Categorie : </label>
                                             <select name="categorie_id"  class="form-control" style="color:white ;background-color:#a45e5f;padding: 8px; font-size:20px;" >
                                                 <option value=""  >choisir une categorie</option>
                                                 @foreach($categorie as $category)
@@ -66,7 +66,7 @@
                                             </select> 
                                        </div> 
                                        <div class=" form-group  col- col-sm-5"  style="padding-left: 100px" >
-                                      <label for="methode_paiement"  class="col-form-label" style=" font-size:19px">Method paiement :</label>  <br>
+                                      <label for="methode_paiement"  class="col-form-label labelStyle">Method paiement :</label>  <br>
                                       <select  name="methode_paiement"   class="form-control " style="color:white ;background-color:#a45e5f;padding: 8px; font-size:20px;">
                                         <option value=""  selected="select" >choisir une methode</option>
                                         <option value="Espéce">Espéce</option>
@@ -76,22 +76,14 @@
                                     </select>
                                     </div>
                                   </div><br><br>
-                                  {{-- **************************** --}}
-                               {{--    <div class="row ">
-                                  <div class="d-flex justify-content-center my-3 w-100 text-center">
-                                    <img src="{{asset('storage/images/products/'.$product->image)}}" 
-                                    alt="{{$product->title}}" class=" w-75 rounded">
-                                </div>
-                                  </div> --}}
-                                  {{-- ********************** --}}
                                   <div class="row ">
                                     <div class=" form-group  col- col-sm-8"  style="padding-left: 70px" >
                                             <label for="description" class="col-form-label" style=" font-size:19px">Description : </label><br>
                                             <textarea  name="description"
                                             id="description"
                                              class="form-control col-md-2"
-                                              cols="40"
-                                               rows="8"
+                                              cols="25"
+                                               rows="5"
                                                style="padding: 13px; font-size:20px;"> {{$produit->description}}</textarea>
                                           </div><br>
                                         </div>

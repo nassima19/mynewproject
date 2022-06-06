@@ -35,7 +35,7 @@
                                         <x-slot name="header">
                                            <h2 class="d-flex flex-row justify-content-end   font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:#728a8d;font-size:28px">
                                                 <a href="{{route("piece.create")}}">
-                                                    <button type="button" class="ajouter"> Ajouter <i class="fa fa-plus-circle" ></i></button>
+                                                    <button type="button" class="ajouter me-3"> Ajouter <i class="fa fa-plus-circle" ></i></button>
                                                 </a>
                                           </h2>
                                         </x-slot>

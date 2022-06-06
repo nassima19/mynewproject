@@ -19,17 +19,16 @@
   }
   /* Navbar links on mouse-over */
   .navbar a:hover {
-    background-color:#BBAAB8;
+    background-color: #87aeb4; 
+   color:#fff;  
     height: 50%;
     overflow: auto;
     border-right-style: dashed;
     transition: 0.3s;
-    color:#725981;
-    
-  }
+}
   /* Current/active navbar link */
   .active {
-    background-color: #ce80b7;
+    background-color: #fcd4b1;
   }
   
   /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
@@ -41,26 +40,19 @@
   } 
   /* ///////////////////////////////////////////////////////// */
   .btn2 {
-    background-color:#a45e5f;
+    background-color:#153e5c;
     border: none;
-    color: white;
+    color: #FFF;
     padding: 12px 16px;
-    font-size: 17px;
+    font-size: 1.5rem;
     cursor: pointer;
     border-radius: 7px;
     transition: 0.3S;
-    font-family:Arial, Helvetica, sans-serif;
-    text-decoration: none;
+    font-family: 'Roboto Slab';
+      text-decoration: none;/* 
+      font-weight: bold; */
   }
-  /* Darker background on mouse-over */
-  .btn2:hover {
-    background-color:#a765a3  ;/*#4c635f;*/
-    color: white;
-  }
-
- /*  .container{
-    background-color: #c00ec0; 
-  } */
+  
   .plus{
       position:right;
       text-decoration: none;
@@ -85,32 +77,84 @@
   }
   .btn1{
     font-size: 15px;
-    background-color:#f9edc2;/* #b195a5 */
+    background-color:#d3dbe1 ;   
+     color:#131f49 ;
   }
   .close{
     font-size: 21px;
-    background-color:#a45e5f ;
-   
+    background-color:#d3dbe1 ;
+  
   }
   .close:hover{
-    background-color:#948391 ;
+    background-color:#efc8b1 ;
  
   }
   .btn1:hover{
-  background-color: #c9abc3;
-  color: #decbc3;
+  background-color: #87aeb4;
+  color: #003048;
   }
   .ajouter{
  background-color:#003048;
  color: #fff;
  padding: 10px 10px;
- font-size: 23px; 
+ font-size: 24px; 
  border-radius:7px;
- transition: 0.3S; 
- font-family:Arial;
- text-decoration: none;
+ transition: 0.3S;  
+   font-weight:' fw-bold' ; 
+ font-family:'Roboto Slab';
+ text-decoration: none;  border: none;
+ outline: 4px solid transparent;
   }
   .ajouter:hover{
-    background-color:#f69000;
+    background-color:#95b6b0;
     transition: .03 time;
+    font-family:'Roboto Slab';
+    color: #153e5c; 
+    padding: 10px 10px;
   }
+  .ajouter:focus{
+      outline: 4px solid red;
+     }
+   
+  .selectchoix{
+   background-color:#a45e5f ;
+   color:white;
+   padding: 8px;
+    font-size:19px;
+  }
+  .inputText{
+    background-color:white ;
+    color:black;
+    font-size:19px;
+    padding:8px ; 
+
+  }
+  .labelStyle{
+    font-size:19px;
+    color:black;
+  }
+  .list{
+    font-weight: bold;
+    font-size:30px;
+    color:#b37f4c;
+  }
+  .titre{
+  color: #2D7B8C; 
+  font-family: 'Roboto Slab';
+  font-weight: 800;
+  font-size:30px;
+  }
+  .chargefactureButton{
+ color:#153e5c;
+ background-color:#87aeb4;
+  }
+  .chargefactureButton:hover{
+    background-color:#efc8b1;
+    color: #153e5c;
+  }
+ .import:hover{
+  color:#f1d8c2;background-color:#5b6678;
+ }
+ .import{
+    color:#003048;background-color:#efc8b1;
+ }

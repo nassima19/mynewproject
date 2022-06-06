@@ -18,8 +18,8 @@ class service extends Model
         'nom',
         'description',
         'user_id',
-/*         'fournisseur_id'
- */        ];
+       'fournisseur_id'
+ ];
         public function fournisseur()
         {
           return $this->belongsTo(fournisseur::class);

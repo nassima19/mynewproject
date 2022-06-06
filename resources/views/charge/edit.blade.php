@@ -6,11 +6,6 @@
     @section('style')
           <link rel="stylesheet" href="/css/bootstrap.min.css">
            <link rel="stylesheet" href="/css/style.css">
-          <style>
-              body{
-                /* background-color:#d5b0d3;  */ 
-            }
-          </style>
     @endsection
     <x-slot name="header">
         <h2 class="font-semibold text-xl leading-tight" style="text-shadow: 4px 4px 5px #a3a3a3;color:rgb(233, 157, 122);font-size:28px">
@@ -39,10 +34,10 @@
                                       <a type="button" class="close btn-close " href="{{route("charge.index")}}"></a>
                                 </div>
                                 <script type="text/javascript">
-                                function calculer(){
-                                    document.getElementById('total').value=document.getElementById('prix').value* document.getElementById('qte').value;
-                                }
-                                </script>
+                                    function calculer(){
+                                        document.getElementById('total').value=document.getElementById('prix').value* document.getElementById('qte').value;
+                                    }
+                                    </script>
                                     <form action="{{route("charge.update",$charge->id)}}" method="post"> 
                                     @csrf
                                     @method('put')
@@ -136,13 +131,20 @@
                                                                                         class="form-control " 
                                                                                         style="background-color:#f3f4d3 ;color:black;padding: 8px; font-size:19px;"
                                                                                         id="piece">
-                                                                                          <option value="0">---</option>
-                                                                                        @foreach($piece as $pieces)
-                                                                                        <option value="{{ $pieces->id}}" {{old('piece_id') == $pieces->id ||$charge->piece->id == $pieces->id ? "selected" : ""}}>{{$pieces->numero}}</option>
+                                                                                        
+                                                                                          @if (empty($charge->piece->id))
+                                                                                            <option value="0" selected="select">---</option>
+                                                                                          @foreach($piece as $pieces) 
+                                                                                          <option value="{{ $pieces->id}}">{{$pieces->numero}}</option>
                                                                                           @endforeach
-                                                                        </select>
+                                                                                       @else
+                                                                                            @foreach($piece as $pieces) 
+                                                                                            <option value="{{ $pieces->id}}" {{old('piece_id') == $pieces->id ||$charge->piece->id == $pieces->id ? "selected" : ""}}>{{$pieces->numero}}</option>
+                                                                                            @endforeach
+                                                                                            @endif
+                                                                                     </select>
                                                          </div>  
-                                                     </div><br>
+                                                     </div> <br>
                                                     <div class="row">
                                                         <div class=" form-group  col-md-5 my-3" style="padding-left: 50px;">
                                                             <label class="sr-only" for="prix">Prix</label>
@@ -155,6 +157,7 @@
                                                               </div>
                                                               <input 
                                                               name="prix"
+                                                              onkeyup="calculer()"
                                                                     type="text" 
                                                                     class="form-control" 
                                                                     id="prix"
@@ -177,6 +180,7 @@
                                                                     type="text" 
                                                                     class="form-control" 
                                                                     id="qte"
+                                                                    onkeyup="calculer()"
                                                                     value="{{$charge->qte}}"
                                                                     style="padding: 8px; font-size:19px;cursor:context-menu;background-color:#f3f4d3;color:black;text-align:right"
                                                                     placeholder="Quantité">
@@ -194,7 +198,6 @@
                                                                           </div>
                                                                       </div>
                                                                             <input 
-                                                                            onfocus="calculer()"
                                                                                     name="total"
                                                                                     type="text" 
                                                                                     class="form-control" 
@@ -223,7 +226,7 @@
                                                                   {{$charge->description}} </textarea>
                                                        </div> </div><br>
                                                           <div class="form-group pull-right my-4" >
-                                                                                <button type="submit "  class="btn2 fw-bold "  style="background-color: #f69000  "> Modifier</button>
+                                                            <button type="submit "  class="btn2 fw-bold "  style="background-color: #f69000  "> Modifier</button>
                                                         </div>
                                                  </form>
                                            </div>

@@ -1,5 +1,6 @@
 /* const search =() =>{
 const searchbox =document.getElementById("search-item").value.toUpperCase();
+const searchbox =document.getElementById("search-item").value.toUpperCase();
 const storeitem =document.getElementById("ex1")
 const product =document.querySelectorAll(".product")
 const pname = storeitem.getElementsByTagName("div")
@@ -18,7 +19,9 @@ for (var i = 0; i < pname.length; i++) {
     }  
 }
 } */
- function sortBy($columnName)
-{
-  dd('hires');
-}
+
+
+
+
+
+

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\produit;
 use App\Models\categorie;
+use Illuminate\Http\Request;
+use App\Exports\ProduitExport;
+use App\Imports\ProduitImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreproduitRequest;
 use App\Http\Requests\UpdateproduitRequest;
 
@@ -74,7 +78,7 @@ class ProduitController extends Controller
         //redirect user
         
         return redirect()->route("produit.index")->with([
-            'success'=>'produit ajouter avec succes'
+            'success'=>'produit ajouter avec succès'
         ]);
     }
 
@@ -89,7 +93,7 @@ class ProduitController extends Controller
         //
         $categorie = categorie::all();
         return view('produit.show')->with([
-            'produit'=> $produit,
+            'produit'=>$produit,
             'categorie'=> $categorie
         ]);
     }
@@ -146,7 +150,7 @@ class ProduitController extends Controller
         ]);
         //redirect user
         return redirect()->route("produit.index")->with([
-            "success"=> "Produit modifier avec succes"
+            "success"=> "Produit modifier avec succès"
         ]);
     }
     
@@ -164,7 +168,7 @@ class ProduitController extends Controller
         $produit->delete();
         //redirect user
         return redirect()->route("produit.index")->with([
-            "success"=> "Produit supprimée avec succes"
+            "success"=> "Produit supprimée avec succès"
         ]);
     }
     public function search_produit()
@@ -173,5 +177,19 @@ class ProduitController extends Controller
         $produit=Produit::where('libele','like','%'.$search_text.'%')->get();
         return view('produit.search',compact('produit'));
     }
-}
+    public function export_produit() 
+    {
+       return Excel::download(new ProduitExport, 'produits.xlsx');
+    }
 
+    public function  upload_produit(Request $request)
+        {
+            Excel::import(new ProduitImport, $request->file);
+             return redirect()->route('produit.index')->with('success', 'produit Imported Successfully');
+        }
+        
+        public function  import_produit(){
+            return view('produit.import');
+        }
+
+}

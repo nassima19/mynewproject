@@ -22,7 +22,7 @@ class PieceController extends Controller
     {
         //
         return view("piece.index")->with([
-            "piece"=> Piece::paginate(10)
+            "piece"=> Piece::paginate(6)
         ]);
     }
 
@@ -54,7 +54,7 @@ class PieceController extends Controller
             "paiement_date"=> "required|min:10",
             "numero"=> "required|min:1",
              "note"=> "min:1", 
-             /* "bank_account"=> "min:1" */  
+              "bank_account"=> "min:1"   
         ]); 
         //store data
         $type_piece = $request->type_piece;
@@ -73,7 +73,7 @@ class PieceController extends Controller
         //redirect user
         
         return redirect()->route("piece.index")->with([
-            'success'=>'Piece ajouter avec succes'
+            'success'=>'Pièce ajouter avec succès'
         ]);
     }
 
@@ -86,6 +86,9 @@ class PieceController extends Controller
     public function show(piece $piece)
     {
         //
+        return view("piece.show")->with([
+            "piece"=>$piece
+       ]);
     }
 
     /**
@@ -98,7 +101,9 @@ class PieceController extends Controller
     {
         //
          
-        return view("piece.edit");
+        return view("piece.edit")->with([
+            "piece"=>$piece
+       ]);
     }
 
     /**
@@ -111,6 +116,32 @@ class PieceController extends Controller
     public function update(UpdatepieceRequest $request, piece $piece)
     {
         //
+        $this->validate($request,[
+            "type_piece"=> "required", 
+             "paiement_date"=> "required|min:10",
+             "numero"=> "required|min:1",
+              /* "note"=> "min:1", 
+              "bank_account"=> "min:1"  */
+         ]); 
+         dd($request);
+         //store data
+         $type_piece = $request->type_piece;
+         $paiement_date = $request->paiement_date;
+         $numero = $request->numero;
+         $note = $request->note;
+         $bank_account = $request->bank_account;
+         $piece->update([
+             "type_piece"=> $type_piece,
+             "paiement_date"=> $paiement_date,
+             "numero"=> $numero,
+             "note"=> $note,
+             "bank_account"=> $bank_account,
+         ]);
+         //redirect user
+         
+         return redirect()->route("piece.index")->with([
+             'success'=>'Pièce modifier avec succès'
+         ]);
     }
 
     /**
@@ -126,7 +157,7 @@ class PieceController extends Controller
         $piece->delete();
         //redirect user
         return redirect()->route("piece.index")->with([
-            "success"=> "Piece supprimée avec succes"
+            "success"=> "Pièce supprimée avec succès"
         ]);
     }
 }

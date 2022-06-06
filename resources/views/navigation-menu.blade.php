@@ -57,7 +57,7 @@
                                     </a>
                                     <div    class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style=" background-color:transparent;border:none">                                  
                                         
-                                        <a class="dropdown-item navbar-brand" style="color:#f69000;" href="{{ route('logout') }}"
+                                        <a class="dropdown-item navbar-brand" style="color:#003048 ;border-radius:12px;padding:8px 8px" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                            <i class="fa fa-sign-out" style="text-transform:lowercase" aria-hidden="true"> </i> {{ __('Logout') }}

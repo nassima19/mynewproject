@@ -97,7 +97,7 @@
                          @endauth
                     @endif <br><br>
                     <div class="masthead-subheading">
-                          Bienvenue  Dans Votre Charges</div>
+                          Bienvenue  Dans Vos Charges</div>
                      </div>
     
   </header>

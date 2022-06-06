@@ -7,7 +7,6 @@
            <link rel="stylesheet" href="/css/style.css">
           <style>
               body{
-                /* background-color:#d5b0d3;  */ 
             }
           </style>
     @endsection
@@ -69,8 +68,8 @@
                                                             </div>
                                                                 </div> <br><br>
                                                                     <div class="form-group pull-right" >
-                                                                                <button type="submit " class="btn2 fw-bold "  ><i class="fa fa-save"></i> Enregistrer</button>
-                                                                                <button class="btn2 fw-bold" ><a type="button" style="text-decoration: none;  color:white"  href="{{route("service.index")}}" ><i class="fa fa-times"></i>Annuler</a></button>
+                                                                                <button type="submit " class="btn2"  > Enregistrer <i class="fa fa-save" style="color: #efc8b1"></i></button>
+                                                                                <button class="btn2 " ><a type="button" style="text-decoration: none;  color:white"  href="{{route("service.index")}}" >Annuler <i class="fa fa-times" style="color: #efc8b1"></i></a></button>
                                                                     </div>
                                                  </form>
                                            </div>

@@ -1,4 +1,3 @@
-
 <x-app-layout>
     @section('title')
          <title>Charge </title>
@@ -6,12 +5,6 @@
     @section('style')
           <link rel="stylesheet" href="/css/bootstrap.min.css">
            <link rel="stylesheet" href="/css/style.css">
-          <style>
-              body{
-                /* background-color:#d5b0d3;  */ 
-            }
-           
-          </style>
     @endsection
     <x-slot name="header">
         <h2 class="font-semibold text-xl leading-tight fw-bold" style="text-shadow: 4px 4px 5px #a3a3a3;color:rgb(233, 157, 122);font-size:28px">
@@ -42,8 +35,19 @@
                                 function calculer(){
                                     document.getElementById('total').value=document.getElementById('prix').value* document.getElementById('qte').value;
                                 }
-                                </script>
-                                    <form action="{{route("charge.store")}}" method="post"> 
+                                function change(event){
+                                    let produitsOptions = document.querySelectorAll('.produits-options')  ;
+                                    let categorie = Array.from(produitsOptions).find(option => option.getAttribute('value') == event.target.value).getAttribute('categorie')
+                                    let fournisseur_cat =  document.querySelectorAll(".option")  
+                                    for (var i = 0; i < fournisseur_cat.length; i++) {
+                                    if(fournisseur_cat[i].getAttribute("categorie_f")!=categorie)
+                                    {  
+                                        fournisseur_cat[i].style.display="none"; 
+                                    } 
+                                }   
+                       }
+  </script> 
+     <form action="{{route("charge.store")}}" method="post"> 
                                     @csrf
                                     <div class="row ">
                                         <div class=" form-group col-sm-5 my-3" style="padding-left: 50px" > 
@@ -53,13 +57,15 @@
                                                     style="font-size:19px;color:black"
                                                     >Produit : 
                                                 </label>
-                                                    <select
+                                                    <select 
+                                                           id="produits-list"
+                                                            onchange="change(event)"
                                                             name="produit_id" 
                                                             class="form-control col-form-label"
                                                             style="background-color:#f3f4d3 ;color:;padding: 8px; font-size:19px;">
                                                            <option value="" >Choisir un produit</option>
                                                             @foreach($produit as $product)
-                                                            <option value="{{$product->id}}">{{$product->libele}}</option>
+                                                            <option value="{{$product->id}}"  class="produits-options" categorie="{{$product->categorie_id}}">{{$product->libele}}</option>
                                                             @endforeach
                                                     </select>  
                                         </div>
@@ -85,12 +91,13 @@
                                                                             class="col-form-label" >Fournisseur :
                                                                    </label><button style="font-size:19px;color: #1a3733" class=" pull-right"><a href="{{route("fournisseur.create")}}" style="text-decoration: none;color:#f69000"><i class="fa fa-plus-circle" aria-hidden="true"></i>Ajouter</a></button><br>
                                                                             <select  
+                                                                                     id="fournisseur_id"
                                                                                     name="fournisseur_id"
                                                                                     class="form-control col-form-label" 
                                                                                     style="background-color:#f3f4d3 ;color:black;padding: 8px; font-size:19px;">
                                                                                     <option value=""  selected="select" >Choisir un fournisseur</option>
                                                                                 @foreach($fournisseur as $vendor)
-                                                                                    <option value="{{/* $charge->fournisseur->categorie->libele == $charge->produit->categorie->libele ? */ $vendor->id}}">{{$vendor->nom}}</option>
+                                                                                    <option value="{{$vendor->id}}"  categorie_f="{{$vendor->categorie_id}}" class=" option">{{$vendor->nom}}</option>
                                                                                    @endforeach  
                                                                             </select>
                                                     </div>
@@ -191,7 +198,6 @@
                                                                                 style="padding: 8px; font-size:19px;background-color: #f69000;color:white;cursor: pointer;caret-color: red;">Total
                                                                           </div>
                                                                       </div>
-                                                                      {{-- onfocus="calculer()" --}}
                                                                             <input 
                                                                                     name="total"
                                                                                     type="text" 
@@ -223,8 +229,8 @@
                                                                    </textarea>
                                                        </div> </div><br>
                                                           <div class="form-group pull-right my-4" >
-                                                                                <button type="submit "  class="btn2 fw-bold "  style="background-color: #f69000  "><i class="fa fa-save"></i> Enregistrer</button>
-                                                                                <button class="btn2 fw-bold" style="background-color: #f69000"><a type="button" style="text-decoration: none;  color:#f3f4d3"  href="{{route("charge.index")}}" ><i class="fa fa-times"></i>Annuler</a></button>
+                                                                                <button type="submit "  class="btn2 fw-bold" style="background-color: #f69000;color:#fff"> Enregistrer <i class="fa fa-save" style="color: #fff"></i></button>
+                                                                                <button class="btn2 fw-bold" style="background-color: #f69000" ><a type="button" style="text-decoration: none;  color:#fff; background-color: #f69000"  href="{{route("charge.index")}}" >Annuler <i class="fa fa-times" style="color: #fff"></i></a></button>
                                                         </div>
                                                  </form>
                                            </div>
@@ -233,7 +239,10 @@
                          </div>
                   </div>
            </div>
-      </div>      
+      </div>  
   @endsection
+{{--   @section('script')
+  <script src="/js/javascript.js"></script>
+  @endsection --}}
 </x-app-layout>
 
